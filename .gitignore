@@ -8,4 +8,4 @@ org.eclipse.*.prefs
 
 # other 
 **/.DS_Store
-.idea
+**/.idea
