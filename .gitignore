@@ -1,5 +1,5 @@
 # ignore maven build folder
-target/
+**/target/
 
 # pom-derived eclipse jdt files
 .project
@@ -8,3 +8,4 @@ org.eclipse.*.prefs
 
 # other 
 **/.DS_Store
+.idea
