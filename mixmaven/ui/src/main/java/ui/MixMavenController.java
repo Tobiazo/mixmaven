@@ -37,7 +37,7 @@ public class MixMavenController {
 
     @FXML
     void initialize() {
-        updateOperandsView();
+        //updateOperandsView();
     }
 
     private void updateOperandsView() {
