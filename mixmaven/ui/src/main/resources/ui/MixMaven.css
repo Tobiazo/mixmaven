@@ -1,0 +1,38 @@
+.root{
+    -fx-purple: #87255B;
+}
+
+.hbox{
+    -fx-pref-height:60px;
+}
+
+#header, #toolbar, #menubar{
+    -fx-background-color: -fx-purple;
+
+}
+.button{
+    -fx-background-color: transparent;
+    /* -fx-padding:10px; */
+    -fx-background-radius:0;
+    -fx-pref-height:50px;
+    -fx-padding:21.5px
+}
+
+.button:hover{
+    -fx-background-color:"white";
+}
+
+.menu{
+    -fx-padding: 21.5px;
+    -fx-margin:15px;
+}
+
+.menu:hover{
+    -fx-background-color:"white";
+}
+.menu-item{
+    -fx-padding: 5 20 5 20;
+}
+.toolbar{
+    -fx-padding: 15px;
+}
