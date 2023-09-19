@@ -45,25 +45,25 @@ public class Drink implements Serializable{
 		return false;
 	}
 
-	private double calculateAlcoholContent(){
+	public double calculateAlcoholContent(){
 		double volume = 0;
 		double alcoholVolume = 0;
 		for (Ingredient ingredient : ingredients) {
-			if (ingredient.getType()=="Mixer" || ingredient.getType()=="Alcohol"){
+			if (ingredient.getType()=="mixer" || ingredient.getType()=="alcohol"){
 				volume+=ingredient.getAmount();
 			}
-			alcoholVolume += ingredient.getAlcohol()*ingredient.getAmount()/100;
+			alcoholVolume += ingredient.getAlcoholPercentage()*ingredient.getAmount()/100;
 
 
 		}
 		return alcoholVolume/volume;
 	}
 
-	private void addIngredient(Ingredient Ingredient){
+	public void addIngredient(Ingredient Ingredient){
 		ingredients.add(Ingredient);
 	}
 
-	private void removeIngredient(int index){
+	public void removeIngredient(int index){
 		ingredients.remove(index);
 	}
 }
