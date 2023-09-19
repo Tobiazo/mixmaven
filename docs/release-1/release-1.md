@@ -3,7 +3,7 @@
 Date: Thursday 21. september 2023 \
 Assignment: 1
 
-This release implements a simple UI for browsing and adding drinks to the system. Through a page for adding new recipes the user can add whatever ingredients they may want and choose how much of each. Drink recipes are saved to file, this way the data is not deleted when the app is closed.
+This release implements a simple UI for browsing, adding and removing drinks to the system. Through a page for adding new recipes the user can add whatever ingredients they may want and choose how much of each. Drink recipes are saved to file, this way the data is not deleted when the app is closed.
 
 ## User history
 
