@@ -12,11 +12,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
 
-public class AppController {
+public class MixMavenController {
 
     private Calc calc;
 
-    public AppController() {
+    public MixMavenController() {
         calc = new Calc(0.0, 0.0, 0.0);
     }
 
