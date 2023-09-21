@@ -21,7 +21,7 @@ public class MixMaven {
 		return drinks;
 	}
 
-	public static void saveDrinks() {
+	private static void saveDrinks() {
 		ObjectToJsonFile.saveObjectToJsonFile(drinks, FILEPATH);
 	}
 
@@ -33,4 +33,13 @@ public class MixMaven {
 		return drinks;
 	}
 
+	public static void addDrink(Drink drink){
+		drinks.add(drink);
+		saveDrinks();
+	}
+
+	public static void addDrink(Drink drink, int index){
+		drinks.add(index, drink);
+		saveDrinks();
+	}
 }
