@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DataHandler",
+            "request": "launch",
+            "mainClass": "mixmaven.core/core.DataHandler",
+            "projectName": "modules-core"
+        },
+        {
+            "type": "java",
             "name": "MixMaven",
             "request": "launch",
             "mainClass": "mixmaven.core/core.MixMaven",
