@@ -19,10 +19,9 @@ public class DataHandler {
    * and assigned to the drinks field.
    * This method is called upon startup of the application.‡
    */
-	@SuppressWarnings("unchecked")
 	public static List<Drink> loadDrinks() {
 		try {
-			drinks = (List<Drink>) JsonFileToObject.loadObjectFromJson(FILEPATH);
+			drinks = JsonFileToObject.loadObjectFromJson(FILEPATH);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
@@ -55,6 +54,7 @@ public class DataHandler {
     Drink gt = new Drink("GT");
 
     DataHandler.addDrink(gt);
-    System.out.println(drinks);
+    //System.out.println(drinks);
+    System.out.println(DataHandler.getDrinks());
   }
 }
