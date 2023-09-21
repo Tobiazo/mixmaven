@@ -1,16 +1,16 @@
-.root{
+.root {
     -fx-purple: #87255B;
 }
 
-.hbox{
+.hbox {
     -fx-pref-height:60px;
 }
 
-#header, #toolbar, #menubar{
+#header, #toolbar, #menubar {
     -fx-background-color: -fx-purple;
 
 }
-.button{
+.button {
     -fx-background-color: transparent;
     /* -fx-padding:10px; */
     -fx-background-radius:0;
@@ -18,21 +18,35 @@
     -fx-padding:21.5px
 }
 
-.button:hover{
+.button:hover {
     -fx-background-color:"white";
 }
 
-.menu{
+.menu {
     -fx-padding: 21.5px;
     -fx-margin:15px;
 }
 
-.menu:hover{
+.menu:hover {
     -fx-background-color:"white";
 }
-.menu-item{
+.menu-item {
     -fx-padding: 5 20 5 20;
 }
-.toolbar{
+.toolbar {
     -fx-padding: 15px;
+}
+
+
+#drinkContainer {
+    -fx-background-color: pink;
+}
+
+.drinkBox {
+    -fx-background-color: blue;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-padding: 10px;
 }
