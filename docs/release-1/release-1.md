@@ -9,7 +9,7 @@ Assignment: 1
 
 For release 1 our goal was a simple app allowing the user to create, read, update and delete drinks through a simple UI. It would consist of two pages, one for browsing drinks and deleting drinks and one for adding new Drinks with any kind of ingredients. The application saves data to json in order to create persistence ensuring that the user can access drinks from previous sessions. We wanted to add good automatic testing with testing coverage early in order to make future development easier.
 
-In this regard our applications lacks a feature for updating Drinks and their ingredients which is something we want to add in future releases. We have currently set up JaCoCo for test coverage and one test which is less than we wanted. Moving forward we will prioritize increasing number of tests and test coverage. 
+In this regard our applications lacks the features for deleting drinks and updating drinks and their ingredients which is something we want to add in future releases. We have currently set up JaCoCo for test coverage and one test which is less than we wanted. Moving forward we will prioritize increasing number of tests and test coverage. 
 
 **Work process**
 
