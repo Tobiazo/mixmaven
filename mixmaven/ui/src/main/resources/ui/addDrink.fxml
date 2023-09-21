@@ -132,10 +132,16 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0">
+                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onDeleteIngredientButtonPress" text="Delete ingredient" />
-                        <ListView fx:id="ingredientList" maxWidth="-Infinity" prefHeight="350.0" prefWidth="380.0" />
+                        <Button mnemonicParsing="false" onAction="#onDeleteIngredientButtonPress" text="Delete ingredient">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin></Button>
+                        <ListView fx:id="ingredientList" maxWidth="-Infinity" prefHeight="350.0" prefWidth="380.0" stylesheets="@addDrink.css">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin></ListView>
                      </children>
                   </VBox>
                </children>
