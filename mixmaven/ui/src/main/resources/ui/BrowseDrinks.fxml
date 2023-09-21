@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Button?>
 
 <AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             fx:id="browseDrinksPane"
@@ -13,5 +14,6 @@
             prefHeight="540.0" prefWidth="800.0">
     <children>
         <VBox fx:id="drinkContainer" prefHeight="540" prefWidth="600" />
+        <Button fx:id="addDrinkBtn" mnemonicParsing="false" text="Add Drink" />
     </children>
 </AnchorPane>
