@@ -9,7 +9,10 @@ public class Drink implements Serializable{
 	private List<Ingredient> ingredients;
 	private double alcoholContent;
 
-
+  public Drink(){
+    ingredients = new ArrayList<Ingredient>();
+    alcoholContent = 0;
+  }
 	public Drink(String name){
 		if (validateDrink()){
 			this.name = name;
@@ -66,4 +69,10 @@ public class Drink implements Serializable{
 	public void removeIngredient(int index){
 		ingredients.remove(index);
 	}
+  @Override
+  public String toString() {
+    return "Drink [name=" + name + ", alcoholContent=" + alcoholContent + "]";
+  }
+
+  
 }
