@@ -67,5 +67,12 @@ public class Ingredient implements Serializable {
         return false; 
     }
 
+    @Override
+    public String toString() {
+      return "Ingredient [name=" + name + ", type=" + type + "]";
+    }
+
+    
+
 }
 

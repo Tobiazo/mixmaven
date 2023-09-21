@@ -2,10 +2,9 @@ package core.json;
 
 import com.google.gson.Gson;
 
-import core.Drink;
-
 import java.io.FileWriter;
 import java.io.IOException;
+
 
 public class ObjectToJsonFile {
 	public static void saveObjectToJsonFile(Object obj, String filePath){
@@ -13,18 +12,10 @@ public class ObjectToJsonFile {
 			Gson gson = new Gson();
 
 			gson.toJson(obj, fileWriter);
+			fileWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-
-
-	
-
-    public static void main(String[] args){
-		Drink test = new Drink("hei");
-		ObjectToJsonFile.saveObjectToJsonFile(test, "/Users/emilsolberg/Documents/ntnu/ITP/drinkapp/gr2331/gr2331/test");
 	}
   }
 
