@@ -51,7 +51,7 @@
                   </HBox>
                </children>
             </HBox>
-            <StackPane prefHeight="740.0" prefWidth="200.0" />
+            <StackPane prefHeight="540.0" prefWidth="800.0" stylesheets="@MixMaven.css" />
          </children>
       </VBox>
    </children>
