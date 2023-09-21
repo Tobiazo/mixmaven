@@ -15,10 +15,6 @@ public class MixMavenApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
-        //MenuBar MenuBar = new MenuBar();
-
-
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("MixMaven.fxml"));
         Parent parent = fxmlLoader.load();
         Scene scene = new Scene(parent);
