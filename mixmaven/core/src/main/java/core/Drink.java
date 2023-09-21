@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/* Dataoriented class possibly containing a list of ingredientobjects */
 public class Drink implements Serializable {
 	private String name;
 	private List<Ingredient> ingredients;
@@ -50,6 +51,10 @@ public class Drink implements Serializable {
 		return false;
 	}
 
+  /* 
+   * returns the alcolcontent in a drink by calculating the alcoholvolume (ABV*volume) 
+   * divided by the total volume of all ingredients in the drink.
+   */
 	public double calculateAlcoholContent() {
 		double volume = 0;
 		double alcoholVolume = 0;

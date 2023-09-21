@@ -1,15 +1,24 @@
 package core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import core.json.JsonFileToObject;
 import core.json.ObjectToJsonFile;
 
-public class MixMaven {
+/* Datahandler contains the filepath and drinks field. Drinks is a list
+ * containing all Drink objects.
+ */
+public class DataHandler {
 
 	private static String FILEPATH = "mixmaven/core/src/main/java/core/json/data.json";
-	private static List<Drink> drinks;
+	private static List<Drink> drinks = new ArrayList<>();
 
+  /* loaddrinks retrieves an object from the json file
+   * The returned value is then casted to a List containing multiple Drink objects
+   * and assigned to the drinks field.
+   * This method is called upon startup of the application.‡
+   */
 	@SuppressWarnings("unchecked")
 	public static List<Drink> loadDrinks() {
 		try {
@@ -20,7 +29,7 @@ public class MixMaven {
 
 		return drinks;
 	}
-
+  /* Overwrites the json file with the current content of the drinks field. */
 	private static void saveDrinks() {
 		ObjectToJsonFile.saveObjectToJsonFile(drinks, FILEPATH);
 	}
@@ -42,4 +51,11 @@ public class MixMaven {
 		drinks.add(index, drink);
 		saveDrinks();
 	}
+
+  public static void main(String[] args){
+    Drink gt = new Drink("GT");
+
+    DataHandler.addDrink(gt);
+    System.out.println(drinks);
+  }
 }
