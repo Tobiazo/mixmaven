@@ -1,5 +1,5 @@
 # MixMaven
-MixMaven is a project in the subject IT1901. This is the project of group 32.  The App lets a user store their drink recipes. The app allows the user to add drinks from their collection.
+MixMaven is a project in the subject IT1901. This is the project of group 31.  The App lets a user store their drink recipes. The app allows the user to add drinks from their collection.
 
 
 You will find the documentation for each release in the [docs](/docs/) folder or in the following link(s).
