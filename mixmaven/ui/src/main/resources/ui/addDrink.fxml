@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="540.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WorkoutJournal.addExerciseController">
+<AnchorPane prefHeight="540.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddDrinkController">
    <children>
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="200.0" layoutY="7.0" prefHeight="40.0" prefWidth="400.0" text="New Drink">
          <font>
@@ -34,7 +33,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="exerciseNameField">
+                  <TextField fx:id="drinkNameField" prefWidth="150.0" promptText="Drink Name">
                      <HBox.margin>
                         <Insets left="20.0" right="75.0" />
                      </HBox.margin>
@@ -51,11 +50,11 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="350.0" prefWidth="350.0">
+                  <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="300.0" prefWidth="350.0">
                      <children>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="TOP_LEFT" text="Name">
+                              <Label alignment="TOP_LEFT" text="Ingredient Name">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
@@ -63,7 +62,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="exerciseNameField1" prefHeight="25.0" prefWidth="95.0">
+                              <TextField fx:id="ingredientNameField" prefHeight="25.0" prefWidth="150.0" promptText="Ingredient Name">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -80,7 +79,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="exerciseNameField11" prefHeight="25.0" prefWidth="95.0" />
+                              <TextField fx:id="alchoholPercentField" prefHeight="25.0" prefWidth="150.0" promptText="\%" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
@@ -93,7 +92,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="exerciseNameField13" prefHeight="25.0" prefWidth="95.0" />
+                              <TextField fx:id="amountField" prefHeight="25.0" prefWidth="150.0" promptText="In chosen Unit" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
@@ -106,7 +105,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="exerciseNameField132" prefHeight="25.0" prefWidth="95.0" />
+                              <TextField fx:id="unitField" prefHeight="25.0" prefWidth="150.0" promptText="Unit" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
@@ -119,12 +118,12 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox prefWidth="150.0" />
+                              <ChoiceBox fx:id="typeChoiceBox" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Add Drink" />
+                              <Button mnemonicParsing="false" onAction="#onAddIngredientButtonPress" text="Add Ingredient" />
                            </children>
                         </HBox>
                      </children>
@@ -132,14 +131,19 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0">
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0">
                      <children>
-                        <ListView maxWidth="-Infinity" prefHeight="350.0" prefWidth="380.0" />
-                        <Button mnemonicParsing="false" text="Delete ingredient" />
+                        <Button mnemonicParsing="false" onAction="#onDeleteIngredientButtonPress" text="Delete ingredient" />
+                        <ListView fx:id="ingredientList" maxWidth="-Infinity" prefHeight="350.0" prefWidth="380.0" />
                      </children>
                   </VBox>
                </children>
             </HBox>
+            <Button mnemonicParsing="false" onAction="#onAddDrinkButtonPress" text="Add Drink">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
             <HBox prefHeight="100.0" prefWidth="200.0" />
          </children>
          <padding>

@@ -23,8 +23,8 @@ public class Drink implements Serializable {
 			throw new IllegalArgumentException("Invalid arguments for Drink");
 	}
 
-	public Drink(String name, ArrayList<Ingredient> ingredients) {
-		if (validateDrink()) {
+	public Drink(String name, List<Ingredient> ingredients){
+		if (validateDrink()){
 			this.name = name;
 			this.ingredients = ingredients;
 			calculateAlcoholContent();
