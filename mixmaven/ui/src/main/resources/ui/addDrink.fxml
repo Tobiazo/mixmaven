@@ -11,7 +11,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddDrinkController">
+<AnchorPane prefHeight="540.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="ui.AddDrinkController"
+            fx:id="addDrinkPane"
+            stylesheets="@styles/AddDrink.css">
 
    <children>
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="200.0" layoutY="7.0" prefHeight="40.0" prefWidth="400.0" text="New Drink">

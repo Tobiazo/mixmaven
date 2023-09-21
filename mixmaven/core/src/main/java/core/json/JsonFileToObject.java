@@ -18,7 +18,7 @@ public class JsonFileToObject {
 
 		try (FileReader reader = new FileReader(filePath)) {
 
-      Type listType = new TypeToken<List<Drink>>(){}.getType();
+      		Type listType = new TypeToken<List<Drink>>(){}.getType();
 			List<Drink> obj = gson.fromJson(reader, listType);
 
 			reader.close();

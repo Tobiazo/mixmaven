@@ -1,7 +1,7 @@
 package ui;
 
 import core.Ingredient;
-import core.MixMaven;
+import core.DataHandler;
 import core.Drink;
 
 import java.io.IOException;
@@ -12,9 +12,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AddDrinkController {
 	@FXML private TextField drinkNameField;
@@ -62,7 +67,20 @@ public class AddDrinkController {
 	public void onAddDrinkButtonPress(ActionEvent event) throws IOException {
 		String drinkName = drinkNameField.getText();
 		Drink newDrink = new Drink(drinkName, selectedIngredients);
-		//MixMaven.addDrink(newDrink);
+		// String s = getClass().getResource("/ui/json/data.json").toString().replace("file:", "");
+		DataHandler.addDrink(newDrink);
 
-	}
+
+		// move to BrowseDrinks pane
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/BrowseDrinks.fxml"));
+			Parent root = loader.load();
+			Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+			stage.setScene(new Scene(root));
+			stage.show();
+        } catch (IOException e) {
+                e.printStackTrace();
+        }
+    };
 }
+
