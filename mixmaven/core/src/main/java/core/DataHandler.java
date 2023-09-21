@@ -26,7 +26,6 @@ public class DataHandler {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-
 		return drinks;
 	}
   /* Overwrites the json file with the current content of the drinks field. */
