@@ -10,9 +10,10 @@ public class MixMaven {
 	private static String FILEPATH = "mixmaven/core/src/main/java/core/json/data.json";
 	private static List<Drink> drinks;
 
+	@SuppressWarnings("unchecked")
 	public static List<Drink> loadDrinks(){
 		try {
-			List<Drink> drinks = (List<Drink>)JsonFileToObject.loadObjectFromJson(FILEPATH);
+			drinks = (List<Drink>)JsonFileToObject.loadObjectFromJson(FILEPATH);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
