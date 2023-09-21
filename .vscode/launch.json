@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MixMaven",
+            "request": "launch",
+            "mainClass": "mixmaven.core/core.MixMaven",
+            "projectName": "modules-core"
+        },
+        {
+            "type": "java",
             "name": "JsonFileToObject",
             "request": "launch",
             "mainClass": "mixmaven.core/core.json.JsonFileToObject",

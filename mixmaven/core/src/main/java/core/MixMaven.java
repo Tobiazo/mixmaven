@@ -11,18 +11,18 @@ public class MixMaven {
 	private static List<Drink> drinks;
 
 	@SuppressWarnings("unchecked")
-	public static List<Drink> loadDrinks(){
+	public static List<Drink> loadDrinks() {
 		try {
-			drinks = (List<Drink>)JsonFileToObject.loadObjectFromJson(FILEPATH);
+			drinks = (List<Drink>) JsonFileToObject.loadObjectFromJson(FILEPATH);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		
+
 		return drinks;
 	}
-	
-	public static void saveDrinks(){
-		ObjectToJsonFile.saveObjectToJsonFile(drinks,FILEPATH);
+
+	public static void saveDrinks() {
+		ObjectToJsonFile.saveObjectToJsonFile(drinks, FILEPATH);
 	}
 
 	public static String getFILEPATH() {
@@ -33,7 +33,4 @@ public class MixMaven {
 		return drinks;
 	}
 
-	
-
-	
 }
