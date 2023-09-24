@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+// import com.google.gson.JsonSerializer
+
 /* Dataoriented class possibly containing a list of ingredientobjects */
 public class Drink implements Serializable {
 	private String name;

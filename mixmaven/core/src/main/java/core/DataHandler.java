@@ -1,8 +1,11 @@
 package core;
 
-import java.util.ArrayList;
 import java.util.List;
-
+import com.google.gson.Gson;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import core.json.JsonFileToObject;
 import core.json.ObjectToJsonFile;
 
@@ -12,52 +15,54 @@ import core.json.ObjectToJsonFile;
 public class DataHandler {
 
 	private static List<Drink> drinks = new ArrayList<>();
-	private static String filePath;
-
-  /* loaddrinks retrieves an object from the json file
-   * The returned value is then casted to a List containing multiple Drink objects
-   * and assigned to the drinks field.
-   * This method is called upon startup of the application.‡
-   */
-	public static List<Drink> loadDrinks(String s) {
-		filePath = s;
-		System.out.println("HER!!!!!" + filePath);
+	private static File staticFile;
+	
+	/**
+	 * Loads the saved drinks from file.
+	 * @param file
+	 * @return List<Drink> The loaded list of drinks
+	 */
+	public static List<Drink> loadDrinks(File file) {
+		staticFile = file;
 		try {
-			drinks = JsonFileToObject.loadObjectFromJson(s);
+			drinks = JsonFileToObject.loadObjectFromJson(file);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
 		return drinks;
 	}
-  /* Overwrites the json file with the current content of the drinks field. */
-	private static void saveDrinks() {
-		ObjectToJsonFile.saveObjectToJsonFile(drinks, filePath);
-	}
-
-	public static String getFILEPATH() {
-		return filePath;
-	}
-
+  	
+	/**
+	 * @return List<Drink> This returns currently loaded drinks
+	 */
 	public static List<Drink> getDrinks() {
+		if (drinks.size() == 0) loadDrinks(staticFile);
 		return drinks;
 	}
 
-	public static void addDrink(Drink drink){
-		System.out.println(filePath);
+	/**
+	 * Adds drink to list and saves to file
+	 * @param drink
+	 * @param file
+	 */
+	public static void addDrink(Drink drink, File file){
 		drinks.add(drink);
-		saveDrinks();
+		saveDrinks(file);
 	}
 
-	public static void addDrink(Drink drink, int index){
-		drinks.add(index, drink);
-		saveDrinks();
+	/**
+	 * Add drink to the saved file 
+	 * @param drink
+	 */
+	public static void addDrink(Drink drink) {
+		addDrink(drink, staticFile);
 	}
 
-  public static void main(String[] args){
-    Drink gt = new Drink("GT");
-
-    DataHandler.addDrink(gt);
-    //System.out.println(drinks);
-    System.out.println(DataHandler.getDrinks());
-  }
+	/**
+	 * Saves all drinks in list to file
+	 * @param file
+	 */
+	private static void saveDrinks(File file) {
+		ObjectToJsonFile.saveObjectToJsonFile(drinks, file);
+	}
 }
