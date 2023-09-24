@@ -11,10 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="ui.AddDrinkController"
-            fx:id="addDrinkPane"
-            stylesheets="@styles/AddDrink.css">
+<AnchorPane fx:id="addDrinkPane" prefHeight="540.0" prefWidth="800.0" stylesheets="@styles/AddDrink.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddDrinkController">
 
    <children>
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="200.0" layoutY="7.0" prefHeight="40.0" prefWidth="400.0" text="New Drink">
@@ -141,7 +138,7 @@
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin></Button>
-                        <ListView fx:id="ingredientList" maxWidth="-Infinity" prefHeight="350.0" prefWidth="380.0" stylesheets="@addDrink.css">
+                        <ListView fx:id="ingredientList" maxWidth="-Infinity" prefHeight="350.0" prefWidth="380.0" stylesheets="@styles/addDrink.css">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin></ListView>
@@ -160,5 +157,6 @@
             <Insets top="10.0" />
          </padding>
       </VBox>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackButtonPress" text="Back" />
    </children>
 </AnchorPane>
