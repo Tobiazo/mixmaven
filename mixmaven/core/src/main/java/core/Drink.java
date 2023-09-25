@@ -1,10 +1,11 @@
 package core;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-// import com.google.gson.JsonSerializer
+
 
 /* Dataoriented class possibly containing a list of ingredientobjects */
 public class Drink implements Serializable {
@@ -26,6 +27,11 @@ public class Drink implements Serializable {
 			throw new IllegalArgumentException("Invalid arguments for Drink");
 	}
 
+    /**
+     * 
+     * @param name
+     * @param ingredients list of ingredient objects
+     */
 	public Drink(String name, List<Ingredient> ingredients){
 		if (validateDrink()){
 			this.name = name;
@@ -53,10 +59,10 @@ public class Drink implements Serializable {
 		return false;
 	}
 
-  /* 
-   * returns the alcolcontent in a drink by calculating the alcoholvolume (ABV*volume) 
-   * divided by the total volume of all ingredients in the drink.
-   */
+    /**
+     * 
+     * @return double, the calculated ABV of the drink
+     */
 	public double calculateAlcoholContent() {
 		double volume = 0;
 		double alcoholVolume = 0;
@@ -70,10 +76,18 @@ public class Drink implements Serializable {
 		return alcoholVolume / volume;
 	}
 
+    /**
+     * 
+     * @param Ingredient 
+     */
 	public void addIngredient(Ingredient Ingredient) {
 		ingredients.add(Ingredient);
 	}
 
+    /**
+     * 
+     * @param index of the ingredient to remove
+     */
 	public void removeIngredient(int index) {
 		ingredients.remove(index);
 	}
