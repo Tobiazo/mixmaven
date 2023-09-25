@@ -5,40 +5,30 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-/* Dataoriented class possibly containing a list of ingredientobjects */
 public class Drink implements Serializable {
 	private String name;
-	private List<Ingredient> ingredients;
-	private double alcoholContent;
+	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+	private double alcoholContent = 0;
 
-	public Drink() {
-		ingredients = new ArrayList<Ingredient>();
-		alcoholContent = 0;
-	}
-
+	/**
+	 * Creates a drink without ingredients
+	 * 
+	 * @param name
+	 */
 	public Drink(String name) {
-		if (validateDrink()) {
-			this.name = name;
-			ingredients = new ArrayList<Ingredient>();
-			alcoholContent = 0;
-		} else
-			throw new IllegalArgumentException("Invalid arguments for Drink");
+		this.name = name;
 	}
 
-    /**
-     * 
-     * @param name
-     * @param ingredients list of ingredient objects
-     */
-	public Drink(String name, List<Ingredient> ingredients){
-		if (validateDrink()){
-			this.name = name;
-			this.ingredients = ingredients;
-			calculateAlcoholContent();
-		} else
-			throw new IllegalArgumentException("Invalid arguments for Drink");
+	/**
+	 * Creates drink with ingredients
+	 * 
+	 * @param name
+	 * @param ingredients
+	 */
+	public Drink(String name, List<Ingredient> ingredients) {
+		this(name);
+		this.ingredients = ingredients;
+		this.alcoholContent = calculateAlcoholContent();
 	}
 
 	public String getName() {
@@ -53,17 +43,13 @@ public class Drink implements Serializable {
 		return alcoholContent;
 	}
 
-	private boolean validateDrink() {
-		if (alcoholContent <= 100)
-			return true;
-		return false;
-	}
-
-    /**
-     * 
-     * @return double, the calculated ABV of the drink
-     */
-	public double calculateAlcoholContent() {
+	/**
+	 * returns the alcolcontent in a drink by calculating the alcoholvolume (ABV*volume) divided by
+	 * the total volume of all ingredients in the drink.
+	 * 
+	 * @return alcoholcontent of the drink
+	 */
+	private double calculateAlcoholContent() {
 		double volume = 0;
 		double alcoholVolume = 0;
 		for (Ingredient ingredient : ingredients) {
@@ -82,6 +68,7 @@ public class Drink implements Serializable {
      */
 	public void addIngredient(Ingredient Ingredient) {
 		ingredients.add(Ingredient);
+		this.alcoholContent = calculateAlcoholContent();
 	}
 
     /**
@@ -90,6 +77,7 @@ public class Drink implements Serializable {
      */
 	public void removeIngredient(int index) {
 		ingredients.remove(index);
+		this.alcoholContent = calculateAlcoholContent();
 	}
 
 	@Override

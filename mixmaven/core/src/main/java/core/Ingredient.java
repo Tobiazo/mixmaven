@@ -1,22 +1,48 @@
 package core;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Ingredient implements Serializable {
-    
-    private String name;
-    private int alcoholPercentage; 
-    private double amount; 
-    private String measurementUnit; 
-    private String type;
 
-    public Ingredient(String name, int alcoholPercentage, double amount, String measurementUnit, String type) {
+    private String name;
+    private int alcoholPercentage;
+    private double amount;
+    private String unit;
+    private String type;
+    private final List<String> valideTypes = List.of("alcohol", "mixer", "extras");
+
+    /**
+     * Constructor for ingredients of type mixer and extras
+     * 
+     * @param name
+     * @param amount
+     * @param unit
+     * @param type
+     */
+    public Ingredient(String name, double amount, String unit, String type) {
+        if (!valideTypes.contains(type))
+            throw new IllegalArgumentException();
         this.name = name;
-        this.amount = amount; 
-        this.alcoholPercentage = alcoholPercentage;
-        this.measurementUnit = measurementUnit;
-        validateType(type);
+        this.amount = amount;
+        this.unit = unit;
         this.type = type;
+    }
+
+    /**
+     * Constructor for ingredients of type "alcohol"
+     * 
+     * @param name
+     * @param alcoholPercentage
+     * @param amount
+     * @param unit
+     * @param type
+     */
+    public Ingredient(String name, int alcoholPercentage, double amount, String unit, String type) {
+        this(name, amount, unit, type);
+        if (alcoholPercentage > 100 || alcoholPercentage < 0)
+            throw new IllegalArgumentException();
+        this.alcoholPercentage = alcoholPercentage;
     }
 
     public String getName() {
@@ -43,12 +69,12 @@ public class Ingredient implements Serializable {
         this.alcoholPercentage = alcoholPercentage;
     }
 
-    public String getMeasurementUnit() {
-        return measurementUnit;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setMeasurementUnit(String measurementUnit) {
-        this.measurementUnit = measurementUnit;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getType() {
@@ -56,23 +82,14 @@ public class Ingredient implements Serializable {
     }
 
     public void setType(String type) {
+        if (!valideTypes.contains(type))
+            throw new IllegalArgumentException();
         this.type = type;
-    } 
-
-    
-    public boolean validateType(String type) {
-        if (type.equals("alcohol") || type.equals("mixer") || type.equals("extras")) {
-            return true; 
-        }
-        return false; 
     }
 
     @Override
     public String toString() {
-      return "Ingredient [name=" + name + ", type=" + type + "]";
+        return "Ingredient [name=" + name + ", type=" + type + "]";
     }
-
-    
-
 }
 
