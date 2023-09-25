@@ -11,20 +11,27 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import java.util.List;
 
 public class BrowseDrinksController {
 
     @FXML private AnchorPane browseDrinksPane;
+    @FXML private ScrollPane scrollPane;
     @FXML private VBox drinkContainer;
     @FXML private Button addDrinkBtn;
     private List<Drink> drinks;
+    private MixMavenController mixMavenController;
+
+    public BrowseDrinksController(MixMavenController mixMavenController) {
+        this.mixMavenController = mixMavenController;
+    }
 
     public void initialize() {
         drinks = DataHandler.getDrinks();
         
         browseDrinksPane.setPrefSize(SCENE_WIDTH, Constants.CONTENT_HEIGHT);
-        drinkContainer.setLayoutX((SCENE_WIDTH - drinkContainer.getPrefWidth()) / 2);
+        scrollPane.setLayoutX((SCENE_WIDTH - scrollPane.getPrefWidth()) / 2);
 
         for (int i = 0; i < drinks.size(); i++) {
             VBox drinkBox = new VBox();

@@ -34,3 +34,9 @@ The user requires an easy to use, intuitive platform to access the recipes for t
 - Add drinks from the list
 - Remove drinks from the list
 - Add any ingredient, with optional alcohol content
+
+
+## Current Design
+
+![BrowseDrinks](release-1-browsedrinks.png)
+![AddDrink](release-1-adddrink.png)

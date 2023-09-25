@@ -1,1 +1,139 @@
-[{"name":"GT","ingredients":[],"alcoholContent":0.0},{"name":"Vodka","ingredients":[],"alcoholContent":0.0},{"name":"RbVdk","ingredients":[{"name":"Vodka","alcoholPercentage":40,"amount":2.0,"measurementUnit":"dL","type":"Alchohol"},{"name":"RedBull","alcoholPercentage":0,"amount":3.0,"measurementUnit":"dL","type":"Mixer"}],"alcoholContent":0.0},{"name":"","ingredients":[],"alcoholContent":0.0},{"name":"","ingredients":[],"alcoholContent":0.0},{"name":"","ingredients":[],"alcoholContent":0.0}]
+[
+  {
+    "name": "GT",
+    "ingredients": [
+      {
+        "name": "Gin",
+        "alcoholPercentage": 40,
+        "amount": 1.0,
+        "unit": "dl",
+        "type": "alcohol"
+      },
+      {
+        "name": "Tonic",
+        "alcoholPercentage": 0,
+        "amount": 3.0,
+        "unit": "dl",
+        "type": "mixer"
+      }
+    ],
+    "alcoholContent": 0.1
+  },
+  {
+    "name": "Vodka",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 60,
+        "amount": 4.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 0.6
+  },
+  {
+    "name": "Vodka",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 60,
+        "amount": 4.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 0.6
+  },
+  {
+    "name": "Vodka",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 60,
+        "amount": 4.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 0.6
+  },
+  {
+    "name": "Vodka",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 60,
+        "amount": 4.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 0.6
+  },
+  {
+    "name": "Vodka",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 60,
+        "amount": 4.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 0.6
+  },
+  {
+    "name": "Vodka",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 60,
+        "amount": 4.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 0.6
+  },
+  {
+    "name": "Vodka",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 60,
+        "amount": 4.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 0.6
+  },
+  {
+    "name": "Vodka",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 60,
+        "amount": 4.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 0.6
+  },
+  {
+    "name": "Vodka",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 60,
+        "amount": 4.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 0.6
+  }
+]

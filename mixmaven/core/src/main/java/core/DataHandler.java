@@ -19,7 +19,7 @@ public class DataHandler {
 	 * Loads the saved drinks from file.
 	 * 
 	 * @param file
-	 * @return List<Drink> The loaded list of drinks
+	 * @return the loaded list of drinks
 	 */
 	public static List<Drink> loadDrinks(File file) {
 		staticFile = file;
@@ -32,7 +32,7 @@ public class DataHandler {
 	}
 
 	/**
-	 * @return List<Drink> This returns currently loaded drinks
+	 * @return currently loaded drinks
 	 */
 	public static List<Drink> getDrinks() {
 		if (drinks.size() == 0)
