@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MixMavenController">
+<AnchorPane stylesheets="@styles/MixMaven.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MixMavenController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -21,30 +17,19 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                      <children>
-                        <Label text="MixMaven">
+                        <Label fx:id="menuLabel" text="MixMaven">
                            <font>
                               <Font name="Georgia" size="24.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="60.0" prefWidth="600.0">
+                  <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="60.0" prefWidth="600.0" styleClass="Menuline">
                      <children>
-                        <MenuBar fx:id="menubar" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0">
-                          <menus>
-                            <Menu fx:id="myrecipe" mnemonicParsing="false" text="My Recipes">
-                              <items>
-                                    <MenuItem mnemonicParsing="false" text="add Recipe" />
-                              </items>
-                            </Menu>
-                          </menus>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </MenuBar>
-                        <ToolBar fx:id="toolbar" prefHeight="60.0" prefWidth="200.0">
+                        <ToolBar fx:id="toolbar" prefHeight="60.0" prefWidth="600.0">
                           <items>
-                            <Button mnemonicParsing="false" text="Button" />
+                            <Button fx:id="menubutton" mnemonicParsing="false" styleClass="menubutton" text="Your Drinks" />
+                              <Button fx:id="menubutton" mnemonicParsing="false" onAction="#showAddDrink" text="Add Drink" textFill="WHITE" />
                           </items>
                         </ToolBar>
                      </children>

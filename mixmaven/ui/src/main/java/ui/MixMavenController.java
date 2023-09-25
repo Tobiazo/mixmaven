@@ -1,7 +1,7 @@
 package ui;
 
 import core.DataHandler;
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
@@ -14,15 +14,13 @@ public class MixMavenController {
   @FXML private StackPane contentPane;
   private final File dataFile = new File("src/main/resources/ui/json/data.json");
 
-  // private Pane addDrinkPane;
-
   public void initialize() {
       DataHandler.loadDrinks(dataFile);
 
       showBrowseDrinks();
   }
 
-  public void showAddDrink() {
+  public void showAddDrink(ActionEvent event) throws IOException {
     showContent("AddDrink");
   }
 

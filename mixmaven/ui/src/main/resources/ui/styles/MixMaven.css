@@ -6,37 +6,26 @@
     -fx-pref-height:60px;
 }
 
-#header, #toolbar, #menubar {
+#menuLabel {
+    -fx-text-fill:white;
+}
+
+#header, #toolbar {
     -fx-background-color: -fx-purple;
 
 }
-.button {
+#menubutton {
     -fx-background-color: transparent;
-    /* -fx-padding:10px; */
     -fx-background-radius:0;
     -fx-pref-height:50px;
-    -fx-padding:21.5px
+    -fx-padding:21.5px;
+    -fx-text-fill: white;
 }
 
-.button:hover {
-    -fx-background-color:"white";
+#menubutton:hover {
+    -fx-background-color:#c83887;
+    -fx-cursor:hand;
 }
-
-.menu {
-    -fx-padding: 21.5px;
-    -fx-margin:15px;
-}
-
-.menu:hover {
-    -fx-background-color:"white";
-}
-.menu-item {
-    -fx-padding: 5 20 5 20;
-}
-.toolbar {
-    -fx-padding: 15px;
-}
-
 
 #drinkContainer {
     -fx-background-color: pink;
