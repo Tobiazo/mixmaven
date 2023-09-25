@@ -2,18 +2,9 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.Button?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:id="browseDrinksPane"
-            stylesheets="@styles/MixMaven.css"
-            fx:controller="ui.BrowseDrinksController"
-            prefHeight="540.0" prefWidth="800.0">
+<AnchorPane fx:id="browseDrinksPane" prefHeight="540.0" prefWidth="800.0" stylesheets="@styles/MixMaven.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.BrowseDrinksController">
     <children>
         <VBox fx:id="drinkContainer" prefHeight="540" prefWidth="600" />
-        <Button fx:id="addDrinkBtn" mnemonicParsing="false" text="Add Drink" />
     </children>
 </AnchorPane>

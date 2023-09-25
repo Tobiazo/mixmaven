@@ -3,24 +3,14 @@ package ui;
 import core.Constants;
 import core.DataHandler;
 import core.Drink;
-import core.Ingredient;
 import static core.Constants.SCENE_WIDTH;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BrowseDrinksController {
@@ -30,20 +20,7 @@ public class BrowseDrinksController {
     @FXML private Button addDrinkBtn;
     private List<Drink> drinks;
 
-
     public void initialize() {
-        addDrinkBtn.setOnMouseClicked(event -> {
-            try {
-                FXMLLoader addDrinkLoader = new FXMLLoader(getClass().getResource("/ui/AddDrink.fxml"));
-                Parent root = addDrinkLoader.load();
-                Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
         drinks = DataHandler.getDrinks();
         
         browseDrinksPane.setPrefSize(SCENE_WIDTH, Constants.CONTENT_HEIGHT);

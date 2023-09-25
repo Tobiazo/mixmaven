@@ -11,10 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="ui.AddDrinkController"
-            fx:id="addDrinkPane"
-            stylesheets="@styles/AddDrink.css">
+<AnchorPane fx:id="addDrinkPane" prefHeight="540.0" prefWidth="800.0" stylesheets="@styles/AddDrink.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddDrinkController">
 
    <children>
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="200.0" layoutY="7.0" prefHeight="40.0" prefWidth="400.0" text="New Drink">
@@ -109,7 +106,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="unitField" prefHeight="25.0" prefWidth="150.0" promptText="Unit" />
+                              <ChoiceBox fx:id="unitChoiceBox" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
@@ -127,7 +124,7 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#onAddIngredientButtonPress" text="Add Ingredient" />
+                              <Button mnemonicParsing="false" onAction="#addIngredientBtn" text="Add Ingredient" />
                            </children>
                         </HBox>
                      </children>
@@ -137,11 +134,11 @@
                   </VBox>
                   <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onDeleteIngredientButtonPress" text="Delete ingredient">
+                        <Button mnemonicParsing="false" onAction="#deleteIngredientBtn" text="Delete ingredient">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin></Button>
-                        <ListView fx:id="ingredientList" maxWidth="-Infinity" prefHeight="350.0" prefWidth="380.0" stylesheets="@styles/addDrink.css">
+                        <ListView fx:id="ingredientList" maxWidth="-Infinity" prefHeight="350.0" prefWidth="380.0" stylesheets="@styles/AddDrink.css">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin></ListView>
@@ -149,17 +146,20 @@
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#onAddDrinkButtonPress" text="Add Drink">
+            <Button mnemonicParsing="false" onAction="#addDrinkBtn" text="Add Drink">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
             </Button>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="errorLabel" />
+               </children></HBox>
          </children>
          <padding>
             <Insets top="10.0" />
          </padding>
       </VBox>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackButtonPress" text="Back" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtn" text="Back" />
    </children>
 </AnchorPane>
