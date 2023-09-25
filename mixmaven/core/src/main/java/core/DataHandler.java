@@ -1,15 +1,13 @@
 package core;
 
 import java.util.List;
-import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import core.json.JsonFileToObject;
-import core.json.ObjectToJsonFile;
 
-/* Datahandler contains the filepath and drinks field. Drinks is a list
+import core.json.UtilityJson;
+
+/* Datahandler contains the File object and drinks field. Drinks is a list
  * containing all Drink objects.
  */
 public class DataHandler {
@@ -25,7 +23,7 @@ public class DataHandler {
 	public static List<Drink> loadDrinks(File file) {
 		staticFile = file;
 		try {
-			drinks = JsonFileToObject.loadObjectFromJson(file);
+			drinks = UtilityJson.loadObjectFromJson(file);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
@@ -63,6 +61,6 @@ public class DataHandler {
 	 * @param file
 	 */
 	private static void saveDrinks(File file) {
-		ObjectToJsonFile.saveObjectToJsonFile(drinks, file);
+		UtilityJson.saveObjectToJsonFile(drinks, file);
 	}
 }
