@@ -5,14 +5,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Drink implements Serializable {
+public final class Drink implements Serializable {
 	private String name;
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 	private double alcoholContent = 0;
 
 	/**
-	 * Creates a drink without ingredients
-	 * 
+	 * Creates a drink without ingredients.
+	 *
 	 * @param name
 	 */
 	public Drink(String name) {
@@ -20,8 +20,8 @@ public class Drink implements Serializable {
 	}
 
 	/**
-	 * Creates drink with ingredients
-	 * 
+	 * Creates drink with ingredients.
+	 *
 	 * @param name
 	 * @param ingredients
 	 */
@@ -44,8 +44,9 @@ public class Drink implements Serializable {
 	}
 
 	/**
-	 * Calculates the alcoholvolume (ABV*volume) divided by the total volume of all ingredients in the drink.
-	 * 
+	 * Calculates the alcoholvolume (ABV*volume) divided by the total volume of all ingredients in
+	 * the drink.
+	 *
 	 * @return alcoholcontent of the drink
 	 */
 	private double calculateAlcoholContent() {
@@ -61,19 +62,19 @@ public class Drink implements Serializable {
 		return alcoholVolume / volume;
 	}
 
-    /**
-     * 
-     * @param Ingredient 
-     */
-	public void addIngredient(Ingredient Ingredient) {
-		ingredients.add(Ingredient);
+	/**
+	 *
+	 * @param ingredient
+	 */
+	public void addIngredient(Ingredient ingredient) {
+		ingredients.add(ingredient);
 		this.alcoholContent = calculateAlcoholContent();
 	}
 
-    /**
-     * 
-     * @param index of the ingredient to remove
-     */
+	/**
+	 *
+	 * @param index of the ingredient to remove
+	 */
 	public void removeIngredient(int index) {
 		ingredients.remove(index);
 		this.alcoholContent = calculateAlcoholContent();

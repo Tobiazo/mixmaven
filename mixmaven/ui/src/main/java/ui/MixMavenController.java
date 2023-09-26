@@ -18,7 +18,7 @@ public class MixMavenController {
   private final BrowseDrinksController browseDrinksController = new BrowseDrinksController(this);
 
   /**
-   * Loads drinks from file Shows the BrowseDrinks page with the loaded drinks
+   * Loads drinks from file Shows the BrowseDrinks page with the loaded drinks.
    */
   public void initialize() {
     DataHandler.loadDrinks(dataFile);
@@ -26,7 +26,7 @@ public class MixMavenController {
   }
 
   /**
-   * Loads the fxml file AddDrink.fxml and sets corresponding controller
+   * Loads the fxml file AddDrink.fxml and sets corresponding controller.
    */
   public void showAddDrink() {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/AddDrink.fxml"));
@@ -35,7 +35,7 @@ public class MixMavenController {
   }
 
   /**
-   * Loads the fxml file BrowseDrinks.fxml and sets corresponding controller
+   * Loads the fxml file BrowseDrinks.fxml and sets corresponding controller.
    */
   public void showBrowseDrinks() {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/BrowseDrinks.fxml"));
@@ -44,8 +44,8 @@ public class MixMavenController {
   }
 
   /**
-   * Loads in the given loader
-   * 
+   * Loads in the given loader.
+   *
    * @param loader
    */
   private void showContent(FXMLLoader loader) {

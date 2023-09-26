@@ -8,7 +8,7 @@ import java.io.File;
 
 /**
  * Datahandler contains the File object and drinks field. Drinks is a list containing all Drink
- * objects.
+ * objects
  */
 public class DataHandler {
 
@@ -17,7 +17,7 @@ public class DataHandler {
 
 	/**
 	 * Loads the saved drinks from file.
-	 * 
+	 *
 	 * @param file
 	 * @return the loaded list of drinks
 	 */
@@ -35,14 +35,13 @@ public class DataHandler {
 	 * @return currently loaded drinks
 	 */
 	public static List<Drink> getDrinks() {
-		if (drinks.size() == 0)
-			loadDrinks(staticFile);
+		if (drinks.size() == 0) loadDrinks(staticFile);
 		return drinks;
 	}
 
 	/**
-	 * Adds drink to list and saves to file
-	 * 
+	 * Adds drink to list and saves to file.
+	 *
 	 * @param drink
 	 * @param file
 	 */
@@ -52,8 +51,8 @@ public class DataHandler {
 	}
 
 	/**
-	 * Add drink to the saved file
-	 * 
+	 * Add drink to the saved file.
+	 *
 	 * @param drink
 	 */
 	public static void addDrink(Drink drink) {
@@ -61,8 +60,8 @@ public class DataHandler {
 	}
 
 	/**
-	 * Saves all drinks in list to file
-	 * 
+	 * Saves all drinks in list to file.
+	 *
 	 * @param file
 	 */
 	private static void saveDrinks(File file) {

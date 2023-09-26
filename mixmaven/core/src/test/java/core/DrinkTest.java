@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("magicnumber")
 public class DrinkTest {
 
     @Test
@@ -19,7 +20,5 @@ public class DrinkTest {
         assertEquals(0.2, pinappleHell.getAlcoholContent());
 
     }
-
-
-
 }
+

@@ -3,8 +3,8 @@ package ui;
 import core.Ingredient;
 import core.Drink;
 import core.DataHandler;
-import static core.Constants.validUnits;
-import static core.Constants.validTypes;
+import static core.Constants.VALIDUNITS;
+import static core.Constants.VALIDTYPES;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class AddDrinkController {
+public final class AddDrinkController {
 	@FXML private Label errorLabel;
 	@FXML private TextField drinkNameField;
 	@FXML private TextField ingredientNameField;
@@ -36,9 +36,9 @@ public class AddDrinkController {
 	@FXML
 	public void initialize() {
 		unitChoiceBox.setValue("Unit of Measurement");
-		unitChoiceBox.getItems().addAll(validUnits);
+		unitChoiceBox.getItems().addAll(VALIDUNITS);
 		typeChoiceBox.setValue("Type");
-		typeChoiceBox.getItems().addAll(validTypes);
+		typeChoiceBox.getItems().addAll(VALIDTYPES);
 	}
 
 	@FXML
@@ -58,7 +58,6 @@ public class AddDrinkController {
 		try {
 			String ingredientName = ingredientNameField.getText();
 			if (ingredientName.length() == 0) throw new IllegalArgumentException();
-			
 			int alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
 			double amount = Double.parseDouble(amountField.getText());
 			String unit = unitChoiceBox.getValue();
@@ -81,15 +80,15 @@ public class AddDrinkController {
 
 	@FXML
 	public void addDrinkBtn(ActionEvent event) throws IOException {
-		if (selectedIngredients.isEmpty()){
+		if (selectedIngredients.isEmpty()) {
 			errorLabel.setText("Cannot make a Drink with no ingredients");
-		}else if (drinkNameField.getText() == ""){
+		} else if (drinkNameField.getText() == "") {
 			errorLabel.setText("Write a Drink Name");
-		}else{
+		} else {
 			DataHandler.addDrink(new Drink(drinkNameField.getText(), selectedIngredients));
 			mixMavenController.showBrowseDrinks();
 		}
-		
 	};
 }
+
 
