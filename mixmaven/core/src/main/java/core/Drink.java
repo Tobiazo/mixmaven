@@ -44,8 +44,7 @@ public class Drink implements Serializable {
 	}
 
 	/**
-	 * returns the alcolcontent in a drink by calculating the alcoholvolume (ABV*volume) divided by
-	 * the total volume of all ingredients in the drink.
+	 * Calculates the alcoholvolume (ABV*volume) divided by the total volume of all ingredients in the drink.
 	 * 
 	 * @return alcoholcontent of the drink
 	 */

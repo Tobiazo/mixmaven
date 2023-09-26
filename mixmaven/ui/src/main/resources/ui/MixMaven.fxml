@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@styles/MixMaven.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MixMavenController">
+<AnchorPane stylesheets="@styles/MixMaven.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MixMavenController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -28,7 +28,7 @@
                      <children>
                         <ToolBar fx:id="toolbar" prefHeight="60.0" prefWidth="600.0">
                           <items>
-                            <Button fx:id="menubutton" mnemonicParsing="false" styleClass="menubutton" text="Your Drinks" />
+                              <Button fx:id="menubutton" mnemonicParsing="false" styleClass="menubutton" text="Your Drinks" />
                               <Button fx:id="menubutton" mnemonicParsing="false" onAction="#showAddDrink" text="Add Drink" textFill="WHITE" />
                           </items>
                         </ToolBar>

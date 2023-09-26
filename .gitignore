@@ -1,5 +1,6 @@
 # ignore maven build folder
 **/target/
+mixmaven/ui/src/main/resources/ui/json/data.json
 
 # pom-derived eclipse jdt files
 .project
@@ -9,3 +10,4 @@ org.eclipse.*.prefs
 # other 
 **/.DS_Store
 **/.idea
+

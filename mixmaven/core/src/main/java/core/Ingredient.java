@@ -1,7 +1,8 @@
 package core;
 
+import static core.Constants.validTypes;
+
 import java.io.Serializable;
-import java.util.List;
 
 public class Ingredient implements Serializable {
 
@@ -10,7 +11,6 @@ public class Ingredient implements Serializable {
     private double amount;
     private String unit;
     private String type;
-    private final List<String> valideTypes = List.of("alcohol", "mixer", "extras");
 
     /**
      * Constructor for ingredients of type mixer and extras
@@ -21,7 +21,7 @@ public class Ingredient implements Serializable {
      * @param type
      */
     public Ingredient(String name, double amount, String unit, String type) {
-        if (!valideTypes.contains(type))
+        if (!validTypes.contains(type))
             throw new IllegalArgumentException();
         this.name = name;
         this.amount = amount;
@@ -82,7 +82,7 @@ public class Ingredient implements Serializable {
     }
 
     public void setType(String type) {
-        if (!valideTypes.contains(type))
+        if (!validTypes.contains(type))
             throw new IllegalArgumentException();
         this.type = type;
     }
