@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * JavaFX App
+ * JavaFX App.
  */
-public class MixMavenApp extends Application {
+public final class MixMavenApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {

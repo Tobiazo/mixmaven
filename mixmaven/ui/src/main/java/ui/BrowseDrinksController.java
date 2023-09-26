@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import java.util.List;
 
-public class BrowseDrinksController {
+public final class BrowseDrinksController {
 
     @FXML private AnchorPane browseDrinksPane;
     @FXML private ScrollPane scrollPane;
@@ -29,7 +29,6 @@ public class BrowseDrinksController {
 
     public void initialize() {
         drinks = DataHandler.getDrinks();
-        
         browseDrinksPane.setPrefSize(SCENE_WIDTH, Constants.CONTENT_HEIGHT);
         scrollPane.setLayoutX((SCENE_WIDTH - scrollPane.getPrefWidth()) / 2);
 
@@ -48,8 +47,4 @@ public class BrowseDrinksController {
 
 
     }
-
-
-
-
 }
