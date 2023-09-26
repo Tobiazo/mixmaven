@@ -81,8 +81,15 @@ public class AddDrinkController {
 
 	@FXML
 	public void addDrinkBtn(ActionEvent event) throws IOException {
-		DataHandler.addDrink(new Drink(drinkNameField.getText(), selectedIngredients));
-		mixMavenController.showBrowseDrinks();
+		if (selectedIngredients.isEmpty()){
+			errorLabel.setText("Cannot make a Drink with no ingredients");
+		}else if (drinkNameField.getText() == ""){
+			errorLabel.setText("Write a Drink Name");
+		}else{
+			DataHandler.addDrink(new Drink(drinkNameField.getText(), selectedIngredients));
+			mixMavenController.showBrowseDrinks();
+		}
+		
 	};
 }
 
