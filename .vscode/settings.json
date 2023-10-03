@@ -41,6 +41,6 @@
   "java.compile.nullAnalysis.mode": "automatic",
   "java.debug.settings.onBuildFailureProceed": true,
   "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
-  "java.checkstyle.configuration": "${workspaceFolder}/mixmaven/checkstyle.xml",
+  "java.checkstyle.configuration": "${workspaceFolder}/mixmaven/config/checkstyle.xml",
   "java.checkstyle.version": "10.12.3",
 }

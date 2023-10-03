@@ -59,7 +59,7 @@ public class DataHandler {
 		addDrink(drink, staticFile);
 	}
 	/**
-	 * Removes the drink at index
+	 * Removes the drink at index.
 	 * @param i
 	 */
 	public static void removeDrink(int i) {
@@ -67,12 +67,11 @@ public class DataHandler {
 		saveDrinks(staticFile);
 	}
 	/**
-	 * Replaces the drink at index i with the given Drink
-	 * 
+	 * Replaces the drink at index i with the given Drink.
 	 * @param i
 	 * @param drink
 	 */
-	public static void replaceDrink(int i,Drink drink){
+	public static void replaceDrink(int i, Drink drink) {
 		drinks.set(i, drink);
 		saveDrinks(staticFile);
 	}

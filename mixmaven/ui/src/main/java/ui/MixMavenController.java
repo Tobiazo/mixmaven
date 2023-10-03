@@ -56,8 +56,8 @@ public class MixMavenController {
   }
 
   /**
-   * Loads in the given loader
-   * 
+   * Loads in the given loader.
+   *
    * @param loader
    */
   private void showContent(FXMLLoader loader) {
@@ -69,7 +69,7 @@ public class MixMavenController {
     }
   }
 /**
- * Loads in the given loader and sets the selected drink index
+ * Loads in the given loader and sets the selected drink index.
  * @param loader
  * @param id
  */
@@ -78,23 +78,22 @@ public class MixMavenController {
       setSelectedDrinkIndex(id);
       Parent root = loader.load();
       contentPane.getChildren().setAll(root);
-     
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 /**
- * 
+ *
  * @return selectedDrinkIndex
  */
   public int getDrinkIndex() {
     return this.selectedDrinkIndex;
   }
 /**
- * setter for SelectedDrinkindex
+ * setter for SelectedDrinkindex.
  * @param index
  */
-  private void setSelectedDrinkIndex(int index){
+  private void setSelectedDrinkIndex(int index) {
     this.selectedDrinkIndex = index;
   }
 

@@ -84,7 +84,7 @@
                     <configuration>
                         <consoleOutput>true</consoleOutput>
                         <failOnViolation>false</failOnViolation>
-                        <configLocation>checkstyle.xml</configLocation>
+                        <configLocation>config/checkstyle.xml</configLocation>
                         <!-- <configLocation>sun_checks.xml</configLocation> -->
                     </configuration>
                     <dependencies>
@@ -109,6 +109,7 @@
                     <version>4.7.2.1</version>
                     <configuration>
                         <!-- <xmlOutput>false</xmlOutput> -->
+                        <excludeFilterFile>config/exclude.xml</excludeFilterFile>
                     </configuration>
                     <dependencies>
                         <dependency>
