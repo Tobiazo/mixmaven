@@ -58,6 +58,24 @@ public class DataHandler {
 	public static void addDrink(Drink drink) {
 		addDrink(drink, staticFile);
 	}
+	/**
+	 * Removes the drink at index
+	 * @param i
+	 */
+	public static void removeDrink(int i) {
+		drinks.remove(i);
+		saveDrinks(staticFile);
+	}
+	/**
+	 * Replaces the drink at index i with the given Drink
+	 * 
+	 * @param i
+	 * @param drink
+	 */
+	public static void replaceDrink(int i,Drink drink){
+		drinks.set(i, drink);
+		saveDrinks(staticFile);
+	}
 
 	/**
 	 * Saves all drinks in list to file.
