@@ -56,13 +56,8 @@ public class MixMavenController {
   }
 
   /**
-<<<<<<< HEAD
    * Loads in the given loader
    * 
-=======
-   * Loads in the given loader.
-   *
->>>>>>> 5188efae3cca40f804514f1e47c4d50443a13c19
    * @param loader
    */
   private void showContent(FXMLLoader loader) {
