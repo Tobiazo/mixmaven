@@ -128,6 +128,7 @@
     <module name="InnerAssignment"/>
    <module name="MagicNumber">
       <property name="id" value="checkstyle:magicnumber"/>
+      <property name="ignoreNumbers" value="-1, 0, 1, 2, 100" />
     </module>
     <module name="MissingSwitchDefault"/>
     <module name="MultipleVariableDeclarations"/>

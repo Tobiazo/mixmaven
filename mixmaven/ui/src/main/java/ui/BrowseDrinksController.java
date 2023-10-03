@@ -45,6 +45,6 @@ public final class BrowseDrinksController {
             drinkContainer.getChildren().add(drinkBox);
         }
 
-
+        System.out.println(mixMavenController);
     }
 }

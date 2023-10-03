@@ -27,7 +27,7 @@ public final class Drink implements Serializable {
 	 */
 	public Drink(String name, List<Ingredient> ingredients) {
 		this(name);
-		this.ingredients = ingredients;
+		this.ingredients = new ArrayList<>(ingredients);
 		this.alcoholContent = calculateAlcoholContent();
 	}
 
@@ -36,7 +36,7 @@ public final class Drink implements Serializable {
 	}
 
 	public List<Ingredient> getIngredients() {
-		return ingredients;
+		return new ArrayList<>(ingredients);
 	}
 
 	public double getAlcoholContent() {
