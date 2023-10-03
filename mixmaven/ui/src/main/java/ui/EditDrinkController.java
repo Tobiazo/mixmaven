@@ -3,10 +3,13 @@ package ui;
 import core.Ingredient;
 import core.Drink;
 import core.DataHandler;
+
 import static core.Constants.VALIDTYPES;
 import static core.Constants.VALIDUNITS;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -31,14 +34,15 @@ public class EditDrinkController {
 	/**
 	 * Initalizer for EditDrink.fxml
 	 * Sets the choicebox options
-	 * Loads the Selected Drink into the drinkNameField and the corresponding ingredients into the listview
+	 * Loads the Selected Drink into the drinkNameField and the corresponding ingredients into the listview.
 	 */
 	@FXML
 	public void initialize() {
 		unitChoiceBox.getItems().addAll(VALIDUNITS);
 		typeChoiceBox.getItems().addAll(VALIDTYPES);
 
-		selectedIngredients = new ArrayList<>(DataHandler.getDrinks().get(mixMavenController.getDrinkIndex()).getIngredients());
+		selectedIngredients = new ArrayList<>(
+			DataHandler.getDrinks().get(mixMavenController.getDrinkIndex()).getIngredients());
 
 		drinkNameField.setText(DataHandler.getDrinks().get(mixMavenController.getDrinkIndex()).getName());
 
@@ -63,7 +67,7 @@ public class EditDrinkController {
 	}
 
 	/**
-	 * Deletes the selected ingredient in the listview
+	 * Deletes the selected ingredient in the listview.
 	 */
 	@FXML
 	public void deleteIngredientBtn() {
@@ -78,14 +82,13 @@ public class EditDrinkController {
 	}
 
 	/**
-	 * Changes the attributes of the ingredient selected in the listview based on the texfields and choiceboxes;
+	 * Changes the attributes of the ingredient selected in the listview based on the texfields and choiceboxes;.
 	 */
 	@FXML
 	public void editIngredientBtn() {
 		try {
 			String ingredientName = ingredientNameField.getText();
 			if (ingredientName.length() == 0) throw new IllegalArgumentException();
-			
 			int alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
 			double amount = Double.parseDouble(amountField.getText());
 			String unit = unitChoiceBox.getValue();
@@ -98,19 +101,18 @@ public class EditDrinkController {
 			ingredientList.getItems().set(index, newIngredient);
 			ingredientList.refresh();
 		} catch (RuntimeException e) {
-			errorLabel.setText("Fill in the fields correct");
+			throw e;
 		} catch (Exception e) {
 			errorLabel.setText("Fill in the fields correct");
 		}
 	}
 	/**
-	 * Adds a new ingredient to the drink being updated
+	 * Adds a new ingredient to the drink being updated.
 	 */
 	@FXML
 	public void addIngredientBtn() {
 		try {
 			String ingredientName = ingredientNameField.getText();
-			
 			int alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
 			double amount = Double.parseDouble(amountField.getText());
 			String unit = unitChoiceBox.getValue();
@@ -126,10 +128,8 @@ public class EditDrinkController {
 		}
 	}
 
-	
-
 	/**
-	 * Returns user to main menu
+	 * Returns user to main menu.
 	 */
 	@FXML
 	public void backBtn() {
@@ -141,12 +141,13 @@ public class EditDrinkController {
 	 */
 	@FXML
 	public void editDrinkBtn() {
-		if (selectedIngredients.isEmpty()){
+		if (selectedIngredients.isEmpty()) {
 			errorLabel.setText("Cannot edit a Drink with no ingredients");
-		}else if (drinkNameField.getText().equals("")){
+		} else if (drinkNameField.getText() == null || drinkNameField.getText().trim().isEmpty()) {
 			errorLabel.setText("Write a Drink Name");
-		}else{
-			DataHandler.replaceDrink(mixMavenController.getDrinkIndex(),new Drink(drinkNameField.getText(), selectedIngredients));
+		} else {
+			DataHandler.replaceDrink(mixMavenController.getDrinkIndex(),
+				new Drink(drinkNameField.getText(), selectedIngredients));
 			mixMavenController.showBrowseDrinks();
 		}
 	}

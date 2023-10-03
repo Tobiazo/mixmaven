@@ -32,7 +32,7 @@ public final class AddDrinkController {
 	}
 
 	/**
-	 * Initialized the choiceboxes with values
+	 * Initialized the choiceboxes with values.
 	 */
 	@FXML
 	public void initialize() {
@@ -52,7 +52,7 @@ public final class AddDrinkController {
 	}
 
 	/**
-	 * Deletes the ingredient selected in the listview
+	 * Deletes the ingredient selected in the listview.
 	 */
 	@FXML
 	public void deleteIngredientBtn() {
@@ -66,13 +66,12 @@ public final class AddDrinkController {
 	}
 
 	/**
-	 * Adds a ingredient to the listview and to the list of ingredients to be added to the drink
+	 * Adds a ingredient to the listview and to the list of ingredients to be added to the drink.
 	 */
 	@FXML
 	public void addIngredientBtn() {
 		try {
 			String ingredientName = ingredientNameField.getText();
-			
 			int alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
 			double amount = Double.parseDouble(amountField.getText());
 			String unit = unitChoiceBox.getValue();
@@ -90,7 +89,7 @@ public final class AddDrinkController {
 	}
 
 	/**
-	 * Returns the user to the main screen
+	 * Returns the user to the main screen.
 	 */
 	@FXML
 	public void backBtn() {
@@ -98,12 +97,13 @@ public final class AddDrinkController {
 	}
 
 	/**
-	 * Creates a new drink object with name from the drinknameLabel and ingredients from the selectedIngredients List
-	 * Then returns user to main screen
+	 * Creates a new drink object with name from the drinknameLabel
+	 * and ingredients from the selectedIngredients List
+	 * Then returns user to main screen.
 	 */
 	@FXML
 	public void addDrinkBtn() {
-		if (selectedIngredients.isEmpty()){
+		if (selectedIngredients.isEmpty()) {
 			errorLabel.setText("Cannot make a Drink with no ingredients");
 		} else if (drinkNameField.getText() == null || drinkNameField.getText().trim().isEmpty()) {
 			errorLabel.setText("Write a Drink Name");

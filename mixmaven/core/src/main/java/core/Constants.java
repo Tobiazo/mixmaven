@@ -8,4 +8,5 @@ public final class Constants {
     public static final double CONTENT_HEIGHT = 540;
     public static final List<String> VALIDUNITS = List.of("ml", "dl", "gram");
     public static final List<String> VALIDTYPES = List.of("alcohol", "mixer", "extras");
+    public static final int FONT_SIZE_40 = 40;
 }
