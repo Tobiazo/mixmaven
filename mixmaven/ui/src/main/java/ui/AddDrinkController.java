@@ -40,6 +40,15 @@ public final class AddDrinkController {
 		unitChoiceBox.getItems().addAll(VALIDUNITS);
 		typeChoiceBox.setValue("Type");
 		typeChoiceBox.getItems().addAll(VALIDTYPES);
+
+		typeChoiceBox.setOnAction(event -> {
+			if (typeChoiceBox.getValue() != "alcohol") {
+				alchoholPercentField.setEditable(false);
+				alchoholPercentField.clear();
+			} else {
+				alchoholPercentField.setEditable(true);
+			}
+		});
 	}
 
 	/**

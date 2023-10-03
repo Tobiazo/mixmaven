@@ -11,11 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane fx:id="addDrinkPane" prefHeight="540.0" prefWidth="800.0" stylesheets="@styles/AddDrink.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-=======
-<AnchorPane fx:id="addDrinkPane" prefHeight="540.0" prefWidth="800.0" stylesheets="@styles/AddDrink.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
->>>>>>> 5188efae3cca40f804514f1e47c4d50443a13c19
 
    <children>
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="200.0" layoutY="7.0" prefHeight="40.0" prefWidth="400.0" text="New Drink">
@@ -128,11 +124,8 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#editIngredientBtn" text="Edit Ingredient" />
-<<<<<<< HEAD
+                              <Button mnemonicParsing="false" onAction="#editIngredientBtn" text="Update Ingredient" />
                               <Button mnemonicParsing="false" onAction="#addIngredientBtn" text="Add New Ingredient" />
-=======
->>>>>>> 5188efae3cca40f804514f1e47c4d50443a13c19
                            </children>
                         </HBox>
                      </children>
@@ -154,7 +147,7 @@
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#editDrinkBtn" text="Edit Drink">
+            <Button mnemonicParsing="false" onAction="#editDrinkBtn" text="Update Drink">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>

@@ -40,12 +40,15 @@ public final class BrowseDrinksController {
             Text drinkName = new Text(drinks.get(i).getName());
             drinkName.setFont(new Font(40));
 
-            String tmp = "";
+            
+
+            StringBuffer buf = new StringBuffer();
             for (Ingredient ingredient : drinks.get(i).getIngredients()) {
-                tmp +=  "     • " + ingredient.toString() +"\n"; 
+                buf.append("     • " + ingredient.toString() +"\n");
             }
 
-            Text ingredients = new Text(tmp);
+
+            Text ingredients = new Text(buf.toString());
 
             Button deleteBtn = new Button("Delete Drink");
             deleteBtn.getStyleClass().add("drinkBtn");

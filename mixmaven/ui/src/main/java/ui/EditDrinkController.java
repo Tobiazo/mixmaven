@@ -58,6 +58,8 @@ public class EditDrinkController {
 			unitChoiceBox.getSelectionModel().select(ingredient.getUnit());
 			typeChoiceBox.getSelectionModel().select(ingredient.getType());
 			});
+
+			
 	}
 
 	/**
@@ -95,7 +97,8 @@ public class EditDrinkController {
 			selectedIngredients.set(index, newIngredient);
 			ingredientList.getItems().set(index, newIngredient);
 			ingredientList.refresh();
-
+		} catch (RuntimeException e) {
+			errorLabel.setText("Fill in the fields correct");
 		} catch (Exception e) {
 			errorLabel.setText("Fill in the fields correct");
 		}
@@ -140,7 +143,7 @@ public class EditDrinkController {
 	public void editDrinkBtn() {
 		if (selectedIngredients.isEmpty()){
 			errorLabel.setText("Cannot edit a Drink with no ingredients");
-		}else if (drinkNameField.getText() == ""){
+		}else if (drinkNameField.getText().equals("")){
 			errorLabel.setText("Write a Drink Name");
 		}else{
 			DataHandler.replaceDrink(mixMavenController.getDrinkIndex(),new Drink(drinkNameField.getText(), selectedIngredients));
