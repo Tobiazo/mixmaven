@@ -23,12 +23,12 @@ public class DataHandler {
 	 */
 	public static List<Drink> loadDrinks(File file) {
 		staticFile = file;
-		try {
-			drinks = UtilityJson.loadObjectFromJson(file);
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-		return drinks;
+		drinks = UtilityJson.loadObjectFromJson(file);
+		// try {
+		// } catch (NullPointerException e) {
+		// 	e.printStackTrace();
+		// }
+		return new ArrayList<>(drinks);
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class DataHandler {
 	 */
 	public static List<Drink> getDrinks() {
 		if (drinks.size() == 0) loadDrinks(staticFile);
-		return drinks;
+		return new ArrayList<>(drinks);
 	}
 
 	/**

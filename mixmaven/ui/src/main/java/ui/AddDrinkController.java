@@ -67,7 +67,8 @@ public final class AddDrinkController {
 			selectedIngredients.add(newIngredient);
 			ingredientList.getItems().add(newIngredient);
 			ingredientList.refresh();
-
+		} catch (RuntimeException e) {
+			throw e;
 		} catch (Exception e) {
 			errorLabel.setText("Fill in the fields correct");
 		}
@@ -82,7 +83,7 @@ public final class AddDrinkController {
 	public void addDrinkBtn(ActionEvent event) throws IOException {
 		if (selectedIngredients.isEmpty()) {
 			errorLabel.setText("Cannot make a Drink with no ingredients");
-		} else if (drinkNameField.getText() == "") {
+		} else if (drinkNameField.getText() == null || drinkNameField.getText().trim().isEmpty()) {
 			errorLabel.setText("Write a Drink Name");
 		} else {
 			DataHandler.addDrink(new Drink(drinkNameField.getText(), selectedIngredients));
