@@ -23,7 +23,13 @@
 
 .text-input{ -fx-background-color: #aaf0d1; }
 
-.button{ -fx-background-color: #aaf0d1; }
+.button{ 
+    -fx-background-color: #aaf0d1; 
+    -fx-padding: 10px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+
+}
 
 .button:hover{ -fx-cursor:hand; }
 

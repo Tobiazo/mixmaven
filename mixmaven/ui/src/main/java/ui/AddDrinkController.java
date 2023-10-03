@@ -6,12 +6,10 @@ import core.DataHandler;
 import static core.Constants.VALIDUNITS;
 import static core.Constants.VALIDTYPES;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.fxml.FXML;
-import javafx.event.ActionEvent;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -33,6 +31,9 @@ public final class AddDrinkController {
 		this.mixMavenController = mixMavenController;
 	}
 
+	/**
+	 * Initialized the choiceboxes with values
+	 */
 	@FXML
 	public void initialize() {
 		unitChoiceBox.setValue("Unit of Measurement");
@@ -41,8 +42,11 @@ public final class AddDrinkController {
 		typeChoiceBox.getItems().addAll(VALIDTYPES);
 	}
 
+	/**
+	 * Deletes the ingredient selected in the listview
+	 */
 	@FXML
-	public void deleteIngredientBtn(ActionEvent event) throws IOException {
+	public void deleteIngredientBtn() {
 		try {
 			int selectedIndex = ingredientList.getSelectionModel().getSelectedIndex();
 			selectedIngredients.remove(selectedIndex);
@@ -50,14 +54,16 @@ public final class AddDrinkController {
 		} catch (IndexOutOfBoundsException e) {
 			errorLabel.setText("Select something to delete");
 		}
-
 	}
 
+	/**
+	 * Adds a ingredient to the listview and to the list of ingredients to be added to the drink
+	 */
 	@FXML
-	public void addIngredientBtn(ActionEvent event) throws IOException {
+	public void addIngredientBtn() {
 		try {
 			String ingredientName = ingredientNameField.getText();
-			if (ingredientName.length() == 0) throw new IllegalArgumentException();
+			
 			int alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
 			double amount = Double.parseDouble(amountField.getText());
 			String unit = unitChoiceBox.getValue();
@@ -74,14 +80,21 @@ public final class AddDrinkController {
 		}
 	}
 
+	/**
+	 * Returns the user to the main screen
+	 */
 	@FXML
-	public void backBtn(ActionEvent event) throws IOException {
+	public void backBtn() {
 		mixMavenController.showBrowseDrinks();
 	}
 
+	/**
+	 * Creates a new drink object with name from the drinknameLabel and ingredients from the selectedIngredients List
+	 * Then returns user to main screen
+	 */
 	@FXML
-	public void addDrinkBtn(ActionEvent event) throws IOException {
-		if (selectedIngredients.isEmpty()) {
+	public void addDrinkBtn() {
+		if (selectedIngredients.isEmpty()){
 			errorLabel.setText("Cannot make a Drink with no ingredients");
 		} else if (drinkNameField.getText() == null || drinkNameField.getText().trim().isEmpty()) {
 			errorLabel.setText("Write a Drink Name");

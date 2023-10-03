@@ -3,11 +3,12 @@ package ui;
 import core.Constants;
 import core.DataHandler;
 import core.Drink;
+import core.Ingredient;
 import static core.Constants.SCENE_WIDTH;
-
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
@@ -31,20 +32,42 @@ public final class BrowseDrinksController {
         drinks = DataHandler.getDrinks();
         browseDrinksPane.setPrefSize(SCENE_WIDTH, Constants.CONTENT_HEIGHT);
         scrollPane.setLayoutX((SCENE_WIDTH - scrollPane.getPrefWidth()) / 2);
-
+        //Generates a drinkbox for every drinks in MixMaven
         for (int i = 0; i < drinks.size(); i++) {
             VBox drinkBox = new VBox();
             drinkBox.getStyleClass().add("drinkBox");
 
-            Text title = new Text(drinks.get(i).getName());
-            title.setFont(new Font(40));
-            Text in = new Text(drinks.get(i).getIngredients().toString());
+            Text drinkName = new Text(drinks.get(i).getName());
+            drinkName.setFont(new Font(40));
 
+            String tmp = "";
+            for (Ingredient ingredient : drinks.get(i).getIngredients()) {
+                tmp +=  "     • " + ingredient.toString() +"\n"; 
+            }
 
-            drinkBox.getChildren().addAll(title, in);
+            Text ingredients = new Text(tmp);
+
+            Button deleteBtn = new Button("Delete Drink");
+            deleteBtn.getStyleClass().add("drinkBtn");
+            deleteBtn.setUserData(i); //The drink to be deleted if the button is pressed
+
+            Button editButton = new Button("Edit Drinnk"); 
+            editButton.getStyleClass().add("drinkBtn");
+            editButton.setUserData(i); //The drink to be edited when the button is pressed
+            
+            deleteBtn.setOnAction(event -> {
+                DataHandler.removeDrink((int) deleteBtn.getUserData());
+                mixMavenController.showBrowseDrinks();
+            });
+
+            editButton.setOnAction(event -> mixMavenController.showEditDrink((int) editButton.getUserData()));
+
+            HBox buttonBox = new HBox();
+            buttonBox.getStyleClass().add("buttonBox");
+
+            buttonBox.getChildren().addAll(deleteBtn, editButton);
+            drinkBox.getChildren().addAll(drinkName, ingredients ,buttonBox);
             drinkContainer.getChildren().add(drinkBox);
         }
-
-        System.out.println(mixMavenController);
     }
 }

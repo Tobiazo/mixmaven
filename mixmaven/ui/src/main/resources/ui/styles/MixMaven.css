@@ -1,5 +1,9 @@
 .root {
-    -fx-purple: #87255B;
+    -fx-menupurple: #87255B;
+    -fx-menuhoverpurple: #c83887;
+    -fx-drinkboxblue: #add8e6;
+    -fx-drinkbtnblue: #6fbbd3;
+    -fx-drinkbtnhoverblue: #389ab9
 }
 
 .hbox {
@@ -11,7 +15,7 @@
 }
 
 #header, #toolbar {
-    -fx-background-color: -fx-purple;
+    -fx-background-color: -fx-menupurple;
 
 }
 #menubutton {
@@ -23,15 +27,31 @@
 }
 
 #menubutton:hover {
-    -fx-background-color:#c83887;
+    -fx-background-color: -fx-menuhoverpurple;
     -fx-cursor:hand;
 }
 
 .drinkBox {
-    -fx-background-color: lightblue;
+    -fx-background-color: -fx-drinkboxblue;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
     -fx-border-width: 2px;
     -fx-border-color: black;
     -fx-padding: 10px;
+}
+
+.drinkBtn{
+    -fx-background-color: -fx-drinkbtnblue;
+    -fx-border-radius: 2px;
+    -fx-border-color: black;
+
+    -fx-padding: 5px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+
+}
+
+.drinkBtn:hover{
+    -fx-background-color: -fx-drinkbtnhoverblue;
+    -fx-cursor: hand;
 }

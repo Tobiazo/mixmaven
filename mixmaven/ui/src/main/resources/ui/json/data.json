@@ -1,139 +1,79 @@
 [
   {
-    "name": "GT",
+    "name": "Vodka Redbull",
     "ingredients": [
       {
-        "name": "Gin",
+        "name": "Vodka",
         "alcoholPercentage": 40,
-        "amount": 1.0,
+        "amount": 2.0,
         "unit": "dl",
         "type": "alcohol"
       },
       {
-        "name": "Tonic",
-        "alcoholPercentage": 0,
-        "amount": 3.0,
-        "unit": "dl",
+        "name": "Redbull",
+        "alcoholPercentage": 50,
+        "amount": 100.0,
+        "unit": "gram",
         "type": "mixer"
       }
     ],
-    "alcoholContent": 0.1
+    "alcoholContent": 0.0031746031746031746
   },
   {
-    "name": "Vodka",
+    "name": "Vodka Redbull",
     "ingredients": [
       {
+<<<<<<< HEAD
+        "name": "test",
+        "alcoholPercentage": 0,
+        "amount": 0.0,
+=======
         "name": "Vodka",
-        "alcoholPercentage": 60,
-        "amount": 4.0,
+        "alcoholPercentage": 40,
+        "amount": 2.0,
+>>>>>>> 5188efae3cca40f804514f1e47c4d50443a13c19
         "unit": "dl",
-        "type": "alcohol"
-      }
-    ],
-    "alcoholContent": 0.6
-  },
-  {
-    "name": "Vodka",
-    "ingredients": [
+        "type": "extras"
+      },
       {
-        "name": "Vodka",
-        "alcoholPercentage": 60,
-        "amount": 4.0,
-        "unit": "dl",
-        "type": "alcohol"
-      }
-    ],
-    "alcoholContent": 0.6
-  },
-  {
-    "name": "Vodka",
-    "ingredients": [
+        "name": "Redbull",
+        "alcoholPercentage": 0,
+        "amount": 10.0,
+        "unit": "gram",
+        "type": "mixer"
+      },
       {
-        "name": "Vodka",
-        "alcoholPercentage": 60,
-        "amount": 4.0,
-        "unit": "dl",
-        "type": "alcohol"
-      }
-    ],
-    "alcoholContent": 0.6
-  },
-  {
-    "name": "Vodka",
-    "ingredients": [
+        "name": "Redbull",
+        "alcoholPercentage": 0,
+        "amount": 10.0,
+        "unit": "gram",
+        "type": "mixer"
+      },
       {
-        "name": "Vodka",
-        "alcoholPercentage": 60,
-        "amount": 4.0,
-        "unit": "dl",
+        "name": "Redbull",
+        "alcoholPercentage": 50,
+        "amount": 100.0,
+        "unit": "gram",
         "type": "alcohol"
-      }
-    ],
-    "alcoholContent": 0.6
-  },
-  {
-    "name": "Vodka",
-    "ingredients": [
+      },
       {
-        "name": "Vodka",
-        "alcoholPercentage": 60,
-        "amount": 4.0,
-        "unit": "dl",
-        "type": "alcohol"
+        "name": "Redbull",
+<<<<<<< HEAD
+        "alcoholPercentage": 50,
+        "amount": 100.0,
+        "unit": "gram",
+        "type": "mixer"
       }
     ],
-    "alcoholContent": 0.6
-  },
-  {
-    "name": "Vodka",
-    "ingredients": [
-      {
-        "name": "Vodka",
-        "alcoholPercentage": 60,
-        "amount": 4.0,
-        "unit": "dl",
-        "type": "alcohol"
+    "alcoholContent": 0.46832298136645967
+=======
+        "alcoholPercentage": 0,
+        "amount": 150.0,
+        "unit": "ml",
+        "type": "mixer"
       }
     ],
-    "alcoholContent": 0.6
-  },
-  {
-    "name": "Vodka",
-    "ingredients": [
-      {
-        "name": "Vodka",
-        "alcoholPercentage": 60,
-        "amount": 4.0,
-        "unit": "dl",
-        "type": "alcohol"
-      }
-    ],
-    "alcoholContent": 0.6
-  },
-  {
-    "name": "Vodka",
-    "ingredients": [
-      {
-        "name": "Vodka",
-        "alcoholPercentage": 60,
-        "amount": 4.0,
-        "unit": "dl",
-        "type": "alcohol"
-      }
-    ],
-    "alcoholContent": 0.6
-  },
-  {
-    "name": "Vodka",
-    "ingredients": [
-      {
-        "name": "Vodka",
-        "alcoholPercentage": 60,
-        "amount": 4.0,
-        "unit": "dl",
-        "type": "alcohol"
-      }
-    ],
-    "alcoholContent": 0.6
+    "alcoholContent": 0.005333333333333334
+>>>>>>> 5188efae3cca40f804514f1e47c4d50443a13c19
   }
 ]
