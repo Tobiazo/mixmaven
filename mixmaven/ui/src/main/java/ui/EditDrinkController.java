@@ -62,8 +62,6 @@ public class EditDrinkController {
 			unitChoiceBox.getSelectionModel().select(ingredient.getUnit());
 			typeChoiceBox.getSelectionModel().select(ingredient.getType());
 			});
-
-			
 	}
 
 	/**

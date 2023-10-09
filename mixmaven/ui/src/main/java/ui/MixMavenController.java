@@ -18,13 +18,15 @@ public class MixMavenController {
   private final AddDrinkController addDrinkController = new AddDrinkController(this);
   private final BrowseDrinksController browseDrinksController = new BrowseDrinksController(this);
   private final EditDrinkController editDrinkController = new EditDrinkController(this);
+  private final LoginController loginController = new LoginController(this);
+  private final CreateUserController createUserController = new CreateUserController(this);
 
   /**
    * Loads drinks from file Shows the BrowseDrinks page with the loaded drinks.
    */
   public void initialize() {
     DataHandler.loadDrinks(dataFile);
-    showBrowseDrinks();
+    showLogin();
   }
 
   /**
@@ -47,16 +49,35 @@ public class MixMavenController {
 
   /**
    * Loads the fxml file EditDrinks.fxml, sets corresponding controller and passes the selectedDrinkindex on.
-   * @param id
+   * @param selectedDrinkIndex
    */
-  public void showEditDrink(int id) {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/editDrink.fxml"));
+  public void showEditDrink(int selectedDrinkIndex) {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/EditDrink.fxml"));
     loader.setController(editDrinkController);
-    showContentEdit(loader, id);
+    showContentEdit(loader, selectedDrinkIndex);
   }
 
   /**
-   * Loads in the given loader.
+   * Loads the fxml file CreateUser.fxml and sets corresponding controller.
+   */
+  public void showCreateUser() {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/CreateUser.fxml"));
+    loader.setController(createUserController);
+    showContent(loader);
+  }
+
+  /**
+   * Loads the fxml file CreateUser.fxml and sets corresponding controller.
+   */
+  public void showLogin() {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/Login.fxml"));
+    loader.setController(loginController);
+    //if (LogedIn()) User.Logout()
+    showContent(loader);
+  }
+
+  /**
+   * Loads in the given loader and switches the scene to the corresponding fxml file.
    *
    * @param loader
    */
@@ -69,13 +90,13 @@ public class MixMavenController {
     }
   }
 /**
- * Loads in the given loader and sets the selected drink index.
+ * Loads in the given loader and sets the selectedDrinkIndex.
  * @param loader
- * @param id
+ * @param selectedDrinkIndex
  */
-  private void showContentEdit(FXMLLoader loader, int id) {
+  private void showContentEdit(FXMLLoader loader, int selectedDrinkIndex) {
     try {
-      setSelectedDrinkIndex(id);
+      setSelectedDrinkIndex(selectedDrinkIndex);
       Parent root = loader.load();
       contentPane.getChildren().setAll(root);
     } catch (IOException e) {

@@ -19,7 +19,7 @@ public final class MixMavenApp extends Application {
         Parent parent = fxmlLoader.load();
         Scene scene = new Scene(parent);
         stage.setScene(scene);
-        scene.getStylesheets().add(getClass().getResource("styles/MixMaven.css").toExternalForm());
+        //scene.getStylesheets().add(getClass().getResource("styles/MixMaven.css").toExternalForm());
         stage.show();
     }
 

@@ -55,3 +55,8 @@
     -fx-background-color: -fx-drinkbtnhoverblue;
     -fx-cursor: hand;
 }
+
+#fillerBox{
+    -pref-height:50px;
+    
+}
