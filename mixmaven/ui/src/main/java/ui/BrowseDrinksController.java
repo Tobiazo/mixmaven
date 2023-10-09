@@ -44,7 +44,7 @@ public final class BrowseDrinksController {
             Text drinkName = new Text(drinks.get(i).getName());
             drinkName.setFont(new Font(FONT_SIZE_40));
 
-            // TODO: Create an actual list
+            //todo: Create an actual list
             StringBuilder str = new StringBuilder();
             drinks.get(i).getIngredients().stream()
                 .forEach(ingredient -> str.append("     • " + ingredient.toString() + "\n"));
@@ -55,7 +55,7 @@ public final class BrowseDrinksController {
             deleteBtn.getStyleClass().add("drinkBtn");
             deleteBtn.setUserData(i); // The drink to be deleted if the button is pressed
 
-            Button editButton = new Button("Edit Drinnk");
+            Button editButton = new Button("Edit Drink");
             editButton.getStyleClass().add("drinkBtn");
             editButton.setUserData(i); // The drink to be edited when the button is pressed
 
