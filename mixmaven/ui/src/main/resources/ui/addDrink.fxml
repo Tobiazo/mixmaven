@@ -146,7 +146,7 @@
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#addDrinkBtn" text="Add Drink">
+            <Button mnemonicParsing="false" onAction="#addDrinkBtn" text="Add New Drink">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
