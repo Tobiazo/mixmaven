@@ -72,15 +72,22 @@ public final class AddDrinkController {
 	public void addIngredientBtn() {
 		try {
 			String ingredientName = ingredientNameField.getText();
-			int alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
 			double amount = Double.parseDouble(amountField.getText());
 			String unit = unitChoiceBox.getValue();
 			String type = typeChoiceBox.getValue();
+            int alchoholPercent;
+            if (!(type.equals("alcohol"))) alchoholPercent = 0;
+            else alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
 			Ingredient newIngredient = new Ingredient(ingredientName, alchoholPercent, amount, unit, type);
 
 			selectedIngredients.add(newIngredient);
 			ingredientList.getItems().add(newIngredient);
 			ingredientList.refresh();
+
+            ingredientNameField.clear();
+            amountField.clear();
+            unitChoiceBox.setValue(null);
+            typeChoiceBox.setValue(null);
 		} catch (RuntimeException e) {
 			throw e;
 		} catch (Exception e) {
