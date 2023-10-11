@@ -18,22 +18,7 @@ We have strived to model our development process after agile development practic
 Using Gitlabs issueboard feature we have created a backlog of issues which are then assigned to a developer ensuring that everyone has an idea of what is being done and who is doing it. 
 Additionally we use have utilized pair programming assigning on a pair on the [ui](/src/main/java/ui) module and one pair on the [core](../core/) module.
 
-## User history
 
-
-The user requires an easy to use, intuitive platform to access the recipes for their favorite drinks. It should allow the user to create new recipes with custom ingredients and add or remove recipes from their page.
-
-**Important to be able to view:**
-
-- A list of all the drinks you have added
-- The ingredients of the drink, with the right amount
-- Easily determine the alcohol content of a given drink
-
-**Important to be able to do:**
-
-- Add drinks from the list
-- Remove drinks from the list
-- Add any ingredient, with optional alcohol content
 
 
 ## Current Design

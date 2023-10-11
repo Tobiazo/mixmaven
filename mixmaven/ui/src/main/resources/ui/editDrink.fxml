@@ -125,7 +125,6 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
                            <children>
                               <Button mnemonicParsing="false" onAction="#editIngredientBtn" text="Update Ingredient" />
-<<<<<<< HEAD
                               <Button mnemonicParsing="false" onAction="#addIngredientBtn" text="Add New Ingredient" />
                            </children>
                         </HBox>
