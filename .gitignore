@@ -6,8 +6,12 @@
 .classpath
 org.eclipse.*.prefs
 
+# devcontainer output
+nohup.out
+
 # other 
 **/.DS_Store
 **/.idea
-**/data.json
+**/json/data.json
+**/json/user.json
 

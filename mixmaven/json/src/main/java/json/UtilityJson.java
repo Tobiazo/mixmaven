@@ -1,4 +1,4 @@
-package core.json;
+package json;
 
 import core.Drink;
 import core.User;

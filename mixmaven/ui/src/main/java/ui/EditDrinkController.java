@@ -2,7 +2,7 @@ package ui;
 
 import core.Ingredient;
 import core.Drink;
-import core.DataHandler;
+import json.DataHandler;
 
 import static core.Constants.VALIDTYPES;
 import static core.Constants.VALIDUNITS;
@@ -136,6 +136,9 @@ public class EditDrinkController {
 
 				clearFields();
 			}
+
+		} catch (RuntimeException e) {
+			throw e;
 		} catch (Exception e) {
 			errorLabel.setText("Fill in the fields correct");
 		}

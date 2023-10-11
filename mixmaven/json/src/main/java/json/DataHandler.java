@@ -1,6 +1,8 @@
-package core;
+package json;
 
-import core.json.UtilityJson;
+// import core.json.UtilityJson;
+import core.Drink;
+import core.User;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -24,10 +26,6 @@ public class DataHandler {
 	public static List<Drink> loadDrinks(File file) {
 		dataFile = file;
 		drinks = UtilityJson.loadObjectFromJson(file);
-		// try {
-		// } catch (NullPointerException e) {
-		// 	e.printStackTrace();
-		// }
 		return new ArrayList<>(drinks);
 	}
 
