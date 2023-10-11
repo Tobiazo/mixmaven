@@ -1,6 +1,7 @@
 package core.json;
 
 import core.Drink;
+import core.User;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,7 +17,6 @@ import java.util.List;
 public class UtilityJson {
 	/**
 	 * Writes the obj to file in a pretty format.
-	 *
 	 * @param obj
 	 * @param file
 	 */
@@ -37,6 +37,26 @@ public class UtilityJson {
 		try (FileReader reader = new FileReader(file, StandardCharsets.UTF_8)) {
 			Gson gson = new Gson();
 			return gson.fromJson(reader, new TypeToken<List<Drink>>() { } .getType());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * @param file
+	 * @param username NB: case sensitive
+	 * @return user object on file
+	 */
+	public static User loadUserFromJson(File file, String username) {
+		try (FileReader reader = new FileReader(file, StandardCharsets.UTF_8)) {
+			Gson gson = new Gson();
+			User[] userList = gson.fromJson(reader, User[].class);
+			for (User user : userList) {
+				if (user.getUsername().equals(username)) {
+					return user;
+				}
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
