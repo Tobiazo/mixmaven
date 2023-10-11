@@ -1,0 +1,62 @@
+[
+  {
+    "name": "redvdka",
+    "ingredients": [
+      {
+        "name": "redb",
+        "alcoholPercentage": 0,
+        "amount": 2.5,
+        "unit": "dl",
+        "type": "mixer"
+      },
+      {
+        "name": "vodka",
+        "alcoholPercentage": 40,
+        "amount": 1.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 2.0
+  },
+  {
+    "name": "Moscow Mule",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 40,
+        "amount": 20.0,
+        "unit": "dl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 0.4
+  },
+  {
+    "name": "GT",
+    "ingredients": [
+      {
+        "name": "Gin",
+        "alcoholPercentage": 40,
+        "amount": 20.0,
+        "unit": "dl",
+        "type": "alcohol"
+      },
+      {
+        "name": "Tonic",
+        "alcoholPercentage": 0,
+        "amount": 20.0,
+        "unit": "ml",
+        "type": "alcohol"
+      },
+      {
+        "name": "Lime",
+        "alcoholPercentage": 0,
+        "amount": 30.0,
+        "unit": "dl",
+        "type": "mixer"
+      }
+    ],
+    "alcoholContent": 0.11428571428571428
+  }
+]

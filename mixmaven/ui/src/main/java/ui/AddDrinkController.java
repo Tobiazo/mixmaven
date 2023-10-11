@@ -83,11 +83,7 @@ public final class AddDrinkController {
 			selectedIngredients.add(newIngredient);
 			ingredientList.getItems().add(newIngredient);
 			ingredientList.refresh();
-
-            ingredientNameField.clear();
-            amountField.clear();
-            unitChoiceBox.setValue(null);
-            typeChoiceBox.setValue(null);
+			clearFields();
 		} catch (RuntimeException e) {
 			throw e;
 		} catch (Exception e) {
@@ -119,6 +115,18 @@ public final class AddDrinkController {
 			mixMavenController.showBrowseDrinks();
 		}
 	};
+
+	/**
+	 * Clears the parameter fields.
+	 */
+	private void clearFields() {
+		ingredientNameField.clear();
+		amountField.clear();
+		alchoholPercentField.clear();
+		unitChoiceBox.setValue(null);
+		typeChoiceBox.setValue(null);
+		alchoholPercentField.setEditable(true);
+	}
 }
 
 
