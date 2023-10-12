@@ -19,14 +19,14 @@ public class MixMavenController {
   private final AddDrinkController addDrinkController = new AddDrinkController(this);
   private final BrowseDrinksController browseDrinksController = new BrowseDrinksController(this);
   private final EditDrinkController editDrinkController = new EditDrinkController(this);
-  private final LoginController loginController = new LoginController(this);
-  private final CreateUserController createUserController = new CreateUserController(this);
+
 
   /**
    * Loads drinks from file Shows the BrowseDrinks page with the loaded drinks.
    */
   public void initialize() {
-    showLogin();
+    DataHandler.loadDrinks(dataFile);
+    showBrowseDrinks();
   }
 
   public final void setFilePath(String fileName) {
@@ -89,24 +89,7 @@ public class MixMavenController {
     showContentEdit(loader, selectedDrinkIndex);
   }
 
-  /**
-   * Loads the fxml file CreateUser.fxml and sets corresponding controller.
-   */
-  public void showCreateUser() {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/CreateUser.fxml"));
-    loader.setController(createUserController);
-    showContent(loader);
-  }
 
-  /**
-   * Loads the fxml file CreateUser.fxml and sets corresponding controller.
-   */
-  public void showLogin() {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/Login.fxml"));
-    loader.setController(loginController);
-    //if (LogedIn()) User.Logout()
-    showContent(loader);
-  }
 
   /**
    * Loads in the given loader and switches the scene to the corresponding fxml file.
@@ -121,12 +104,12 @@ public class MixMavenController {
       e.printStackTrace();
     }
   }
-
-  /**
-    * Loads in the given loader and sets the selectedDrinkIndex.
-    * @param loader
-    * @param selectedDrinkIndex
-    */
+  
+/**
+ * Loads in the given loader and sets the selectedDrinkIndex.
+ * @param loader
+ * @param selectedDrinkIndex
+ */
   private void showContentEdit(FXMLLoader loader, int selectedDrinkIndex) {
     try {
       setSelectedDrinkIndex(selectedDrinkIndex);
