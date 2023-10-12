@@ -31,7 +31,7 @@
                               <Button fx:id="menubutton" mnemonicParsing="false" onAction="#showBrowseDrinks" styleClass="menubutton" text="Your Drinks" />
                               <Button fx:id="menubutton" mnemonicParsing="false" onAction="#showAddDrink" text="Add Drink" textFill="WHITE" />
                               <HBox fx:id="fillerBox" prefWidth="289.0" />
-                              <Button fx:id="menubutton" mnemonicParsing="false" onAction="#showLogin" snapToPixel="false" text="Log Out" />
+                              
                           </items>
                         </ToolBar>
                      </children>

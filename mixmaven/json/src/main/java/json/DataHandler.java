@@ -2,7 +2,6 @@ package json;
 
 // import core.json.UtilityJson;
 import core.Drink;
-import core.User;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -84,14 +83,4 @@ public class DataHandler {
 	private static void saveDrinks(File file) {
 		UtilityJson.saveObjectToJsonFile(drinks, file);
 	}
-
-	public static void saveNewUser(File file, User user) {
-		UtilityJson.saveObjectToJsonFile(user, file);
-	}
-
-	public static boolean validateLogin(File file, String username, String password) {
-		User user = UtilityJson.loadUserFromJson(file, username);
-		return user.checkPassword(password);
-	}
-
 }
