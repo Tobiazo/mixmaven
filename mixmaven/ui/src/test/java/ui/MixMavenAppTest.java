@@ -35,6 +35,8 @@ public class MixMavenAppTest extends ApplicationTest {
     public final void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("MixMaven.fxml"));
         root = fxmlLoader.load();
+        MixMavenController controller = fxmlLoader.<MixMavenController>getController();
+        controller.setFilePath("Test.json");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("styles/MixMaven.css").toExternalForm());
@@ -138,7 +140,6 @@ public class MixMavenAppTest extends ApplicationTest {
                 System.out.println("This is results: " + results[1]);
                 if (results[0].equals(args[0]) && isSubstring(results[1], args[1]))
                     return true;
-
             }
         }
         return false;
@@ -159,7 +160,6 @@ public class MixMavenAppTest extends ApplicationTest {
         click("Add New Drink");
 
         Assertions.assertTrue(getRootNode().lookup("#addDrinkPane") != null);
-
     }
 
     @Test
@@ -214,6 +214,14 @@ public class MixMavenAppTest extends ApplicationTest {
 
         String[] createdDrink = {name, ingredientString};
         Assertions.assertTrue(searchDrinks(createdDrink));
+    }
+    @Test
+    public void testDeleteDrink() {
+        click("Delete Drink");
+        click("Delete Drink");
+
+        String[] drinkToDelete = {"Moscow Mule"};
+        Assertions.assertFalse(searchDrinks(drinkToDelete));
     }
 
     private static Stream<Arguments> testCreateDrink() {
