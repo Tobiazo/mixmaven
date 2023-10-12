@@ -1,4 +1,4 @@
-package core.json;
+package json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -21,7 +21,7 @@ public class UtilityJsonTest {
      */
     @BeforeEach
     public void setUp() {
-        testfile = new File("src/test/java/core/json/test.json");
+        testfile = new File("src/test/java/json/test.json");
 
         drinks = new ArrayList<>();
 

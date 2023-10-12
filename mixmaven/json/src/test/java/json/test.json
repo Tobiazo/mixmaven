@@ -6,14 +6,14 @@
         "name": "Vodka",
         "alcoholPercentage": 40,
         "amount": 4.0,
-        "unit": "cl",
+        "unit": "ml",
         "type": "alcohol"
       },
       {
         "name": "Tonic",
         "alcoholPercentage": 0,
         "amount": 8.0,
-        "unit": "cl",
+        "unit": "ml",
         "type": "mixer"
       }
     ],
@@ -26,14 +26,14 @@
         "name": "Vodka",
         "alcoholPercentage": 40,
         "amount": 4.0,
-        "unit": "cl",
+        "unit": "ml",
         "type": "alcohol"
       },
       {
         "name": "Orange juice",
         "alcoholPercentage": 0,
         "amount": 8.0,
-        "unit": "cl",
+        "unit": "ml",
         "type": "mixer"
       }
     ],
