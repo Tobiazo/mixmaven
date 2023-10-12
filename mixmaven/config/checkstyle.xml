@@ -103,6 +103,11 @@
     <module name="TypecastParenPad"/>
     <module name="WhitespaceAfter"/>
     <module name="WhitespaceAround"/>
+    <module name="EmptyLineSeparator">
+      <property name="allowMultipleEmptyLines" value="false"/>
+      <property name="allowNoEmptyLineBetweenFields" value="true"/>
+      <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
+    </module>
 
     <!-- Modifier Checks                                    -->
     <!-- See https://checkstyle.org/checks/modifier/index.html -->
@@ -128,7 +133,7 @@
     <module name="InnerAssignment"/>
    <module name="MagicNumber">
       <property name="id" value="checkstyle:magicnumber"/>
-      <property name="ignoreNumbers" value="-1, 0, 0.5, 1, 1.5, 2, 3, 4, 8, 10, 40, 100, 120" />
+      <property name="ignoreNumbers" value="-1, 0, 0.5, 1, 2, 100" />
     </module>
     <module name="MissingSwitchDefault"/>
     <module name="MultipleVariableDeclarations"/>

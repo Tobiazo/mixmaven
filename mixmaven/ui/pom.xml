@@ -11,7 +11,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>it1901</groupId>
             <artifactId>modules-core</artifactId>

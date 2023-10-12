@@ -25,6 +25,7 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationTest;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
+@SuppressWarnings("magicnumber")
 public class MixMavenAppTest extends ApplicationTest {
 
     private static HashMap<String, String> testIngredients;
@@ -89,8 +90,6 @@ public class MixMavenAppTest extends ApplicationTest {
             }
         } else
             throw new IllegalArgumentException("Not a valid Choice!");
-
-
     }
 
     /**
@@ -110,7 +109,6 @@ public class MixMavenAppTest extends ApplicationTest {
         return true;
     }
 
-
     public final boolean searchDrinks(String[] args) {
         // Use FxRobot to interact with the JavaFX application
         FxRobot robot = new FxRobot();
@@ -122,9 +120,6 @@ public class MixMavenAppTest extends ApplicationTest {
             if (drinkBox instanceof VBox) {
                 Text nameLabel = (Text) ((VBox) drinkBox).getChildren().get(0);
 
-
-
-
                 String name = nameLabel.getText().replace("Name: ", "");
                 String ingredient = ((Text) ((VBox) drinkBox)
                     .getChildren()
@@ -135,10 +130,8 @@ public class MixMavenAppTest extends ApplicationTest {
                     .replace("%", "")
                     .replaceAll("\\s+", " ");
 
-
                 ingredient = ingredient.trim();
                 ingredient += " ";
-
 
                 String[] results = {name, ingredient};
                 System.out.println("This is search args: " + args[1]);
@@ -149,9 +142,7 @@ public class MixMavenAppTest extends ApplicationTest {
             }
         }
         return false;
-
     }
-
 
     @Test
     public void testNavigate() {
@@ -160,10 +151,7 @@ public class MixMavenAppTest extends ApplicationTest {
 
         click("Back");
         Assertions.assertTrue(getRootNode().lookup("#browseDrinksPane") != null);
-
-
     }
-
 
     @Test
     public void testCreateUnnamedDrink() {
@@ -183,10 +171,8 @@ public class MixMavenAppTest extends ApplicationTest {
         write("#ingredientNameField", ingredient.get(2));
         write("#amountField", ingredient.get(0));
 
-
         clickOn("#unitChoiceBox");
         select(ingredient.get(1));
-
 
         clickOn("#typeChoiceBox");
         select(ingredient.get(4));
@@ -211,19 +197,15 @@ public class MixMavenAppTest extends ApplicationTest {
             write("#ingredientNameField", ingredients.get(i + 2));
             write("#amountField", ingredients.get(i));
 
-
             clickOn("#unitChoiceBox");
             select(ingredients.get(i + 1));
-
 
             clickOn("#typeChoiceBox");
             select(ingredients.get(i + 4));
 
-
             write("#alchoholPercentField", ingredients.get(i + 3));
 
             click("Add Ingredient");
-
         }
 
         write("#drinkNameField", name);
@@ -232,10 +214,7 @@ public class MixMavenAppTest extends ApplicationTest {
 
         String[] createdDrink = {name, ingredientString};
         Assertions.assertTrue(searchDrinks(createdDrink));
-
     }
-
-
 
     private static Stream<Arguments> testCreateDrink() {
         return Stream.of(
@@ -243,14 +222,6 @@ public class MixMavenAppTest extends ApplicationTest {
                 Arguments.of("Moscow Mule", testIngredients.get("Vodka")),
                 Arguments.of("GT", testIngredients.get("Gin") + testIngredients.get("Tonic")
                         + testIngredients.get("Lime"))
-
-
-
         );
     }
-
-
-
-
-
 }

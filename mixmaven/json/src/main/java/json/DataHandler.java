@@ -56,6 +56,7 @@ public class DataHandler {
 	public static void addDrink(Drink drink) {
 		addDrink(drink, dataFile);
 	}
+
 	/**
 	 * Removes the drink at index.
 	 * @param i
@@ -64,6 +65,7 @@ public class DataHandler {
 		drinks.remove(i);
 		saveDrinks(dataFile);
 	}
+
 	/**
 	 * Replaces the drink at index i with the given Drink.
 	 * @param i
@@ -91,6 +93,5 @@ public class DataHandler {
 		User user = UtilityJson.loadUserFromJson(file, username);
 		return user.checkPassword(password);
 	}
-
 
 }

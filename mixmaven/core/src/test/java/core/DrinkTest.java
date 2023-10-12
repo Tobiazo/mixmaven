@@ -89,7 +89,5 @@ public class DrinkTest {
         assertEquals(0.2, pinappleHell.getAlcoholContent());
 
     }
-
-
 }
 
