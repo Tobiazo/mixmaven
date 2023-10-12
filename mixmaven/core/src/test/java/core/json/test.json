@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Vodka tonic",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 40,
+        "amount": 4.0,
+        "unit": "cl",
+        "type": "alcohol"
+      },
+      {
+        "name": "Tonic",
+        "alcoholPercentage": 0,
+        "amount": 8.0,
+        "unit": "cl",
+        "type": "mixer"
+      }
+    ],
+    "alcoholContent": 0.13333333333333333
+  },
+  {
+    "name": "Screwdriver",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 40,
+        "amount": 4.0,
+        "unit": "cl",
+        "type": "alcohol"
+      },
+      {
+        "name": "Orange juice",
+        "alcoholPercentage": 0,
+        "amount": 8.0,
+        "unit": "cl",
+        "type": "mixer"
+      }
+    ],
+    "alcoholContent": 0.13333333333333333
+  }
+]
