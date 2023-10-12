@@ -82,7 +82,7 @@ public final class Ingredient implements Serializable {
 
     public void setType(String type) {
         if (!VALIDTYPES.contains(type))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Not valid type");
         this.type = type;
     }
 
