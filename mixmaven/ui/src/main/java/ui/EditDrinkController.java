@@ -161,8 +161,11 @@ public class EditDrinkController {
 				ingredientList.getItems().add(newIngredient);
 				ingredientList.refresh();
 
-				clearFields();
-			}
+            ingredientNameField.clear();
+            amountField.clear();
+            unitChoiceBox.setValue(null);
+            typeChoiceBox.setValue(null);
+
 		} catch (Exception e) {
 			errorLabel.setText("Fill in the fields correct");
 		}

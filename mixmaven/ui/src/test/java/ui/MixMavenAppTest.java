@@ -111,7 +111,7 @@ public class MixMavenAppTest extends ApplicationTest {
     }
 
 
-    public final boolean search(String[] args) {
+    public final boolean searchDrinks(String[] args) {
         // Use FxRobot to interact with the JavaFX application
         FxRobot robot = new FxRobot();
 
@@ -121,23 +121,28 @@ public class MixMavenAppTest extends ApplicationTest {
         for (Node drinkBox : drinkContainer.getChildren()) {
             if (drinkBox instanceof VBox) {
                 Text nameLabel = (Text) ((VBox) drinkBox).getChildren().get(0);
-                Text ingredientLabel = (Text) ((VBox) drinkBox).getChildren().get(1);
+
+
 
 
                 String name = nameLabel.getText().replace("Name: ", "");
-                String ingredient = ingredientLabel.getText().replace("Type: ", "");
+                String ingredient = ((Text) ((VBox) drinkBox)
+                    .getChildren()
+                    .get(1))
+                    .getText()
+                    .replace("Type: ", "")
+                    .replace("• ", "").replace(".0", "")
+                    .replace("%", "")
+                    .replaceAll("\\s+", " ");
 
 
-                // formatting strings
-                ingredient = ingredient.split("• ")[1];
-                ingredient = ingredient.replace(".0", "").replace("%", "");
                 ingredient = ingredient.trim();
                 ingredient += " ";
 
 
                 String[] results = {name, ingredient};
-
-
+                System.out.println("This is search args: " + args[1]);
+                System.out.println("This is results: " + results[1]);
                 if (results[0].equals(args[0]) && isSubstring(results[1], args[1]))
                     return true;
 
@@ -167,6 +172,32 @@ public class MixMavenAppTest extends ApplicationTest {
 
         Assertions.assertTrue(getRootNode().lookup("#addDrinkPane") != null);
 
+    }
+
+    @Test
+    public void testEditDrinkAddIngredient() {
+        click("Your Drinks");
+        click("Edit Drink");
+
+        List<String> ingredient = Arrays.asList(testIngredients.get("Lime").split(" "));
+        write("#ingredientNameField", ingredient.get(2));
+        write("#amountField", ingredient.get(0));
+
+
+        clickOn("#unitChoiceBox");
+        select(ingredient.get(1));
+
+
+        clickOn("#typeChoiceBox");
+        select(ingredient.get(4));
+
+        click("Add New Ingredient");
+
+        click("Update Drink");
+
+        String[] createdDrink = {"Moscow Mule", testIngredients.get("Vodka") + testIngredients.get("Lime")};
+        System.out.println(searchDrinks(createdDrink));
+        Assertions.assertTrue(searchDrinks(createdDrink));
     }
 
     @ParameterizedTest
@@ -199,10 +230,12 @@ public class MixMavenAppTest extends ApplicationTest {
 
         click("Add New Drink");
 
-        String[] args = {name, ingredientString};
-        Assertions.assertTrue(search(args));
+        String[] createdDrink = {name, ingredientString};
+        Assertions.assertTrue(searchDrinks(createdDrink));
 
     }
+
+
 
     private static Stream<Arguments> testCreateDrink() {
         return Stream.of(
@@ -215,6 +248,8 @@ public class MixMavenAppTest extends ApplicationTest {
 
         );
     }
+
+
 
 
 
