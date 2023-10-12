@@ -1,6 +1,6 @@
 package ui;
 
-import core.DataHandler;
+import json.DataHandler;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
