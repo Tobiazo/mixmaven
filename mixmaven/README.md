@@ -1,18 +1,26 @@
 # MixMaven
 
-MixMaven is a project in the subject IT1901. This is the project of group 31.  The App lets a user store their drink recipes. The app allows the user to add drinks from their collection.
+MixMaven is a project in the subject IT1901. This is the project of group 31.  The App lets a user store their drink recipes.
+The app allows the user to:
+
+- Add drinks to their library of drinks.
+- Edit drinks in their library of drinks.
+- Delete Drinks from their library of Drinks.
 
 You will find the documentation for each release in the [docs](/docs/) folder or in the following link(s).
 
 - [Release 1](/docs/release-1/)
 - [Release 2](/docs/release-2/)
 
-User stories is included in the releases.
+Userstories can be found here:
+
+- [Userstories](/mixmaven/userstories.md)  
 
  There is also documentation inside each module describing that module.
 
-- [UI](/mixmaven/core/readme.md)
-- [Core](/mixmaven/core/readme.md)
+- [UI](/mixmaven/ui/README.md)
+- [Core](/mixmaven/core/README.md)
+- [Json](/mixmaven/json/README.md)
 
 ## Build and running the project
 
@@ -58,4 +66,48 @@ Then you can go in the corresponding folder (core/ui) and inside target/site ope
 
 ## The App
 
-The app contains two primary pages. One page to view the drinks you have stored and one page to add drinks.
+The app contains three primary pages.
+
+**1**
+ The first one is page where you can add drinks to your library of drinks. This page is accesible from **Add Drink** button on the upper taskbar. It looks as following:
+
+![image](/docs/release-2/release-2-adddrink.png)
+
+**The page allows the user to add drinks with the parameters:**
+
+- Drink Name
+- A List of Ingredients
+  
+**Where all ingredients consists of the parameters:**
+
+- Ingredient name
+- Alchohol Percentage
+- Amount
+- Unit, which is one of three:
+  - ml
+  - dl
+  - gram
+- Type, which is one of three:
+  - alchohol
+  - mixer
+  - extras
+
+Whenever an ingredient is added, the view to the left fills out with the ingredients and the user can delete ingredients from this view if desired.
+
+**2**
+ The second is a page where the user can view their Drinks. This is the default view when the app is ran and can otherwise be reached through the **Your Drinks** Button and looks as following:
+
+![image](/docs/release-2/release-2-browsedrinks.png)
+
+The page presents all the drinks added by the user in the order the user added the drinks. There are two options for the drinks. The user can delete the drink with the **Delete Drink** button or the user can edit a selected drink with the **Edit Drink** button, which sends the user to the final page.
+
+**3**
+The final page is a page where the user can edit a selected drink and is reached through the **Edit Drink** button on a drink in the second page. It looks as following:
+
+![image](/docs/release-2/release-2-editdrink.png)
+
+It shares many similarities with the **Add Drink** page, but differs in a few ways. When the user clicks on one of the ingredients in the listview to the left, the parameter fields will fill out with the corresponding data. The user is then free to do changes and by pressing the **Update Ingredient** button will apply the corresponding changes to the ingredient. Otherwise the functionality is the same as **Add Drink** and pressing the **Update Drink** button will change the Drink.
+
+## Eclipse Che
+
+The app has been configurated to work with [eclipse che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2331/gr2331?new)
