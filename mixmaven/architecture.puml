@@ -3,12 +3,9 @@ component core{
     package mixmaven.core{
 
     }
-    package mixmaven.json{
-
-    }
     
 }
-component fxui {
+component ui {
     package mixmaven.ui{
 
     }
@@ -21,13 +18,17 @@ component javafx{
     }
 
 }
+component json {
+    package mixmaven.json{
+    }
+}
 
 component gson{
 
 }
 
-fxui..> javafx
-fxui ..> fxml
+ui..> javafx
+ui ..> fxml
 mixmaven.ui ..> mixmaven.core
 mixmaven.ui ..> mixmaven.json
 mixmaven.json ..> gson

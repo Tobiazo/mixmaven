@@ -48,6 +48,8 @@ public class EditDrinkController {
 	public void initialize() {
 		unitChoiceBox.getItems().addAll(VALIDUNITS);
 		typeChoiceBox.getItems().addAll(VALIDTYPES);
+		unitChoiceBox.setValue("Unit of measurement");
+		typeChoiceBox.setValue("Ingredient Type");
 
 		selectedIngredients = new ArrayList<>(
 				DataHandler.getDrinks().get(mixMavenController.getDrinkIndex()).getIngredients());
@@ -91,6 +93,7 @@ public class EditDrinkController {
 		unitChoiceBox.setValue(null);
 		typeChoiceBox.setValue(null);
 		alchoholPercentField.setEditable(true);
+		errorLabel.setText("");
 	}
 
 	/**
@@ -102,12 +105,10 @@ public class EditDrinkController {
 			int selectedIndex = ingredientList.getSelectionModel().getSelectedIndex();
 			selectedIngredients.remove(selectedIndex);
 			ingredientList.getItems().remove(selectedIndex);
-
 			clearFields();
 		} catch (IndexOutOfBoundsException e) {
 			errorLabel.setText("Select something to delete");
 		}
-
 	}
 
 	/**
@@ -116,63 +117,120 @@ public class EditDrinkController {
 	 */
 	@FXML
 	public void editIngredientBtn() {
-		try {
-			String ingredientName = ingredientNameField.getText();
-			if (ingredientName.length() == 0)
-				throw new IllegalArgumentException();
-			int alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
-			double amount = Double.parseDouble(amountField.getText());
-			String unit = unitChoiceBox.getValue();
-			String type = typeChoiceBox.getValue();
-			if (!type.equals("extras") && unit.equals("gram")) {
-				errorLabel.setText("Insert liquids as volume!");
-			} else {
-				Ingredient newIngredient =
-						new Ingredient(ingredientName, alchoholPercent, amount, unit, type);
-				int index = ingredientList.getSelectionModel().getSelectedIndex();
-				selectedIngredients.set(index, newIngredient);
-				ingredientList.getItems().set(index, newIngredient);
-				ingredientList.refresh();
+		String ingredientName = ingredientNameField.getText();
+		int alchoholPercent;
+		double amount;
+		String unit = unitChoiceBox.getValue();
+		String type = typeChoiceBox.getValue();
 
-				clearFields();
-			}
-
-		} catch (RuntimeException e) {
-			throw e;
-		} catch (Exception e) {
-			errorLabel.setText("Fill in the fields correct");
+		//Checks if an ingredient has been selected in the listview
+		if (ingredientList.getSelectionModel().getSelectedItems().isEmpty()) {
+			errorLabel.setText("Select an ingredient to edit!");
+			return;
 		}
+
+		//Verifies the ingredient name Parameter.
+		if (ingredientName.length() == 0) {
+			errorLabel.setText("Name the ingredient");
+			return;
+		}
+
+		//Verifies the amount Parameter.
+		try {
+			amount = Double.parseDouble(amountField.getText());
+		} catch (NumberFormatException e) {
+			errorLabel.setText("Amount must be a number!");
+			return;
+		}
+
+		//Verifies the choiceboxes, unit and type.
+		if (unit.equals("Unit of measurement") || type.equals("Ingredient Type")) {
+			errorLabel.setText("Choose options from both the choiceboxes!");
+			return;
+		}
+		//Verifies the alchohol Percent parameter.
+		try {
+			if (alchoholPercentField.getText().equals("")) {
+				alchoholPercent = 0;
+			} else {
+				alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
+			}
+		} catch (NumberFormatException e) {
+			errorLabel.setText("AlchoholPercentage must be a number!");
+			return;
+		}
+
+		//Verifies that a liquid is measured in volume.
+		if (!type.equals("extras") && unit.equals("gram")) {
+			errorLabel.setText("Insert liquids as volume!");
+			return;
+		}
+
+		//Creates a new ingredient and replaces the selected ingredient, from the view, with the new ingredient.
+		Ingredient newIngredient =
+			new Ingredient(ingredientName, alchoholPercent, amount, unit, type);
+		int index = ingredientList.getSelectionModel().getSelectedIndex();
+		selectedIngredients.set(index, newIngredient);
+		ingredientList.getItems().set(index, newIngredient);
+		ingredientList.refresh();
+		clearFields();
 	}
 
 	/**
 	 * Adds a new ingredient to the drink being updated.
 	 */
 	@FXML
-	public void addIngredientBtn() throws Exception {
-		try {
-			String ingredientName = ingredientNameField.getText();
-			int alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
-			double amount = Double.parseDouble(amountField.getText());
-			String unit = unitChoiceBox.getValue();
-			String type = typeChoiceBox.getValue();
-			Ingredient newIngredient =
-					new Ingredient(ingredientName, alchoholPercent, amount, unit, type);
-			if (!type.equals("extras") && unit.equals("gram")) {
-				errorLabel.setText("Insert liquids as volume!");
-			} else {
-				selectedIngredients.add(newIngredient);
-				ingredientList.getItems().add(newIngredient);
-				ingredientList.refresh();
-			}
-            ingredientNameField.clear();
-            amountField.clear();
-            unitChoiceBox.setValue(null);
-            typeChoiceBox.setValue(null);
-		} catch (RuntimeException e) {
-			throw e;
-		} catch (Exception e) {
-			errorLabel.setText("Fill in the fields correct");
+	public void addIngredientBtn() {
+		String ingredientName = ingredientNameField.getText();
+		int alchoholPercent;
+		double amount;
+		String unit = unitChoiceBox.getValue();
+		String type = typeChoiceBox.getValue();
+
+		//Verifies the ingredient name Parameter.
+		if (ingredientName.length() == 0) {
+			errorLabel.setText("Name the ingredient");
+			return;
 		}
+
+		//Verifies the amount Parameter.
+		try {
+			amount = Double.parseDouble(amountField.getText());
+		} catch (NumberFormatException e) {
+			errorLabel.setText("Amount must be a number!");
+			return;
+		}
+
+		//Verifies the choiceboxes, unit and type.
+		if (unit.equals("Unit of measurement") || type.equals("Ingredient Type")) {
+			errorLabel.setText("Choose options from both the choiceboxes!");
+			return;
+		}
+		//Verifies the alchohol Percent parameter.
+		try {
+			if (alchoholPercentField.getText().equals("")) {
+				alchoholPercent = 0;
+			} else {
+				alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
+			}
+		} catch (NumberFormatException e) {
+			errorLabel.setText("AlchoholPercentage must be a number!");
+			return;
+		}
+
+		//Verifies that a liquid is measured in volume.
+		if (!type.equals("extras") && unit.equals("gram")) {
+			errorLabel.setText("Insert liquids as volume!");
+			return;
+		}
+
+		//Creates a new ingredient and adds it to the view.
+		Ingredient newIngredient =
+					new Ingredient(ingredientName, alchoholPercent, amount, unit, type);
+			selectedIngredients.add(newIngredient);
+			ingredientList.getItems().add(newIngredient);
+			ingredientList.refresh();
+			clearFields();
 	}
 
 	/**
