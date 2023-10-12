@@ -29,6 +29,7 @@ public class LoginController {
         //if (User.validate(username, password))
         mixMavenController.showBrowseDrinks();
     }
+
     /**
      * Switched the scene to createUser.fxml.
      */

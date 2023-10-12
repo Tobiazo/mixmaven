@@ -116,7 +116,7 @@ public final class AddDrinkController {
 			DataHandler.addDrink(new Drink(drinkNameField.getText(), selectedIngredients));
 			mixMavenController.showBrowseDrinks();
 		}
-	};
+	}
 
 	/**
 	 * Clears the parameter fields.
