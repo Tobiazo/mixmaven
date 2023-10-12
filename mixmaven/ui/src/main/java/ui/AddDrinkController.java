@@ -83,9 +83,11 @@ public final class AddDrinkController {
 			selectedIngredients.add(newIngredient);
 			ingredientList.getItems().add(newIngredient);
 			ingredientList.refresh();
-			clearFields();
-		} catch (RuntimeException e) {
-			throw e;
+
+            ingredientNameField.clear();
+            amountField.clear();
+            unitChoiceBox.setValue(null);
+            typeChoiceBox.setValue(null);
 		} catch (Exception e) {
 			errorLabel.setText("Fill in the fields correct");
 		}

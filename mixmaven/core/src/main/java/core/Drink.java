@@ -53,7 +53,7 @@ public final class Drink implements Serializable {
 		double volume = 0;
 		double alcoholVolume = 0;
 		for (Ingredient ingredient : ingredients) {
-			if (ingredient.getType() == "mixer" || ingredient.getType() == "alcohol") {
+			if (ingredient.getType().equals("mixer") || ingredient.getType().equals("alcohol")) {
 				volume += ingredient.getAmount();
 			}
 			alcoholVolume += ingredient.getAlcoholPercentage() * ingredient.getAmount() / 100;

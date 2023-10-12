@@ -1,25 +1,5 @@
 [
   {
-    "name": "redvdka",
-    "ingredients": [
-      {
-        "name": "redb",
-        "alcoholPercentage": 0,
-        "amount": 2.5,
-        "unit": "dl",
-        "type": "mixer"
-      },
-      {
-        "name": "vodka",
-        "alcoholPercentage": 40,
-        "amount": 1.0,
-        "unit": "dl",
-        "type": "alcohol"
-      }
-    ],
-    "alcoholContent": 2.0
-  },
-  {
     "name": "Moscow Mule",
     "ingredients": [
       {
