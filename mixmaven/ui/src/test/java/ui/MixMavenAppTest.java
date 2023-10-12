@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -57,41 +56,21 @@ public class MixMavenAppTest extends ApplicationTest {
         return root;
     }
 
+    /**
+     * @param labels labels for the testFX robot to click on
+     */
     private void click(String... labels) {
         for (var label : labels) {
             clickOn(hasText(label));
         }
     }
+    /**
+     * @param label
+     * @param text
+     */
 
     private void write(String label, String text) {
         clickOn(label).write(text);
-    }
-
-    private void select(String choice) {
-        if (choice.equals("alcohol") || choice.equals("mixer") || choice.equals("extras")) {
-            if (choice.equals("alcohol"))
-                type(KeyCode.ENTER);
-            else if (choice.equals("mixer")) {
-                type(KeyCode.DOWN);
-                type(KeyCode.ENTER);
-            } else {
-                type(KeyCode.DOWN);
-                type(KeyCode.DOWN);
-                type(KeyCode.ENTER);
-            }
-        } else if (choice.equals("ml") || choice.equals("dl") || choice.equals("gram")) {
-            if (choice.equals("ml"))
-                type(KeyCode.ENTER);
-            else if (choice.equals("dl")) {
-                type(KeyCode.DOWN);
-                type(KeyCode.ENTER);
-            } else {
-                type(KeyCode.DOWN);
-                type(KeyCode.DOWN);
-                type(KeyCode.ENTER);
-            }
-        } else
-            throw new IllegalArgumentException("Not a valid Choice!");
     }
 
     /**
@@ -123,12 +102,14 @@ public class MixMavenAppTest extends ApplicationTest {
                 Text nameLabel = (Text) ((VBox) drinkBox).getChildren().get(0);
 
                 String name = nameLabel.getText().replace("Name: ", "");
+                //String formatting
                 String ingredient = ((Text) ((VBox) drinkBox)
                     .getChildren()
                     .get(1))
                     .getText()
                     .replace("Type: ", "")
-                    .replace("• ", "").replace(".0", "")
+                    .replace("• ", "")
+                    .replace(".0", "")
                     .replace("%", "")
                     .replaceAll("\\s+", " ");
 
@@ -136,10 +117,16 @@ public class MixMavenAppTest extends ApplicationTest {
                 ingredient += " ";
 
                 String[] results = {name, ingredient};
-                System.out.println("This is search args: " + args[1]);
-                System.out.println("This is results: " + results[1]);
-                if (results[0].equals(args[0]) && isSubstring(results[1], args[1]))
+
+                String searchIngredients = args[1].replace("alcohol", "")
+                .replace("mixer", "")
+                .replace("extras", "")
+                .replaceAll("  ", " ");
+
+                if (results[0].equals(args[0]) && isSubstring(results[1], searchIngredients)) {
                     return true;
+                }
+
             }
         }
         return false;
@@ -168,24 +155,30 @@ public class MixMavenAppTest extends ApplicationTest {
         click("Edit Drink");
 
         List<String> ingredient = Arrays.asList(testIngredients.get("Lime").split(" "));
+
         write("#ingredientNameField", ingredient.get(2));
         write("#amountField", ingredient.get(0));
 
         clickOn("#unitChoiceBox");
-        select(ingredient.get(1));
+        clickOn(ingredient.get(1));
+        //select(ingredient.get(1));
 
         clickOn("#typeChoiceBox");
-        select(ingredient.get(4));
+        clickOn(ingredient.get(4));
+        //select(ingredient.get(4));
 
         click("Add New Ingredient");
 
         click("Update Drink");
 
         String[] createdDrink = {"Moscow Mule", testIngredients.get("Vodka") + testIngredients.get("Lime")};
-        System.out.println(searchDrinks(createdDrink));
+
         Assertions.assertTrue(searchDrinks(createdDrink));
     }
 
+    /* 
+     * Testing creating different drinks
+     */
     @ParameterizedTest
     @MethodSource
     public final void testCreateDrink(String name, String ingredientString) {
@@ -198,10 +191,12 @@ public class MixMavenAppTest extends ApplicationTest {
             write("#amountField", ingredients.get(i));
 
             clickOn("#unitChoiceBox");
-            select(ingredients.get(i + 1));
+            clickOn(ingredients.get(i + 1));
+            //select(ingredients.get(i + 1));
 
             clickOn("#typeChoiceBox");
-            select(ingredients.get(i + 4));
+            clickOn(ingredients.get(i + 4));
+            //select(ingredients.get(i + 4));
 
             write("#alchoholPercentField", ingredients.get(i + 3));
 
@@ -215,12 +210,35 @@ public class MixMavenAppTest extends ApplicationTest {
         String[] createdDrink = {name, ingredientString};
         Assertions.assertTrue(searchDrinks(createdDrink));
     }
+
+    /**
+     * Testing delete button
+     */
     @Test
     public void testDeleteDrink() {
-        click("Delete Drink");
+        click("Add Drink");
+        List<String> ingredient = Arrays.asList(testIngredients.get("Vodka").split(" "));
+
+        write("#ingredientNameField", ingredient.get(2));
+        write("#amountField", ingredient.get(0));
+
+        write("#alchoholPercentField", ingredient.get(3));
+
+        clickOn("#unitChoiceBox");
+        clickOn(ingredient.get(1));
+
+        clickOn("#typeChoiceBox");
+        clickOn(ingredient.get(4));
+
+        click("Add Ingredient");
+
+        write("#drinkNameField", "Just Vodka");
+
+        click("Add New Drink");
+
         click("Delete Drink");
 
-        String[] drinkToDelete = {"Moscow Mule"};
+        String[] drinkToDelete = {"Moscow Mule", ""};
         Assertions.assertFalse(searchDrinks(drinkToDelete));
     }
 

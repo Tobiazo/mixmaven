@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class MixMavenController {
 
@@ -20,12 +21,11 @@ public class MixMavenController {
   private final BrowseDrinksController browseDrinksController = new BrowseDrinksController(this);
   private final EditDrinkController editDrinkController = new EditDrinkController(this);
 
-
   /**
    * Loads drinks from file Shows the BrowseDrinks page with the loaded drinks.
    */
   public void initialize() {
-    DataHandler.loadDrinks(dataFile);
+    this.setFilePath("Data.json");
     showBrowseDrinks();
   }
 
@@ -45,14 +45,12 @@ public class MixMavenController {
 
     try {
         if (dataFile.createNewFile()) {
-            FileWriter writer = new FileWriter(dataFile);
-            writer.write("[]");
-            writer.close();
-            System.out.println("dataFile created.");
-        } else {
-            System.err.println("File exists");
+            try (FileWriter writer = new FileWriter(dataFile, StandardCharsets.UTF_8)) {
+                writer.write("[]");
+                writer.close();
+                System.out.println("dataFile created.");
+            }
         }
-
     DataHandler.loadDrinks(dataFile);
 
     } catch (IOException e) {
@@ -89,8 +87,6 @@ public class MixMavenController {
     showContentEdit(loader, selectedDrinkIndex);
   }
 
-
-
   /**
    * Loads in the given loader and switches the scene to the corresponding fxml file.
    *
@@ -104,8 +100,8 @@ public class MixMavenController {
       e.printStackTrace();
     }
   }
-  
-/**
+
+    /**
  * Loads in the given loader and sets the selectedDrinkIndex.
  * @param loader
  * @param selectedDrinkIndex
@@ -135,5 +131,4 @@ public class MixMavenController {
   private void setSelectedDrinkIndex(int index) {
     this.selectedDrinkIndex = index;
   }
-
 }

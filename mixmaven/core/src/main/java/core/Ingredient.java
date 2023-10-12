@@ -88,9 +88,6 @@ public final class Ingredient implements Serializable {
 
     @Override
     public String toString() {
-        if (alcoholPercentage == 0) {
-            return amount + " " + unit + " " + name;
-        }
         return amount + " " + unit + " " + name + " " + alcoholPercentage + "%";
     }
 }
