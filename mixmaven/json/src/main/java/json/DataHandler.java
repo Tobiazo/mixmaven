@@ -72,6 +72,7 @@ public class DataHandler {
 	 */
 	public static void replaceDrink(int i, Drink drink) {
 		drinks.set(i, drink);
+		System.out.println("to be saved: " + drinks);
 		saveDrinks(dataFile);
 	}
 
