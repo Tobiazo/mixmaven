@@ -8,13 +8,14 @@ import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class MixMavenController {
 
   @FXML private StackPane contentPane;
-  private int selectedDrinkIndex; //Muligens ikke en god løsning, men fikset alle mine problemer - Tobias
-  private final File dataFile = new File("src/main/resources/ui/json/data.json");
+  private int selectedDrinkIndex;
+  private File dataFile;
   private final AddDrinkController addDrinkController = new AddDrinkController(this);
   private final BrowseDrinksController browseDrinksController = new BrowseDrinksController(this);
   private final EditDrinkController editDrinkController = new EditDrinkController(this);
@@ -25,8 +26,38 @@ public class MixMavenController {
    * Loads drinks from file Shows the BrowseDrinks page with the loaded drinks.
    */
   public void initialize() {
-    DataHandler.loadDrinks(dataFile);
     showLogin();
+  }
+
+  public final void setFilePath(String fileName) {
+    String userHome = System.getProperty("user.home");
+    File folder = new File(userHome, "MixMaven");
+
+    if (!folder.exists()) {
+        if (folder.mkdir()) {
+            System.out.println("Folder created successfully.");
+        } else {
+            System.err.println("Failed to create the folder.");
+            return;
+        }
+    }
+    dataFile = new File(folder, fileName);
+
+    try {
+        if (dataFile.createNewFile()) {
+            FileWriter writer = new FileWriter(dataFile);
+            writer.write("[]");
+            writer.close();
+            System.out.println("dataFile created.");
+        } else {
+            System.err.println("File exists");
+        }
+
+    DataHandler.loadDrinks(dataFile);
+
+    } catch (IOException e) {
+        System.err.println("An error occurred while creating the file: " + e.getMessage());
+    }
   }
 
   /**
@@ -42,6 +73,7 @@ public class MixMavenController {
    * Loads the fxml file BrowseDrinks.fxml and sets corresponding controller.
    */
   public void showBrowseDrinks() {
+    DataHandler.loadDrinks(dataFile);
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/BrowseDrinks.fxml"));
     loader.setController(browseDrinksController);
     showContent(loader);
