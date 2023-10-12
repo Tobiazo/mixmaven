@@ -17,8 +17,8 @@ public final class MixMavenApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("MixMaven.fxml"));
         Parent parent = fxmlLoader.load();
-        MixMavenController controller = fxmlLoader.<MixMavenController>getController();
-        controller.setFilePath("Data.json");
+        //MixMavenController controller = fxmlLoader.<MixMavenController>getController();
+        //controller.setFilePath("Data.json");
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.show();
