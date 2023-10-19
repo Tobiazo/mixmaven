@@ -14,7 +14,7 @@ const DrinkCard = ({ content }: { content: Drink }) => {
 
   return (
     <div
-      className={`drink-item type-${content.ingredients[0].name.toLowerCase()}`}
+      className={`drink-card type-${content.ingredients[0].name.toLowerCase()}`}
     >
       <div className="card-title" onClick={() => setDisplay((val) => !val)}>
         <LocalBar fontSize="large" />

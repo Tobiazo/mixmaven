@@ -15,6 +15,7 @@ export type Ingredient = {
 
 export enum unit {
   dl = 'dl',
+  cl = 'cl',
   ml = 'ml',
 }
 
