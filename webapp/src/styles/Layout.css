@@ -13,11 +13,13 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 4rem;
-  background-color: rgba(135, 207, 235, 0.8);
+  background-color: rgba(135, 207, 235, 0.4);
+  transition: 0.5s ease;
 }
 
 nav h1 {
-  font-size: xx-large;
+  font-size: 4rem;
+  font-family: 'Major Mono Display', monospace;
   margin: 0;
 }
 
@@ -30,26 +32,31 @@ nav ul {
 
 nav li {
   display: flex;
+  min-width: fit-content;
 }
 
 nav li a {
   padding: 1rem;
   text-decoration: none;
-  border-radius: .5rem;
-  transition: .2s ease;
+  border-radius: 0.2rem;
+  transition: 0.2s ease;
   color: black;
-  text-transform: uppercase;
+  font-size: larger;
+  /* background-color: rgba(135, 207, 235, 0.8); */
 
   &:active {
-    transform: scale(.9);
+    transform: scale(0.95);
   }
   &:hover {
-    background-color: rgba(135, 207, 235, 1);
-    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.25);
+    color: #222;
   }
 }
 
 .layout-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
   text-align: center;
   width: 100%;
   padding: 1rem 0;

@@ -1,5 +1,5 @@
 const AddDrink = () => {
-  return <>Her kan du legge til drinker</>;
-};
+  return <>Her kan du legge til drinker</>
+}
 
-export default AddDrink;
+export default AddDrink
