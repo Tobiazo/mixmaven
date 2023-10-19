@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "GT",
+    "ingredients": [
+      {
+        "name": "Gin",
+        "alcoholPercentage": 40,
+        "amount": 20.0,
+        "unit": "dl",
+        "type": "alcohol"
+      },
+      {
+        "name": "Tonic",
+        "alcoholPercentage": 0,
+        "amount": 20.0,
+        "unit": "dl",
+        "type": "mixer"
+      }
+    ],
+    "alcoholContent": 0.2
+  },
+  {
+    "id": 2,
+    "name": "Vodka redbull",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 40,
+        "amount": 20.0,
+        "unit": "dl",
+        "type": "alcohol"
+      },
+      {
+        "name": "Redbull",
+        "alcoholPercentage": 0,
+        "amount": 20.0,
+        "unit": "dl",
+        "type": "mixer"
+      }
+    ],
+    "alcoholContent": 0.2
+  }
+]
