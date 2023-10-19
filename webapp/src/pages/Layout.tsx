@@ -1,14 +1,19 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link } from 'react-router-dom'
+import { FavoriteBorderOutlined } from '@mui/icons-material'
 import '../styles/Layout.css'
 
 const Layout = () => {
   return (
     <div className="layout-container">
       <nav>
-        <h1>MIXMAVEN</h1>
+        <h1>MiXMaven</h1>
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/add">AddDrinks</Link></li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/add">Add drinks</Link>
+          </li>
         </ul>
       </nav>
 
@@ -17,10 +22,10 @@ const Layout = () => {
       </div>
 
       <div className="layout-footer">
-        Made with {"<"}3 by GR2331
+        Made with <FavoriteBorderOutlined /> by GR2331
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
