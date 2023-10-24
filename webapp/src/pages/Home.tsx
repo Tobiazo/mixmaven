@@ -1,12 +1,22 @@
 import DrinkCard from '../components/DrinkCard'
-import data from '../../fixtures/data.json'
 import '../styles/Home.css'
+import { useEffect, useState } from 'react'
+import { Drink } from '../types'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { useState } from 'react'
 
 const Home = () => {
+  const [drinks, setDrinks] = useState<Drink[]>([])
   const [content, setContent] = useState(data);
   const [boxRef] = useAutoAnimate<HTMLDivElement>();
+
+  const fetchData = async () => {
+    const data = fetch("http://localhost:8000/drinks").then(res => res.json()).catch(err => console.log(err))
+    setDrinks(await data)
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   const handleDelete = (index: number) => {
     const copy = [...content]
@@ -22,9 +32,11 @@ const Home = () => {
       </div>
 
       <div className="drink-box" ref={boxRef}>
-        {content.map((drink, index) => (
-          <DrinkCard content={drink} key={'drink_' + index} handleDelete={() => handleDelete(index)} />
-        ))}
+        {drinks.length === 0 ? (<p>Loading...</p>) : 
+          drinks.map((drink, index) => (
+            <DrinkCard content={drink} key={'drink_' + index} handleDelete={() => handleDelete(index)} />
+          ))
+        }
       </div>
     </>
   )
