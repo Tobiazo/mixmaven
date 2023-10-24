@@ -1,0 +1,5 @@
+{
+  "snapshots": "snapshots",
+  "port": 8000,
+  "delay": 2000
+}
