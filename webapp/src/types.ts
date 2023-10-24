@@ -1,5 +1,5 @@
 export type Drink = {
-  id: number
+  id: string 
   name: string
   ingredients: Ingredient[]
   alcoholContent: number

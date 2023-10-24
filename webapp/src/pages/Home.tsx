@@ -1,27 +1,36 @@
 import DrinkCard from '../components/DrinkCard'
 import '../styles/Home.css'
-import { useEffect, useState } from 'react'
-import { Drink } from '../types'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { deleteDrink, getDrinks } from '../api/drinks'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 const Home = () => {
-  const [drinks, setDrinks] = useState<Drink[]>([])
-  const [content, setContent] = useState(data);
   const [boxRef] = useAutoAnimate<HTMLDivElement>();
 
-  const fetchData = async () => {
-    const data = fetch("http://localhost:8000/drinks").then(res => res.json()).catch(err => console.log(err))
-    setDrinks(await data)
-  }
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    fetchData()
-  }, [])
+  const { data, isLoading, isPending, isError } = useQuery({
+    queryKey: ["drinks"],
+    queryFn: getDrinks
+  })
 
-  const handleDelete = (index: number) => {
-    const copy = [...content]
-    copy.splice(index, 1)
-    setContent(copy)
+  const deleteMutation = useMutation({
+    mutationFn: deleteDrink,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["drinks"], exact: true })
+    }
+  })
+  
+  if (isPending || isLoading)
+    return <p>Loading..</p>
+
+  if (isError)
+    return <p>ERROR!</p>
+
+  
+
+  const handleDelete = (id: string) => {
+    deleteMutation.mutate(id)
   }
 
   return (
@@ -32,9 +41,8 @@ const Home = () => {
       </div>
 
       <div className="drink-box" ref={boxRef}>
-        {drinks.length === 0 ? (<p>Loading...</p>) : 
-          drinks.map((drink, index) => (
-            <DrinkCard content={drink} key={'drink_' + index} handleDelete={() => handleDelete(index)} />
+        {data.map((drink) => (
+            <DrinkCard content={drink} key={'drink_' + drink.id} handleDelete={() => handleDelete(drink.id)} />
           ))
         }
       </div>
