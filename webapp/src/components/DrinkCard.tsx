@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import {
   LocalBar,
   DeleteOutline,
@@ -9,12 +10,20 @@ import {
 import { Drink } from '../types'
 import '../styles/DrinkCard.css'
 
-const DrinkCard = ({ content }: { content: Drink }) => {
+type Props = {
+  content: Drink,
+  handleDelete: () => void
+}
+
+const DrinkCard = ({ content, handleDelete }: Props) => {
   const [display, setDisplay] = useState<boolean>(false)
+
+  const [boxRef] = useAutoAnimate<HTMLDivElement>();
 
   return (
     <div
       className={`drink-card type-${content.ingredients[0].name.toLowerCase()}`}
+      ref={boxRef}
     >
       <div className="card-title" onClick={() => setDisplay((val) => !val)}>
         <LocalBar fontSize="large" />
@@ -43,7 +52,7 @@ const DrinkCard = ({ content }: { content: Drink }) => {
               <Edit fontSize="inherit" />
               <p>EDIT</p>
             </div>
-            <div className="icon-delete">
+            <div className="icon-delete" onClick={handleDelete}>
               <DeleteOutline fontSize="inherit" />
               <p>DELETE</p>
             </div>
