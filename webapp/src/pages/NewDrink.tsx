@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { Ingredient, type, unit } from '../types'
+import { createDrink } from '../api/drinks'
+import uuid from 'react-uuid'
 
 const NewDrink = () => {
+  const [name, setName] = useState("UDEFINERT")
   const [ingredientList, setIngredientList] = useState<Ingredient[]>([])
   const INIT_VALUES = {
     name: '',
@@ -17,11 +20,25 @@ const NewDrink = () => {
     setIngredient(INIT_VALUES)
   }
 
+  // DOES NOT WORK
+  const calculateAlcohol = ():number => {
+    return ingredientList.map(ingredient => (ingredient.alcoholPercentage || 0) * ingredient.amount).reduce((a, b) => a + b) / ingredientList.map(i => i.amount).reduce((a, b) => a+ b)
+  }
+
+  const handleAddDrink = () => {
+    createDrink({
+      id: uuid(),
+      name,
+      ingredients: ingredientList,
+      alcoholContent: calculateAlcohol()
+    })
+  }
+
   return (
     <>
       <h2>Create a new drink</h2>
       <div>
-        <input type="text" placeholder="Ex. Cosmopolitan" />
+        <input type="text" placeholder="Ex. Cosmopolitan" onChange={e => setName(e.target.value)} />
         <div>
           {ingredientList.map((ing) => (
             <p>{ing.name}</p>
@@ -87,7 +104,7 @@ const NewDrink = () => {
             <button onClick={handleAddIngredient}>Add ingredient</button>
           </div>
         </div>
-        <button>Create new drink</button>
+        <button onClick={handleAddDrink}>Create new drink</button>
       </div>
     </>
   )
