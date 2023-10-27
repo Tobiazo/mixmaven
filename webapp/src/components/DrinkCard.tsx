@@ -11,14 +11,14 @@ import { Drink } from '../types'
 import '../styles/DrinkCard.css'
 
 type Props = {
-  content: Drink,
+  content: Drink
   handleDelete: () => void
 }
 
 const DrinkCard = ({ content, handleDelete }: Props) => {
   const [display, setDisplay] = useState<boolean>(false)
 
-  const [boxRef] = useAutoAnimate<HTMLDivElement>();
+  const [boxRef] = useAutoAnimate<HTMLDivElement>()
 
   return (
     <div

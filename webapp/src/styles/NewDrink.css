@@ -1,0 +1,100 @@
+.new-drink-container {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  padding: 2rem 0;
+  width: 80%;
+}
+
+h1, h2, h3, h4, p {
+    margin: 0;
+}
+
+.new-drink-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  margin: 1rem 0;
+  padding: .5rem 0;
+  cursor: text;
+  font-size: 1rem;
+}
+
+.form-input:focus-within label,
+.form-input input:valid label {
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
+}
+
+.form-input label {
+  position: absolute;
+  pointer-events: none;
+  font-size: .8rem;
+  opacity: .5;
+  transition: .25s ease;
+}
+
+.form-input input {
+  border: none;
+  border-bottom: 2px solid grey;
+  font-size: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: skyblue;
+  }
+}
+
+.amount-box {
+  display: flex;
+  width: 100%;
+}
+
+.amount-box .amount-input {
+  width: 80%;
+}
+
+.amount-box .amount-select {
+  width: 20%;
+}
+
+.ingredients-list {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: .5rem;
+}
+
+.ingredient-box {
+    display: flex; 
+    width: 100%;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.btn {
+    background-color: rgba(135, 207, 235, 0.4);
+    border-radius: 5px;
+    border: none;
+    padding: .5rem;
+    cursor: pointer;
+    transition: .25s ease;
+    
+    &:hover {
+        transform: scale(1.05);
+    }
+    &:active {
+        transform: scale(.95);
+    }
+}
