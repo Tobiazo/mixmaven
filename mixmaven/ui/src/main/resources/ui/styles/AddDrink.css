@@ -31,7 +31,7 @@
 
 }
 
-.button:hover{ -fx-cursor:hand; }
+.button:hover{ -cursor:hand; }
 
 .choice-box .context-menu { -fx-background-color: white; }
 

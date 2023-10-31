@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Drink implements Serializable {
+	private String id;
 	private String name;
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 	private double alcoholContent = 0;
@@ -78,6 +79,14 @@ public final class Drink implements Serializable {
 	public void removeIngredient(int index) {
 		ingredients.remove(index);
 		this.alcoholContent = calculateAlcoholContent();
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	@Override

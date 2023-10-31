@@ -35,7 +35,7 @@ public class MixMavenAppTest extends ApplicationTest {
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("MixMaven.fxml"));
         root = fxmlLoader.load();
         MixMavenController controller = fxmlLoader.<MixMavenController>getController();
-        controller.setFilePath("Test.json");
+        controller.getDataHandler().setFilePath("Test.json");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("styles/MixMaven.css").toExternalForm());
