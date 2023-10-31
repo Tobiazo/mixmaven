@@ -125,6 +125,16 @@
   background-color: rgba(135, 207, 235, 0.4);
 }
 
+.ingredients-list button {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(219, 11, 11);
+  }
+}
+
 .btn {
   background-color: rgba(135, 207, 235, 0.4);
   border-radius: 5px;

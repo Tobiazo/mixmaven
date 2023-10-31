@@ -9,16 +9,27 @@ import {
 } from '@mui/icons-material'
 import { Drink } from '../types'
 import '../styles/DrinkCard.css'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { deleteDrink } from '../api/drinks'
 
 type Props = {
   content: Drink
-  handleDelete: () => void
+  id: string
 }
 
-const DrinkCard = ({ content, handleDelete }: Props) => {
+const DrinkCard = ({ content, id }: Props) => {
   const [display, setDisplay] = useState<boolean>(false)
 
   const [boxRef] = useAutoAnimate<HTMLDivElement>()
+  const queryClient = useQueryClient()
+
+  const deleteMutation = useMutation({
+    mutationFn: deleteDrink,
+    onSuccess: () => {
+      // queryClient.setQueryData(['drinks'], (prev: Drink[]) => [...prev].filter(drink => drink.id !== data.id))
+      queryClient.invalidateQueries({ queryKey: ['drinks'], exact: true })
+    },
+  })
 
   return (
     <div
@@ -48,14 +59,18 @@ const DrinkCard = ({ content, handleDelete }: Props) => {
             ))}
           </ul>
           <div className="icon-box">
-            <div className="icon-edit" onClick={() => {}}>
+            <button className="icon-edit" onClick={() => {}}>
               <Edit fontSize="inherit" />
               <p>EDIT</p>
-            </div>
-            <div className="icon-delete" onClick={handleDelete}>
+            </button>
+            <button
+              className="icon-delete"
+              onClick={() => deleteMutation.mutate(id)}
+              disabled={deleteMutation.status === 'pending'}
+            >
               <DeleteOutline fontSize="inherit" />
               <p>DELETE</p>
-            </div>
+            </button>
           </div>
         </div>
       )}

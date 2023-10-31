@@ -1,25 +1,16 @@
 import DrinkCard from '../components/DrinkCard'
 import '../styles/Home.css'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { deleteDrink, getDrinks } from '../api/drinks'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { getDrinks } from '../api/drinks'
+import { useQuery } from '@tanstack/react-query'
 import StatusMessage from '../components/StatusMessage'
 
 const Home = () => {
   const [boxRef] = useAutoAnimate<HTMLDivElement>()
 
-  const queryClient = useQueryClient()
-
   const getDrinksQuery = useQuery({
     queryKey: ['drinks'],
     queryFn: getDrinks,
-  })
-
-  const deleteMutation = useMutation({
-    mutationFn: deleteDrink,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['drinks'], exact: true })
-    },
   })
 
   return (
@@ -37,8 +28,8 @@ const Home = () => {
           getDrinksQuery.data.map((drink) => (
             <DrinkCard
               content={drink}
+              id={drink.id}
               key={'drink_' + drink.id}
-              handleDelete={() => deleteMutation.mutate(drink.id)}
             />
           ))
         )}
