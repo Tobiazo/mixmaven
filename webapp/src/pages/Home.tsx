@@ -22,10 +22,6 @@ const Home = () => {
     },
   })
 
-  const handleDelete = (id: string) => {
-    deleteMutation.mutate(id)
-  }
-
   return (
     <>
       <div className="title-box">
@@ -42,7 +38,7 @@ const Home = () => {
             <DrinkCard
               content={drink}
               key={'drink_' + drink.id}
-              handleDelete={() => handleDelete(drink.id)}
+              handleDelete={() => deleteMutation.mutate(drink.id)}
             />
           ))
         )}
