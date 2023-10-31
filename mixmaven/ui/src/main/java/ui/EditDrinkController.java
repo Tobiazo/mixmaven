@@ -35,6 +35,7 @@ public class EditDrinkController {
 	private ChoiceBox<String> unitChoiceBox;
 	private List<Ingredient> selectedIngredients;
 	private MixMavenController mixMavenController;
+    private DataHandler dataHandler;
 
 	public EditDrinkController(MixMavenController mixMavenController) {
 		this.mixMavenController = mixMavenController;
@@ -46,16 +47,23 @@ public class EditDrinkController {
 	 */
 	@FXML
 	public void initialize() {
+        dataHandler = mixMavenController.getDataHandler();
 		unitChoiceBox.getItems().addAll(VALIDUNITS);
 		typeChoiceBox.getItems().addAll(VALIDTYPES);
 		unitChoiceBox.setValue("Unit of measurement");
 		typeChoiceBox.setValue("Ingredient Type");
 
 		selectedIngredients = new ArrayList<>(
-				DataHandler.getDrinks().get(mixMavenController.getDrinkIndex()).getIngredients());
+				mixMavenController
+                .getMixMavenModel()
+                .getDrink(mixMavenController.getDrinkId())
+				.getIngredients());
 
 		drinkNameField
-				.setText(DataHandler.getDrinks().get(mixMavenController.getDrinkIndex()).getName());
+				.setText(mixMavenController
+				.getMixMavenModel()
+				.getDrink(mixMavenController.getDrinkId())
+				.getName());
 
 		for (Ingredient ingredient : selectedIngredients) {
 			ingredientList.getItems().add(ingredient);
@@ -251,8 +259,9 @@ public class EditDrinkController {
 		} else if (drinkNameField.getText() == null || drinkNameField.getText().trim().isEmpty()) {
 			errorLabel.setText("Write a Drink Name");
 		} else {
-			DataHandler.replaceDrink(mixMavenController.getDrinkIndex(),
+			mixMavenController.getMixMavenModel().replaceDrink(mixMavenController.getDrinkId(),
 					new Drink(drinkNameField.getText(), selectedIngredients));
+            dataHandler.saveModel();
 			mixMavenController.showBrowseDrinks();
 		}
 	}

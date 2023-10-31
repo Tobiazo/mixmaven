@@ -1,17 +1,14 @@
 package json;
 
-import core.Drink;
-
+import core.MixMavenModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 public class UtilityJson {
 	/**
@@ -32,10 +29,11 @@ public class UtilityJson {
 	 * @param file
 	 * @return A list of all drinks on file
 	 */
-	public static List<Drink> loadObjectFromJson(File file) {
+	public static MixMavenModel loadObjectFromJson(File file) {
 		try (FileReader reader = new FileReader(file, StandardCharsets.UTF_8)) {
 			Gson gson = new Gson();
-			return gson.fromJson(reader, new TypeToken<List<Drink>>() { } .getType());
+			//return gson.fromJson(reader, new TypeToken<List<Drink>>() { } .getType());
+            return gson.fromJson(reader, MixMavenModel.class);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -2,85 +2,90 @@ package json;
 
 // import core.json.UtilityJson;
 import core.Drink;
-
+import core.MixMavenModel;
 import java.util.List;
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Datahandler contains the File object and drinks field. Drinks is a list containing all Drink
  * objects
  */
-public class DataHandler {
+public final class DataHandler {
 
-	private static File dataFile;
-	private static List<Drink> drinks = new ArrayList<>();
+	private File dataFile;
+	private List<Drink> drinks;
+    private MixMavenModel mixMavenModel;
+    private static DataHandler singleInstance;
 
-	/**
-	 * Loads the saved drinks from file.
-	 *
-	 * @param file
-	 * @return the loaded list of drinks
-	 */
-	public static List<Drink> loadDrinks(File file) {
-		dataFile = file;
-		drinks = UtilityJson.loadObjectFromJson(file);
-		return new ArrayList<>(drinks);
-	}
+    private DataHandler() {
+        this.setFilePath("Data.json");
+        drinks = new ArrayList<>();
+        mixMavenModel = new MixMavenModel(drinks);
+    }
 
-	/**
-	 * @return currently loaded drinks
-	 */
-	public static List<Drink> getDrinks() {
-		if (drinks.size() == 0) loadDrinks(dataFile);
-		return new ArrayList<>(drinks);
-	}
+    public static synchronized DataHandler getInstance() {
+        if (singleInstance == null) singleInstance = new DataHandler();
+        return singleInstance;
+    }
 
-	/**
-	 * Adds drink to list and saves to file.
-	 *
-	 * @param drink
-	 * @param file
-	 */
-	public static void addDrink(Drink drink, File file) {
-		drinks.add(drink);
-		saveDrinks(file);
-	}
+    public String getDataFile() {
+        return dataFile.getName();
+    }
 
-	/**
-	 * Add drink to the saved file.
-	 *
-	 * @param drink
-	 */
-	public static void addDrink(Drink drink) {
-		addDrink(drink, dataFile);
-	}
+    public void setFilePath(String fileName) {
+    String userHome = System.getProperty("user.home");
+    File folder = new File(userHome, "MixMaven");
 
-	/**
-	 * Removes the drink at index.
-	 * @param i
-	 */
-	public static void removeDrink(int i) {
-		drinks.remove(i);
-		saveDrinks(dataFile);
-	}
+    if (!folder.exists()) {
+        if (folder.mkdir()) {
+            System.out.println("Folder created successfully.");
+        } else {
+            System.err.println("Failed to create the folder.");
+            return;
+        }
+    }
+    dataFile = new File(folder, fileName);
 
-	/**
-	 * Replaces the drink at index i with the given Drink.
-	 * @param i
-	 * @param drink
-	 */
-	public static void replaceDrink(int i, Drink drink) {
-		drinks.set(i, drink);
-		saveDrinks(dataFile);
-	}
+    try {
+        if (dataFile.createNewFile()) {
+            UtilityJson.saveObjectToJsonFile(new MixMavenModel(new ArrayList<>()), dataFile);
+            System.out.println("dataFile created.");
+        }
 
-	/**
-	 * Saves all drinks in list to file.
-	 *
-	 * @param file
-	 */
-	private static void saveDrinks(File file) {
-		UtilityJson.saveObjectToJsonFile(drinks, file);
-	}
+    } catch (IOException e) {
+        System.err.println("An error occurred while creating the file: " + e.getMessage());
+    }
+  }
+
+  public void setFilePath(File file) {
+    dataFile = file;
+    System.out.println("Current datafile: " + getDataFile());
+  }
+
+    public void saveModel() {
+        UtilityJson.saveObjectToJsonFile(mixMavenModel, dataFile);
+    }
+
+    public void saveModel(MixMavenModel mixMavenModel) {
+        UtilityJson.saveObjectToJsonFile(mixMavenModel, dataFile);
+    }
+
+    public MixMavenModel loadModel() {
+        mixMavenModel = UtilityJson.loadObjectFromJson(dataFile);
+        return mixMavenModel;
+    }
+
+    public MixMavenModel getModel() {
+        return mixMavenModel;
+    }
+
+    public Drink deserializeDrink(String drink) {
+        Gson gson = new Gson();
+
+        // Parse the JSON string and create an instance of Drink
+        return gson.fromJson(drink, Drink.class);
+    }
 }
