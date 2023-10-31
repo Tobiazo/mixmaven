@@ -9,8 +9,8 @@
   width: 80%;
 }
 
-h1, h2, h3, h4, p {
-    margin: 0;
+.new-drink-container h1 {
+  margin: 0;
 }
 
 .new-drink-form {
@@ -25,24 +25,27 @@ h1, h2, h3, h4, p {
   flex-direction: column;
   width: 100%;
   position: relative;
-  margin: 1rem 0;
-  padding: .5rem 0;
+  margin: 1.5rem 0;
+  padding: 0.5rem 0;
   cursor: text;
   font-size: 1rem;
 }
 
-.form-input:focus-within label,
-.form-input input:valid label {
-  transform: translate3d(0, -100%, 0);
-  opacity: 1;
-}
-
-.form-input label {
+.form-input span {
   position: absolute;
   pointer-events: none;
-  font-size: .8rem;
-  opacity: .5;
-  transition: .25s ease;
+  font-size: 0.8rem;
+  opacity: 0.5;
+  transition: 0.25s ease;
+}
+
+.form-input input:valid + span,
+.form-input input:focus + span {
+  transform: translate3d(0, -120%, 0);
+}
+
+.form-input input:focus + span {
+  opacity: 1;
 }
 
 .form-input input {
@@ -56,45 +59,100 @@ h1, h2, h3, h4, p {
   }
 }
 
-.amount-box {
-  display: flex;
-  width: 100%;
+.form-input select {
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: skyblue;
+  }
 }
 
-.amount-box .amount-input {
-  width: 80%;
+.amount-box {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  gap: 1rem;
 }
 
 .amount-box .amount-select {
   width: 20%;
 }
 
-.ingredients-list {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    gap: .5rem;
+.ingredient-box {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  margin: 2rem 0;
 }
 
-.ingredient-box {
-    display: flex; 
-    width: 100%;
-    gap: 2rem;
-    margin: 2rem 0;
+.ingredient-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 0.5rem;
+}
+
+.ingredients-list h4 {
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.ingredients-list li {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: rgb(241, 241, 241);
+}
+
+.ingredients-list li:nth-child(odd) {
+  background-color: rgba(135, 207, 235, 0.4);
 }
 
 .btn {
-    background-color: rgba(135, 207, 235, 0.4);
-    border-radius: 5px;
-    border: none;
-    padding: .5rem;
-    cursor: pointer;
-    transition: .25s ease;
-    
-    &:hover {
-        transform: scale(1.05);
-    }
-    &:active {
-        transform: scale(.95);
-    }
+  background-color: rgba(135, 207, 235, 0.4);
+  border-radius: 5px;
+  border: none;
+  padding: 0.5rem;
+  transition: 0.25s ease;
+
+  &:hover:not([disabled]) {
+    transform: scale(1.05);
+  }
+  &:active:not([disabled]) {
+    transform: scale(0.95);
+  }
+}
+
+.btn:not([disabled]) {
+  cursor: pointer;
+}
+
+.invalidMsg {
+  color: red;
+  position: absolute;
+  font-size: 0.8rem;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
+  transition: 0.25s ease;
+}
+
+.invalidMsg.visible {
+  opacity: 1;
 }

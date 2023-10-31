@@ -10,21 +10,26 @@ export const getDrinks = async (): Promise<Drink[]> => {
     .catch((e) => console.log(e))
 }
 
-export const createDrink = async (drink: Drink): Promise<void> => {
-  fetch(`${baseURL}/drinks`, {
+export const createDrink = async (drink: Drink): Promise<Drink> => {
+  const data = await fetch(`${baseURL}/drinks`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(drink),
   })
-    .then((res) => res.json())
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err))
+  // .then((res) => res.json())
+  // .then((res) => console.log(res, "Drink Created"))
+  // .catch((err) => console.log(err))
+  if (data.status !== 201) {
+    console.log(data.status, 'Error: Drink not created')
+  }
+  return data.json()
+  // return data.json();
 }
 
 export const deleteDrink = async (id: string): Promise<void> => {
-  fetch(`${baseURL}/drinks/${id}`, {
+  return fetch(`${baseURL}/drinks/${id}`, {
     method: 'DELETE',
   })
     .then((res) => res.json())
