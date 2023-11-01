@@ -1,0 +1,45 @@
+[
+  {
+    "id": "c5859006-9c3d-3e60-4346-764494f9da51",
+    "name": "Vodka shot",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "alcoholPercentage": 40,
+        "amount": 2,
+        "unit": "cl",
+        "type": "alcohol"
+      }
+    ],
+    "alcoholContent": 40
+  },
+  {
+    "id": "7fed5e93-3af9-b27c-4e59-f7997c2325a5",
+    "name": "GT",
+    "ingredients": [
+      {
+        "name": "Gin",
+        "alcoholPercentage": 40,
+        "amount": 2,
+        "unit": "cl",
+        "type": "alchol"
+      },
+      {
+        "name": "Tonic",
+        "alcoholPercentage": 0,
+        "amount": 4,
+        "unit": "cl",
+        "type": "mixer"
+      },
+      {
+        "name": "Lime",
+        "alcoholPercentage": 0,
+        "amount": 10,
+        "unit": "gram",
+        "type": "extras"
+      }
+    ],
+    "alcoholContent": 10
+  }
+]
+

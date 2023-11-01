@@ -153,6 +153,7 @@ const NewDrink = () => {
 
             <button
               className="btn"
+              id='add-ingredient-btn'
               onClick={handleAddIngredient}
               disabled={disableAdd}
             >
@@ -165,6 +166,7 @@ const NewDrink = () => {
 
         <button
           className="btn"
+          id="create-btn"
           onClick={() => {
             createDrinkMutation.mutate({
               id: uuid(),
@@ -237,9 +239,9 @@ const Input = ({
 
   return (
     <div className="form-input">
-      <input type="text" value={value} required onChange={handleChange} />
+      <input id={label.toLowerCase().replace(" ", "-")} type="text" value={value} required onChange={handleChange} />
       <span>{label}</span>
-      <p className={`invalidMsg ${isError && 'visible'}`}>{errorMsg}</p>
+      <p className={`invalidMsg ${isError && 'visible'}`} id={label.toLowerCase().replace(" ", "-") + "-error"}>{errorMsg}</p>
     </div>
   )
 }
@@ -252,7 +254,7 @@ const IngredientList = ({ ingredients }: { ingredients: Ingredient[] }) => {
       <h4>Added ingredients</h4>
       {ingredients.length === 0 ? (
         <li>
-          <p>Her var det tomt!</p>
+          <p>So empty...</p>
         </li>
       ) : (
         ingredients.map((ing, index) => (
