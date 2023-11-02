@@ -1,6 +1,6 @@
 .drink-card {
   --_accent: var(--accent, skyblue);
-  --_accent-darker: var (--accent-darker, blue);
+  --_accent-darker: var(--accent-darker, blue);
 
   min-width: 20rem;
   max-width: 30%;
@@ -77,6 +77,9 @@ li {
   width: 80%;
 }
 
+.ingredient-item {
+  text-transform: capitalize;
+}
 /**
     ICONS 
 **/
@@ -89,7 +92,7 @@ li {
   margin: 1rem 0;
 }
 
-.icon-box > div {
+.icon-box > button {
   --_stroke-color: var(--stroke-color, pink);
 
   display: flex;
@@ -100,17 +103,17 @@ li {
   background-color: var(--_accent);
   cursor: pointer;
   transition: 0.25s ease;
+  border: none;
 
   &:active {
     transform: scale(0.95);
   }
   &:hover {
-    /* color: var(--_stroke-color); */
-    background-color: var(--accent-darker);
+    background-color: rgb(117, 191, 221);
   }
 }
 
-.icon-box > div > p {
+.icon-box > button > p {
   font-size: 1rem;
   border-left: 1px solid black;
   padding-left: 0.5rem;

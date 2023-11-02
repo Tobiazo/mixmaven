@@ -161,7 +161,10 @@ const NewDrink = () => {
             </button>
           </div>
 
-          <IngredientList ingredients={ingredientList} />
+          <IngredientList
+            ingredients={ingredientList}
+            setIngredients={setIngredientList}
+          />
         </div>
 
         <button
@@ -204,7 +207,7 @@ const Input = ({
   const [errorMsg, setErrorMsg] = useState('Invalid Field')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === '') {
+    if (e.target.value === '' && type !== 'alcohol') {
       setError(true)
       setErrorMsg('This field is required')
     } else {
@@ -246,8 +249,20 @@ const Input = ({
   )
 }
 
-const IngredientList = ({ ingredients }: { ingredients: Ingredient[] }) => {
+const IngredientList = ({
+  ingredients,
+  setIngredients,
+}: {
+  ingredients: Ingredient[]
+  setIngredients: any
+}) => {
   const [animateRef] = useAutoAnimate<HTMLUListElement>()
+
+  const handleDelete = (index: number) => {
+    const copy = [...ingredients]
+    copy.splice(index, 1)
+    setIngredients(copy)
+  }
 
   return (
     <ul className="ingredients-list" ref={animateRef}>
@@ -260,9 +275,11 @@ const IngredientList = ({ ingredients }: { ingredients: Ingredient[] }) => {
         ingredients.map((ing, index) => (
           <li key={index}>
             <p>{ing.amount + ing.unit}</p>
-            <p>{ing.name}</p>
+            <p className="capitalize">{ing.name}</p>
             <p>{ing.alcoholPercentage}%</p>
-            <DeleteOutline />
+            <button onClick={() => handleDelete(index)}>
+              <DeleteOutline />
+            </button>
           </li>
         ))
       )}
