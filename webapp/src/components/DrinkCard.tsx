@@ -11,6 +11,7 @@ import { Drink } from '../types'
 import '../styles/DrinkCard.css'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { deleteDrink } from '../api/drinks'
+import { Link } from 'react-router-dom'
 
 type Props = {
   content: Drink
@@ -26,14 +27,24 @@ const DrinkCard = ({ content, id }: Props) => {
   const deleteMutation = useMutation({
     mutationFn: deleteDrink,
     onSuccess: () => {
-      // queryClient.setQueryData(['drinks'], (prev: Drink[]) => [...prev].filter(drink => drink.id !== data.id))
+      queryClient.setQueryData(['drinks'], (prev: Drink[]) => {
+        const copy = [...prev]
+        const filtered = copy.filter((drink) => {
+          // console.log(drink.id, data.id);
+          return drink.id !== id
+        })
+        // console.log(filtered);
+        return filtered
+      })
       queryClient.invalidateQueries({ queryKey: ['drinks'], exact: true })
     },
   })
 
   return (
     <div
-      className={`drink-card type-${content.ingredients[0].name.toLowerCase()}`}
+      className={`drink-card type-${
+        content.alcoholContent >= 0.7 && 'alcohol'
+      }`}
       ref={boxRef}
     >
       <div className="card-title" onClick={() => setDisplay((val) => !val)}>
@@ -59,17 +70,19 @@ const DrinkCard = ({ content, id }: Props) => {
             ))}
           </ul>
           <div className="icon-box">
-            <button className="icon-edit" onClick={() => {}}>
+            <Link to={`/edit/${id}`} className="icon-edit">
               <Edit fontSize="inherit" />
               <p>EDIT</p>
-            </button>
+            </Link>
             <button
               className="icon-delete"
               onClick={() => deleteMutation.mutate(id)}
               disabled={deleteMutation.status === 'pending'}
             >
               <DeleteOutline fontSize="inherit" />
-              <p>DELETE</p>
+              <p>
+                {deleteMutation.status === 'pending' ? 'Loading...' : 'DELETE'}
+              </p>
             </button>
           </div>
         </div>

@@ -2,7 +2,7 @@
   "drinks": [
     {
       "id": "c5859006-9c3d-3e60-4346-764494f9da51",
-      "name": "UDEFINERT",
+      "name": "Vodka",
       "ingredients": [
         {
           "name": "Vodka",
@@ -12,7 +12,7 @@
           "type": "alchol"
         }
       ],
-      "alcoholContent": 40
+      "alcoholContent": 20
     },
     {
       "id": "7fed5e93-3af9-b27c-4e59-f7997c2325a5",
@@ -26,49 +26,21 @@
           "type": "alchol"
         }
       ],
-      "alcoholContent": 40
+      "alcoholContent": 20
     },
     {
       "id": "c0d3a442-36b2-8038-27c6-cf81f1935825",
-      "name": "1",
+      "name": "10000",
       "ingredients": [
         {
           "name": "1",
-          "alcoholPercentage": 0,
           "amount": 1,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "7aad01cc-6cca-d91a-bca7-d91043871d36",
-      "name": "2",
-      "ingredients": [
-        {
-          "name": "2",
           "alcoholPercentage": 0,
-          "amount": 2,
           "unit": "cl",
           "type": "alchol"
         }
       ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "41e43d10-dda1-bbd5-b5b7-89fcbaf409a7",
-      "name": "4",
-      "ingredients": [
-        {
-          "name": "4",
-          "alcoholPercentage": 0,
-          "amount": 4,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
+      "alcoholContent": 20
     },
     {
       "id": "ff10edf7-8f22-d704-d197-4f2ce31ed211",
@@ -85,22 +57,8 @@
       "alcoholContent": 0
     },
     {
-      "id": "8649a3b4-8f33-3ca0-314a-5b05558fbe3b",
-      "name": "6",
-      "ingredients": [
-        {
-          "name": "6",
-          "alcoholPercentage": 0,
-          "amount": 6,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
       "id": "fa52db09-e2ff-cf36-ab7c-54d6f771aa65",
-      "name": "7",
+      "name": "77777777",
       "ingredients": [
         {
           "name": "7",
@@ -110,7 +68,7 @@
           "type": "alchol"
         }
       ],
-      "alcoholContent": 0
+      "alcoholContent": 20
     },
     {
       "id": "4a2627ce-455c-78d7-e785-598d11a7e2c4",
@@ -127,106 +85,8 @@
       "alcoholContent": 0
     },
     {
-      "id": "7d5449f4-dc8c-7f6f-51d9-9f53c814a3d8",
-      "name": "9",
-      "ingredients": [
-        {
-          "name": "9",
-          "alcoholPercentage": 0,
-          "amount": 9,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "71daa7a1-226d-a460-1613-4e5254aa3246",
-      "name": "10",
-      "ingredients": [
-        {
-          "name": "10",
-          "alcoholPercentage": 0,
-          "amount": 10,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "22c44895-e884-eaab-475e-94b05e631b89",
-      "name": "11",
-      "ingredients": [
-        {
-          "name": "11",
-          "alcoholPercentage": 0,
-          "amount": 11,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "409a1916-931a-c2e9-a2e5-c85d5f08b755",
-      "name": "12",
-      "ingredients": [
-        {
-          "name": "12",
-          "alcoholPercentage": 0,
-          "amount": 12,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "e4030e96-4b6a-d3bd-84d1-10940a5a4cfe",
-      "name": "13",
-      "ingredients": [
-        {
-          "name": "13",
-          "alcoholPercentage": 0,
-          "amount": 13,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "b1972e03-9dd3-3bbb-65e6-383f00e097d5",
-      "name": "14",
-      "ingredients": [
-        {
-          "name": "14",
-          "alcoholPercentage": 0,
-          "amount": 14,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "0e43d694-1a89-3506-3b62-080ce1d22618",
-      "name": "15",
-      "ingredients": [
-        {
-          "name": "15",
-          "alcoholPercentage": 0,
-          "amount": 15,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "d216b937-8107-7c92-0397-040b681727ec",
-      "name": "1",
+      "id": "81076a43-c6b4-2c1c-a9f5-316ae6a4ebd8",
+      "name": "Test2",
       "ingredients": [
         {
           "name": "1",
@@ -236,68 +96,12 @@
           "type": "alchol"
         },
         {
-          "name": "1",
+          "name": "2",
           "alcoholPercentage": 0,
-          "amount": 1,
+          "amount": 2,
           "unit": "cl",
           "type": "alchol"
         },
-        {
-          "name": "1",
-          "alcoholPercentage": 0,
-          "amount": 1,
-          "unit": "cl",
-          "type": "alchol"
-        },
-        {
-          "name": "1",
-          "alcoholPercentage": 0,
-          "amount": 1,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "f5f3cd36-784f-3e25-469a-8ed0c4d1a946",
-      "name": "1",
-      "ingredients": [
-        {
-          "name": "1",
-          "alcoholPercentage": 0,
-          "amount": 1,
-          "unit": "cl",
-          "type": "alchol"
-        },
-        {
-          "name": "1",
-          "alcoholPercentage": 0,
-          "amount": 1,
-          "unit": "cl",
-          "type": "alchol"
-        },
-        {
-          "name": "1",
-          "alcoholPercentage": 0,
-          "amount": 1,
-          "unit": "cl",
-          "type": "alchol"
-        },
-        {
-          "name": "1",
-          "alcoholPercentage": 0,
-          "amount": 1,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "9cb4ee4b-a6de-21b1-04e3-b05b9ced986c",
-      "name": "2",
-      "ingredients": [
         {
           "name": "2",
           "alcoholPercentage": 0,
@@ -306,21 +110,28 @@
           "type": "alchol"
         }
       ],
-      "alcoholContent": 0
+      "alcoholContent": 20
     },
     {
-      "id": "cc1220ad-6e30-ef07-6b65-54cbfb5e18cf",
-      "name": "3",
+      "id": "2fb3eb05-2156-44de-9c91-dceb60fc10b4",
+      "name": "Vodka redbull",
       "ingredients": [
         {
-          "name": "3",
-          "alcoholPercentage": 0,
-          "amount": 3,
+          "name": "Vodka",
+          "alcoholPercentage": 30,
+          "amount": 2,
           "unit": "cl",
           "type": "alchol"
+        },
+        {
+          "name": "Redbull",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "mixer"
         }
       ],
-      "alcoholContent": 0
+      "alcoholContent": 20
     }
   ]
 }

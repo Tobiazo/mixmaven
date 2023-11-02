@@ -18,21 +18,30 @@ export const createDrink = async (drink: Drink): Promise<Drink> => {
     },
     body: JSON.stringify(drink),
   })
-  // .then((res) => res.json())
-  // .then((res) => console.log(res, "Drink Created"))
-  // .catch((err) => console.log(err))
   if (data.status !== 201) {
     console.log(data.status, 'Error: Drink not created')
   }
   return data.json()
-  // return data.json();
+}
+
+export const editDrink = async (drink: Drink): Promise<Drink> => {
+  const data = await fetch(`${baseURL}/drinks/${drink.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(drink),
+  })
+  if (data.status !== 200 && data.status !== 204) {
+    console.log(data.status, 'Error: Drink not updated')
+  }
+  return data.json()
 }
 
 export const deleteDrink = async (id: string): Promise<void> => {
-  return fetch(`${baseURL}/drinks/${id}`, {
+  await fetch(`${baseURL}/drinks/${id}`, {
     method: 'DELETE',
   })
-    .then((res) => res.json())
-    .then((res) => console.log(res, 'Drink Deleted'))
-    .catch((err) => console.log(err))
+    .then((res) => console.log(res.status, ' Drink deleted'))
+    .catch((err) => console.log(err, ' Error: Drink not deleted'))
 }

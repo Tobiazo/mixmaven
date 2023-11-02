@@ -1,9 +1,10 @@
 .drink-card {
-  --_accent: var(--accent, skyblue);
-  --_accent-darker: var(--accent-darker, blue);
+  --_accent: var(--accent, var(--clr-cyan-300));
+  --_accent-darker: var(--accent-darker, var(--clr-cyan-400));
 
   min-width: 20rem;
   max-width: 30%;
+  width: 30%;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -16,19 +17,9 @@
   transition: all 0.25s ease;
 }
 
-.type-gin {
-  --accent: var(--clr-yellow-300);
-  --accent-darker: var(--clr-yellow-400);
-}
-
-.type-vodka {
+.type-alcohol {
   --accent: var(--clr-purple-300);
   --accent-darker: var(--clr-purple-400);
-}
-
-.type-jagermeister {
-  --accent: var(--clr-cyan-300);
-  --accent-darker: var(--clr-cyan-400);
 }
 
 .card-title {
@@ -53,6 +44,9 @@
 h3 {
   flex-grow: 1;
   font-size: x-large;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-content {
@@ -88,11 +82,12 @@ li {
   display: flex;
   justify-content: center;
   gap: 0.2rem;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   margin: 1rem 0;
 }
 
-.icon-box > button {
+.icon-box > button,
+.icon-box > a {
   --_stroke-color: var(--stroke-color, pink);
 
   display: flex;
@@ -100,20 +95,23 @@ li {
   gap: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.25rem;
+  font-size: 1.5rem;
   background-color: var(--_accent);
   cursor: pointer;
   transition: 0.25s ease;
   border: none;
+  text-decoration: none;
+  color: black;
 
   &:active {
     transform: scale(0.95);
   }
   &:hover {
-    background-color: rgb(117, 191, 221);
+    background-color: var(--_accent-darker);
   }
 }
 
-.icon-box > button > p {
+.icon-box p {
   font-size: 1rem;
   border-left: 1px solid black;
   padding-left: 0.5rem;
