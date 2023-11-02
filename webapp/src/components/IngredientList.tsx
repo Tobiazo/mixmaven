@@ -4,10 +4,14 @@ import { DeleteOutline } from '@mui/icons-material'
 
 const IngredientList = ({
   ingredients,
+  setIngredient,
   setIngredients,
+  setEditIndex,
 }: {
   ingredients: Ingredient[]
+  setIngredient: React.Dispatch<React.SetStateAction<Ingredient>>
   setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>
+  setEditIndex: React.Dispatch<React.SetStateAction<number | null>>
 }) => {
   const [animateRef] = useAutoAnimate<HTMLUListElement>()
 
@@ -26,11 +30,28 @@ const IngredientList = ({
         </li>
       ) : (
         ingredients.map((ing, index) => (
-          <li key={index}>
+          <li
+            key={index}
+            onClick={() => {
+              setEditIndex(index)
+              setIngredient({
+                name: ing.name,
+                amount: ing.amount,
+                alcoholPercentage: ing.alcoholPercentage,
+                unit: ing.unit,
+                type: ing.type,
+              })
+            }}
+          >
             <p>{ing.amount + ing.unit}</p>
             <p className="capitalize">{ing.name}</p>
-            <p>{ing.alcoholPercentage}%</p>
-            <button onClick={() => handleDelete(index)}>
+            <p>{ing.alcoholPercentage || 0}%</p>
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                handleDelete(index)
+              }}
+            >
               <DeleteOutline />
             </button>
           </li>

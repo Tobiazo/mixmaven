@@ -22,7 +22,7 @@
         "alcoholPercentage": 40,
         "amount": 2,
         "unit": "cl",
-        "type": "alchol"
+        "type": "alcohol"
       },
       {
         "name": "Tonic",

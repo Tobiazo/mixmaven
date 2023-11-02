@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createDrink } from '../api/drinks'
-import { Drink, type, unit } from '../types'
+import { Drink } from '../types'
 import '../styles/DrinkForm.css'
 import { useNavigate } from 'react-router-dom'
 import DrinkForm from '../components/DrinkForm'
@@ -8,12 +8,9 @@ import DrinkForm from '../components/DrinkForm'
 const NewDrink = () => {
   const INIT_VALUES = {
     name: '',
-    alcoholPercentage: 0,
-    amount: 0,
-    unit: unit.cl,
-    type: type.alcohol,
+    ingredients: [],
   }
-  
+
   const queryClient = useQueryClient()
   const navigate = useNavigate()
 
@@ -24,6 +21,9 @@ const NewDrink = () => {
       queryClient.setQueryData(['drinks'], (prev: Drink[]) => [...prev, data])
       queryClient.invalidateQueries({ queryKey: ['drinks'], exact: true })
       navigate('/')
+    },
+    onError: (error) => {
+      console.log(error)
     },
   })
 

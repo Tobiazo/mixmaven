@@ -1,15 +1,17 @@
 import { useState } from 'react'
 
 const Input = ({
-  type,
+  type = 'text',
   label,
+  value,
   onChange,
 }: {
   type?: 'text' | 'number' | 'alcohol'
   label: string
+  value: string | number
   onChange: (e: string) => void
 }) => {
-  const [value, setValue] = useState('')
+  // const [value, setValue] = useState('')
   const [isError, setError] = useState(false)
   const [errorMsg, setErrorMsg] = useState('Invalid Field')
 
@@ -43,7 +45,7 @@ const Input = ({
       return
     }
 
-    setValue(e.target.value)
+    // setValue(e.target.value)
     onChange(e.target.value)
   }
 
@@ -51,7 +53,7 @@ const Input = ({
     <div className="form-input">
       <input
         id={label.toLowerCase().replace(' ', '-')}
-        type="text"
+        type={type === 'alcohol' ? 'number' : type}
         value={value}
         required
         onChange={handleChange}
