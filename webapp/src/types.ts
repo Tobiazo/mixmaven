@@ -7,10 +7,10 @@ export type Drink = {
 
 export type Ingredient = {
   name: string
-  alcoholPercentage: number | null
-  amount: number | null
-  unit: string
-  type: string
+  alcoholPercentage: number
+  amount: number
+  unit: unit | string
+  type: unit | string
 }
 
 export enum unit {

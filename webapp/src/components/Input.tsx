@@ -23,13 +23,13 @@ const Input = ({
       setError(false)
     }
 
-    const regex = /^\d*\.?\d*$/ // Only numbers and max one dot
+    const regex =/^\d*\.?\d{0,1}$/ // Only numbers and max one dot and max 1 decimal
     if (
       (type === 'number' || type === 'alcohol') &&
       !regex.test(e.target.value)
     ) {
       setError(true)
-      setErrorMsg('This field must be a postive number and max one dot')
+      setErrorMsg('This field must be a postive number and max one decimal')
       setTimeout(() => {
         setError(false)
       }, 1000)

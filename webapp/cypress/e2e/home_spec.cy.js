@@ -42,7 +42,7 @@ describe('home page', () => {
     })
 
     /**
-     * PS: it does not actually delete the drink, 
+     * PS: it does not actually delete the drink,
      * it only checks that the correct request is made
      */
     it.only('should be possible to delete a drink', () => {
@@ -57,7 +57,9 @@ describe('home page', () => {
           cy.get('.icon-delete').click()
         })
       cy.wait('@deleteDrink').then((interception) => {
-        expect(interception.request.url).to.match(/.*\/drinks\/c5859006-9c3d-3e60-4346-764494f9da51/)
+        expect(interception.request.url).to.match(
+          /.*\/drinks\/c5859006-9c3d-3e60-4346-764494f9da51/
+        )
       })
     })
   })

@@ -52,7 +52,9 @@ const DrinkCard = ({ content, id, expandAll }: Props) => {
     >
       <div className="card-title" onClick={() => setExpand(!expand)}>
         <LocalBar fontSize="large" />
-        <h3>{content.name}</h3>
+        <h3>
+          {content.name}
+        </h3>
         {expand ? (
           <ExpandLess fontSize="medium" />
         ) : (
@@ -61,6 +63,10 @@ const DrinkCard = ({ content, id, expandAll }: Props) => {
       </div>
       {expand && (
         <div className="card-content">
+          <div className='card-alcohol-content'>
+            <h4>Alcohol: </h4>
+            <p>{Math.round(content.alcoholContent * 10) / 10}%</p>
+          </div>
           <h4>Ingredients:</h4>
           <ul>
             {content.ingredients.map((ingredient, ingredient_index) => (
@@ -68,7 +74,11 @@ const DrinkCard = ({ content, id, expandAll }: Props) => {
                 key={'ingredient' + ingredient_index}
                 className="ingredient-item"
               >
-                {`${ingredient.amount + ingredient.unit} ${ingredient.name} ${ingredient.type === type.alcohol ? ingredient.alcoholPercentage + '%' : ''} `}
+                {`${ingredient.amount + ingredient.unit} ${ingredient.name} ${
+                  ingredient.type === type.alcohol
+                    ? Math.round(ingredient.alcoholPercentage * 10) / 10 + '%'
+                    : ''
+                } `}
               </li>
             ))}
           </ul>
