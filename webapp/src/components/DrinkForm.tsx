@@ -37,6 +37,7 @@ const DrinkForm = ({
   const disableCreate = useDisableButton(
     name === '' || ingredientList.length === 0
   )
+  const [animationRef] = useAutoAnimate<HTMLDivElement>()
   const queryClient = useQueryClient()
   const location = useLocation()
 
@@ -69,8 +70,7 @@ const DrinkForm = ({
       id: id || uuid(), // creates unique ID if not provided
       name: name,
       ingredients: ingredientList,
-      // TODO: calculate alcohol content
-      alcoholContent: 20,
+      alcoholContent: calculateAlcohol(),
     }
     submit.mutate(newDrink, {
       onSuccess: () => {
@@ -82,7 +82,29 @@ const DrinkForm = ({
     })
   }
 
-  const [animationRef] = useAutoAnimate<HTMLDivElement>()
+  const toMl = (amount: number, u: string) => {
+    switch (u) {
+      case unit.cl:
+        return amount * 10
+      case unit.dl:
+        return amount * 100
+      default:
+        return amount
+    }
+  }
+
+  const calculateAlcohol = () => {
+    let totalAmountMl = 0
+    let totalAlcoholMl = 0
+    ingredientList.forEach((ingredient) => {
+      totalAmountMl += toMl(ingredient.amount, ingredient.unit)
+      totalAlcoholMl +=
+        toMl(ingredient.amount, ingredient.unit) *
+        (ingredient.alcoholPercentage / 100)
+    })
+
+    return (totalAlcoholMl / totalAmountMl) * 100
+  }
 
   return (
     <>
@@ -111,72 +133,73 @@ const DrinkForm = ({
                 }))
               }}
             />
-                <div className="amount-box">
-                  <Input
-                    type="number"
-                    label="Amount"
-                    value={ingredient.amount || ''}
-                    onChange={(value) => {
-                      setIngredient((prev) => ({
-                        ...prev,
-                        amount: parseFloat(value),
-                      }))
-                    }}
-                  />
-                  <div className="form-input amount-select">
-                    <select
-                      id="unit"
-                      // defaultValue={unit.cl}
-                      value={ingredient.unit}
-                      onChange={(e) =>
-                        setIngredient((prev) => ({
-                          ...prev,
-                          unit: e.target.value,
-                        }))
-                      }
-                    >
-                      {(Object.keys(unit) as (keyof typeof unit)[]).map((key) => (
-                        <option value={key} key={key}>
-                          {key}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                <div className="form-input">
-                  <label htmlFor="type">Type</label>
-                  <select
-                    id="type"
-                    // defaultValue={type.alcohol}
-                    value={ingredient.type}
-                    onChange={(e) =>
-                      setIngredient((prev) => ({
-                        ...prev,
-                        type: e.target.value,
-                      }))
-                    }
-                  >
-                    {(Object.keys(type) as (keyof typeof type)[]).map((key) => (
-                      <option value={key} key={key}>
-                        {key}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-            {ingredient.type === type.alcohol ? 
-            <Input
-              type="alcohol"
-              label="Alcohol percentage"
-              value={ingredient.alcoholPercentage || ''}
-              onChange={(value) => {
-                setIngredient((prev) => ({
-                  ...prev,
-                  alcoholPercentage: parseFloat(value),
-                }))
-              }}
-            />
-            : ''}
-
+            <div className="amount-box">
+              <Input
+                type="number"
+                label="Amount"
+                value={ingredient.amount || ''}
+                onChange={(value) => {
+                  setIngredient((prev) => ({
+                    ...prev,
+                    amount: parseFloat(value),
+                  }))
+                }}
+              />
+              <div className="form-input amount-select">
+                <select
+                  id="unit"
+                  // defaultValue={unit.cl}
+                  value={ingredient.unit}
+                  onChange={(e) =>
+                    setIngredient((prev) => ({
+                      ...prev,
+                      unit: e.target.value,
+                    }))
+                  }
+                >
+                  {(Object.keys(unit) as (keyof typeof unit)[]).map((key) => (
+                    <option value={key} key={key}>
+                      {key}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="form-input">
+              <label htmlFor="type">Type</label>
+              <select
+                id="type"
+                // defaultValue={type.alcohol}
+                value={ingredient.type}
+                onChange={(e) =>
+                  setIngredient((prev) => ({
+                    ...prev,
+                    type: e.target.value,
+                  }))
+                }
+              >
+                {(Object.keys(type) as (keyof typeof type)[]).map((key) => (
+                  <option value={key} key={key}>
+                    {key}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {ingredient.type === type.alcohol ? (
+              <Input
+                type="alcohol"
+                label="Alcohol percentage"
+                value={ingredient.alcoholPercentage || ''}
+                onChange={(value) => {
+                  setIngredient((prev) => ({
+                    ...prev,
+                    alcoholPercentage: parseFloat(value),
+                  }))
+                }}
+              />
+            ) : (
+              ''
+            )}
 
             <button
               className="btn"

@@ -167,13 +167,104 @@
       "ingredients": [
         {
           "name": "Tequila",
+          "alcoholPercentage": 37.1,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        }
+      ],
+      "alcoholContent": 37.1
+    },
+    {
+      "id": "b059d8de-7798-3cce-a5c8-7010757dc89d",
+      "name": "asd",
+      "ingredients": [
+        {
+          "name": "asd",
           "alcoholPercentage": 40,
-          "amount": 4,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        }
+      ],
+      "alcoholContent": 40
+    },
+    {
+      "id": "f7c9ec09-baa8-7548-f89e-68e7c757894e",
+      "name": "asdasd",
+      "ingredients": [
+        {
+          "name": "asdasd",
+          "alcoholPercentage": 40,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        }
+      ],
+      "alcoholContent": 40
+    },
+    {
+      "id": "40f63b34-1bd1-1426-627a-73772446101d",
+      "name": "aaaa",
+      "ingredients": [
+        {
+          "name": "aaa",
+          "alcoholPercentage": 40,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "vann",
+          "alcoholPercentage": 0,
+          "amount": 2,
           "unit": "cl",
           "type": "alcohol"
         }
       ],
       "alcoholContent": 20
+    },
+    {
+      "id": "bdc64634-1965-84ed-cfdf-2b54b3e906c4",
+      "name": "HEKJASHDKJAHSDKJHASd",
+      "ingredients": [
+        {
+          "name": "asd",
+          "alcoholPercentage": 37,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "asdasd",
+          "alcoholPercentage": 0,
+          "amount": 20,
+          "unit": "ml",
+          "type": "alcohol"
+        }
+      ],
+      "alcoholContent": 18.5
+    },
+    {
+      "id": "15eeea9a-afa6-593d-d89c-89e60c6b2fa9",
+      "name": "Sær prosent",
+      "ingredients": [
+        {
+          "name": "asd",
+          "alcoholPercentage": 37.45,
+          "amount": 2,
+          "unit": "ml",
+          "type": "alcohol"
+        },
+        {
+          "name": "sdfsdf",
+          "alcoholPercentage": 12.33,
+          "amount": 5,
+          "unit": "cl",
+          "type": "alcohol"
+        }
+      ],
+      "alcoholContent": 13
     }
   ]
 }

@@ -10,7 +10,7 @@
   flex-direction: column;
   gap: 1rem;
   background-color: var(--clr-bg-light);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   box-shadow:
     0 0 1rem rgba(0, 0, 0, 0.5),
     -1rem -1rem 0 0 var(--_accent);
@@ -53,11 +53,18 @@ h3 {
   padding: 0 1rem;
 }
 
-/**
-    INGREDIENTS
-**/
 h4 {
   font-size: large;
+  margin: 0;
+}
+
+.card-alcohol-content {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.card-alcohol-content p {
   margin: 0;
 }
 
