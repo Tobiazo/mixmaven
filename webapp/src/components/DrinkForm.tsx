@@ -5,6 +5,7 @@ import uuid from 'react-uuid'
 import { UseMutationResult, useQueryClient } from '@tanstack/react-query'
 import Input from './Input'
 import { useLocation } from 'react-router-dom'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 const DrinkForm = ({
   submit,
@@ -81,6 +82,8 @@ const DrinkForm = ({
     })
   }
 
+  const [animationRef] = useAutoAnimate<HTMLDivElement>()
+
   return (
     <>
       {submit.isError && <p>Error...</p>}
@@ -94,7 +97,7 @@ const DrinkForm = ({
         />
 
         <div className="ingredient-box">
-          <div className="ingredient-form">
+          <div className="ingredient-form" ref={animationRef}>
             <h4 style={{ textAlign: 'center' }}>
               {editIndex === null ? 'New' : 'Edit'} ingredient
             </h4>
@@ -108,6 +111,59 @@ const DrinkForm = ({
                 }))
               }}
             />
+                <div className="amount-box">
+                  <Input
+                    type="number"
+                    label="Amount"
+                    value={ingredient.amount || ''}
+                    onChange={(value) => {
+                      setIngredient((prev) => ({
+                        ...prev,
+                        amount: parseFloat(value),
+                      }))
+                    }}
+                  />
+                  <div className="form-input amount-select">
+                    <select
+                      id="unit"
+                      // defaultValue={unit.cl}
+                      value={ingredient.unit}
+                      onChange={(e) =>
+                        setIngredient((prev) => ({
+                          ...prev,
+                          unit: e.target.value,
+                        }))
+                      }
+                    >
+                      {(Object.keys(unit) as (keyof typeof unit)[]).map((key) => (
+                        <option value={key} key={key}>
+                          {key}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <div className="form-input">
+                  <label htmlFor="type">Type</label>
+                  <select
+                    id="type"
+                    // defaultValue={type.alcohol}
+                    value={ingredient.type}
+                    onChange={(e) =>
+                      setIngredient((prev) => ({
+                        ...prev,
+                        type: e.target.value,
+                      }))
+                    }
+                  >
+                    {(Object.keys(type) as (keyof typeof type)[]).map((key) => (
+                      <option value={key} key={key}>
+                        {key}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+            {ingredient.type === type.alcohol ? 
             <Input
               type="alcohol"
               label="Alcohol percentage"
@@ -119,59 +175,8 @@ const DrinkForm = ({
                 }))
               }}
             />
-            <div className="amount-box">
-              <Input
-                type="number"
-                label="Amount"
-                value={ingredient.amount || ''}
-                onChange={(value) => {
-                  setIngredient((prev) => ({
-                    ...prev,
-                    amount: parseFloat(value),
-                  }))
-                }}
-              />
-              <div className="form-input amount-select">
-                <select
-                  id="unit"
-                  // defaultValue={unit.cl}
-                  value={ingredient.unit}
-                  onChange={(e) =>
-                    setIngredient((prev) => ({
-                      ...prev,
-                      unit: e.target.value,
-                    }))
-                  }
-                >
-                  {(Object.keys(unit) as (keyof typeof unit)[]).map((key) => (
-                    <option value={key} key={key}>
-                      {key}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
+            : ''}
 
-            <div className="form-input">
-              <label htmlFor="type">Type</label>
-              <select
-                id="type"
-                // defaultValue={type.alcohol}
-                value={ingredient.type}
-                onChange={(e) =>
-                  setIngredient((prev) => ({
-                    ...prev,
-                    type: e.target.value,
-                  }))
-                }
-              >
-                {(Object.keys(type) as (keyof typeof type)[]).map((key) => (
-                  <option value={key} key={key}>
-                    {key}
-                  </option>
-                ))}
-              </select>
-            </div>
 
             <button
               className="btn"

@@ -107,7 +107,7 @@
 }
 
 .checkbox input:checked ~ .checkbox-checkmark {
-  background-color: var(--clr-cyan-300);
+  background-color: var(--clr-blue-300);
 }
 
 .checkbox.alcohol input:checked ~ .checkbox-checkmark {
@@ -115,7 +115,7 @@
 }
 
 .checkbox:hover input:checked ~ .checkbox-checkmark {
-  background-color: var(--clr-cyan-400);
+  background-color: var(--clr-blue-400);
 }
 
 .checkbox.alcohol:hover input:checked ~ .checkbox-checkmark {

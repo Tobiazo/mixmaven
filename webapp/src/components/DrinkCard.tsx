@@ -7,7 +7,7 @@ import {
   ExpandMore,
   ExpandLess,
 } from '@mui/icons-material'
-import { Drink } from '../types'
+import { Drink, type } from '../types'
 import '../styles/DrinkCard.css'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { deleteDrink } from '../api/drinks'
@@ -54,9 +54,9 @@ const DrinkCard = ({ content, id, expandAll }: Props) => {
         <LocalBar fontSize="large" />
         <h3>{content.name}</h3>
         {expand ? (
-          <ExpandMore fontSize="medium" />
-        ) : (
           <ExpandLess fontSize="medium" />
+        ) : (
+          <ExpandMore fontSize="medium" />
         )}
       </div>
       {expand && (
@@ -68,7 +68,7 @@ const DrinkCard = ({ content, id, expandAll }: Props) => {
                 key={'ingredient' + ingredient_index}
                 className="ingredient-item"
               >
-                {`${ingredient.name}, ${ingredient.amount + ingredient.unit}`}
+                {`${ingredient.amount + ingredient.unit} ${ingredient.name} ${ingredient.type === type.alcohol ? ingredient.alcoholPercentage + '%' : ''} `}
               </li>
             ))}
           </ul>
