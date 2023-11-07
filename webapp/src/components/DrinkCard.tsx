@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import {
   LocalBar,
   DeleteOutline,
   Edit,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
+  ExpandMore,
+  ExpandLess,
 } from '@mui/icons-material'
 import { Drink } from '../types'
 import '../styles/DrinkCard.css'
@@ -16,12 +16,13 @@ import { Link } from 'react-router-dom'
 type Props = {
   content: Drink
   id: string
+  expandAll: boolean
 }
 
-const DrinkCard = ({ content, id }: Props) => {
-  const [display, setDisplay] = useState<boolean>(false)
+const DrinkCard = ({ content, id, expandAll }: Props) => {
+  const [expand, setExpand] = useState<boolean>(false)
 
-  const [boxRef] = useAutoAnimate<HTMLDivElement>()
+  const [animateRef] = useAutoAnimate<HTMLDivElement>()
   const queryClient = useQueryClient()
 
   const deleteMutation = useMutation({
@@ -30,33 +31,35 @@ const DrinkCard = ({ content, id }: Props) => {
       queryClient.setQueryData(['drinks'], (prev: Drink[]) => {
         const copy = [...prev]
         const filtered = copy.filter((drink) => {
-          // console.log(drink.id, data.id);
           return drink.id !== id
         })
-        // console.log(filtered);
         return filtered
       })
       queryClient.invalidateQueries({ queryKey: ['drinks'], exact: true })
     },
   })
 
+  useEffect(() => {
+    setExpand(expandAll)
+  }, [expandAll])
+
   return (
     <div
       className={`drink-card type-${
         content.alcoholContent >= 0.7 && 'alcohol'
       }`}
-      ref={boxRef}
+      ref={animateRef}
     >
-      <div className="card-title" onClick={() => setDisplay((val) => !val)}>
+      <div className="card-title" onClick={() => setExpand(!expand)}>
         <LocalBar fontSize="large" />
         <h3>{content.name}</h3>
-        {display ? (
-          <KeyboardArrowUp fontSize="medium" />
+        {expand ? (
+          <ExpandMore fontSize="medium" />
         ) : (
-          <KeyboardArrowDown fontSize="medium" />
+          <ExpandLess fontSize="medium" />
         )}
       </div>
-      {display && (
+      {expand && (
         <div className="card-content">
           <h4>Ingredients:</h4>
           <ul>

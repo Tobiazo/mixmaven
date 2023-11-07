@@ -55,7 +55,30 @@ const DrinkForm = ({
     copy[editIndex] = ingredient
     setIngredientList(copy)
     setEditIndex(null)
-    console.log('Ingredient edited')
+    setIngredient({
+      ...ingredient,
+      name: '',
+      alcoholPercentage: 0,
+      amount: 0,
+    })
+  }
+
+  const handleSubmit = () => {
+    const newDrink = {
+      id: id || uuid(), // creates unique ID if not provided
+      name: name,
+      ingredients: ingredientList,
+      // TODO: calculate alcohol content
+      alcoholContent: 20,
+    }
+    submit.mutate(newDrink, {
+      onSuccess: () => {
+        if (location.pathname.includes('/edit/'))
+          queryClient.setQueryData(['drinks'], (prev: Drink[]) =>
+            prev.map((drink) => (drink.id === id ? newDrink : drink))
+          )
+      },
+    })
   }
 
   return (
@@ -72,7 +95,9 @@ const DrinkForm = ({
 
         <div className="ingredient-box">
           <div className="ingredient-form">
-            <h4 style={{ textAlign: 'center' }}>New ingredient</h4>
+            <h4 style={{ textAlign: 'center' }}>
+              {editIndex === null ? 'New' : 'Edit'} ingredient
+            </h4>
             <Input
               label="Ingredient name"
               value={ingredient.name}
@@ -172,29 +197,7 @@ const DrinkForm = ({
           className="btn"
           id="create-btn"
           disabled={disableCreate || submit.status === 'pending'}
-          onClick={() => {
-            const newDrink = {
-              id: id || uuid(), // creates unique ID if not provided
-              name: name,
-              ingredients: ingredientList,
-              // TODO: calculate alcohol content
-              alcoholContent: 20,
-            }
-            submit.mutate(
-              newDrink,
-              {
-                onSuccess: () => {
-                  if (location.pathname.includes('/edit/')) {
-                    queryClient.setQueryData(['drinks'], (prev: Drink[]) => {
-                      return prev.map((drink) =>
-                        drink.id === id ? newDrink : drink
-                      )
-                    })
-                  }
-                },
-              }
-            )
-          }}
+          onClick={handleSubmit}
         >
           {submit.status === 'pending'
             ? 'Loading...'

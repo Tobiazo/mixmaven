@@ -61,12 +61,14 @@ h4 {
   margin: 0;
 }
 
-ul {
+.card-content ul {
   margin: 0;
   list-style: inside;
+  overflow: scroll;
+  max-height: 10rem;
 }
 
-li {
+.card-content li {
   text-align: justify;
   width: 80%;
 }
