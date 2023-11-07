@@ -52,9 +52,7 @@ const DrinkCard = ({ content, id, expandAll }: Props) => {
     >
       <div className="card-title" onClick={() => setExpand(!expand)}>
         <LocalBar fontSize="large" />
-        <h3>
-          {content.name}
-        </h3>
+        <h3>{content.name}</h3>
         {expand ? (
           <ExpandLess fontSize="medium" />
         ) : (
@@ -63,7 +61,7 @@ const DrinkCard = ({ content, id, expandAll }: Props) => {
       </div>
       {expand && (
         <div className="card-content">
-          <div className='card-alcohol-content'>
+          <div className="card-alcohol-content">
             <h4>Alcohol: </h4>
             <p>{Math.round(content.alcoholContent * 10) / 10}%</p>
           </div>

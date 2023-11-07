@@ -265,6 +265,27 @@
         }
       ],
       "alcoholContent": 13
+    },
+    {
+      "id": "acbf2c4d-5bcb-91a5-0568-cf4b72414619",
+      "name": "Hei",
+      "ingredients": [
+        {
+          "name": "123",
+          "alcoholPercentage": 34.5,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "asd",
+          "alcoholPercentage": 2.7,
+          "amount": 37,
+          "unit": "ml",
+          "type": "alcohol"
+        }
+      ],
+      "alcoholContent": 13.857894736842102
     }
   ]
 }

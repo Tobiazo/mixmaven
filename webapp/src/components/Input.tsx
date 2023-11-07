@@ -23,7 +23,7 @@ const Input = ({
       setError(false)
     }
 
-    const regex =/^\d*\.?\d{0,1}$/ // Only numbers and max one dot and max 1 decimal
+    const regex = /^\d*\.?\d{0,1}$/ // Only numbers and max one dot and max 1 decimal
     if (
       (type === 'number' || type === 'alcohol') &&
       !regex.test(e.target.value)
