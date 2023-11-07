@@ -27,10 +27,11 @@
   --clr-yellow-300: rgb(255, 244, 204);
   --clr-purple-400: rgb(223, 161, 253);
   --clr-purple-300: rgb(239, 207, 252);
-  --clr-cyan-300: rgb(171, 249, 171);
-  --clr-cyan-400: rgb(150, 220, 150);
+  --clr-blue-300: rgb(165, 226, 249);
+  --clr-blue-400: rgb(101, 204, 241);
 }
 
 body {
   margin: 0;
+  overflow-y: scroll;
 }

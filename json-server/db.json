@@ -6,164 +6,17 @@
       "ingredients": [
         {
           "name": "Vodka",
-          "alcoholPercentage": 30,
           "amount": 2,
+          "alcoholPercentage": 40,
           "unit": "cl",
           "type": "alchol"
         },
         {
           "name": "Redbull",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
-      "id": "e3a5d4b5-13f8-a774-598e-b6f623ad4952",
-      "name": "Saft",
-      "ingredients": [
-        {
-          "name": "Vann",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
-        },
-        {
-          "name": "Saft",
-          "alcoholPercentage": 0,
-          "amount": 50,
-          "unit": "cl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "1ca30066-e7ef-7fa5-321e-e7da904b0bbf",
-      "name": "Many ingredients",
-      "ingredients": [
-        {
-          "name": "Vokda",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
-      "id": "8a13948d-77ed-5d9d-109d-a8512b9d894c",
-      "name": "Brus",
-      "ingredients": [
-        {
-          "name": "Water",
-          "alcoholPercentage": 0,
           "amount": 4,
+          "alcoholPercentage": 0,
           "unit": "cl",
           "type": "mixer"
-        },
-        {
-          "name": "CO2",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "extras"
-        },
-        {
-          "name": "Sugar",
-          "alcoholPercentage": 0,
-          "amount": 4,
-          "unit": "cl",
-          "type": "extras"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "d39ec17f-c102-9caa-e316-f1a8a23e7d71",
-      "name": "Jäger",
-      "ingredients": [
-        {
-          "name": "Jäger",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
         }
       ],
       "alcoholContent": 20
@@ -183,13 +36,125 @@
       "alcoholContent": 20
     },
     {
-      "id": "04689203-1825-a958-88e6-b081d65811fd",
-      "name": "Milk",
+      "id": "63e8f1fd-1270-e3e1-f4b1-d6f6606b1484",
+      "name": "Whisky Sour",
       "ingredients": [
         {
-          "name": "Milk",
-          "alcoholPercentage": 0,
+          "name": "Whisky",
+          "alcoholPercentage": 40,
           "amount": 4,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Lemonjuice",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "mixer"
+        },
+        {
+          "name": "Sugar sirup",
+          "alcoholPercentage": 0,
+          "amount": 1,
+          "unit": "cl",
+          "type": "mixer"
+        },
+        {
+          "name": "Orange peel",
+          "alcoholPercentage": 0,
+          "amount": 1,
+          "unit": "dl",
+          "type": "extras"
+        }
+      ],
+      "alcoholContent": 20
+    },
+    {
+      "id": "d4d04c8f-18c8-94d3-6a09-73dbdb2deba3",
+      "name": "Orange juice",
+      "ingredients": [
+        {
+          "name": "Orange juice",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "dl",
+          "type": "mixer"
+        }
+      ],
+      "alcoholContent": 0
+    },
+    {
+      "id": "d7cdaa74-7789-ca96-3040-68eacb867fe2",
+      "name": "Moscow mule",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "amount": 4.5,
+          "alcoholPercentage": 40,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Ginger beer",
+          "amount": 12,
+          "alcoholPercentage": null,
+          "unit": "cl",
+          "type": "mixer"
+        },
+        {
+          "name": "Lime",
+          "amount": 1,
+          "alcoholPercentage": 0,
+          "unit": "cl",
+          "type": "extras"
+        },
+        {
+          "name": "Mint",
+          "amount": 2,
+          "alcoholPercentage": 0,
+          "unit": "cl",
+          "type": "extras"
+        }
+      ],
+      "alcoholContent": 20
+    },
+    {
+      "id": "cd52dab4-ca6d-c2cd-071a-36594a2094e5",
+      "name": "Redbull",
+      "ingredients": [
+        {
+          "name": "Redbull",
+          "alcoholPercentage": 0,
+          "amount": 3,
+          "unit": "dl",
+          "type": "mixer"
+        }
+      ],
+      "alcoholContent": 0
+    },
+    {
+      "id": "899435de-67e2-3f83-88d8-9e252087ad73",
+      "name": "Espresso martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 40,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Coffe liquor",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "mixer"
+        },
+        {
+          "name": "Espresso",
+          "alcoholPercentage": 0,
+          "amount": 1,
           "unit": "cl",
           "type": "mixer"
         }
@@ -197,13 +162,13 @@
       "alcoholContent": 20
     },
     {
-      "id": "0dba6e22-bcf1-5b95-f696-87d0812c0068",
-      "name": "test",
+      "id": "1dd4bcff-b6d7-b44d-fa78-ccbfe28c0809",
+      "name": "Tequila",
       "ingredients": [
         {
-          "name": "t",
-          "alcoholPercentage": 0,
-          "amount": 2,
+          "name": "Tequila",
+          "alcoholPercentage": 40,
+          "amount": 4,
           "unit": "cl",
           "type": "alcohol"
         }
