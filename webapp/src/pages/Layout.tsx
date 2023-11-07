@@ -1,4 +1,4 @@
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link, NavLink } from 'react-router-dom'
 import { FavoriteBorderOutlined } from '@mui/icons-material'
 import '../styles/Layout.css'
 
@@ -6,13 +6,15 @@ const Layout = () => {
   return (
     <div className="layout-container">
       <nav>
-        <h1>MiXMaven</h1>
+        <Link to="/">
+          <h1>MiXMaven</h1>
+        </Link>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/new">New drink</Link>
+            <NavLink to="/new">New drink</NavLink>
           </li>
         </ul>
       </nav>
@@ -22,7 +24,12 @@ const Layout = () => {
       </div>
 
       <div className="layout-footer">
-        Made with <FavoriteBorderOutlined /> by GR2331
+        <a
+          href="https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2331/gr2331"
+          target="_blank"
+        >
+          Made with <FavoriteBorderOutlined /> by GR2331
+        </a>
       </div>
     </div>
   )

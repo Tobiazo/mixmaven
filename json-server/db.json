@@ -1,118 +1,6 @@
 {
   "drinks": [
     {
-      "id": "c5859006-9c3d-3e60-4346-764494f9da51",
-      "name": "Vodka",
-      "ingredients": [
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
-      "id": "7fed5e93-3af9-b27c-4e59-f7997c2325a5",
-      "name": "hei",
-      "ingredients": [
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
-      "id": "c0d3a442-36b2-8038-27c6-cf81f1935825",
-      "name": "10000",
-      "ingredients": [
-        {
-          "name": "1",
-          "amount": 1,
-          "alcoholPercentage": 0,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
-      "id": "ff10edf7-8f22-d704-d197-4f2ce31ed211",
-      "name": "5",
-      "ingredients": [
-        {
-          "name": "5",
-          "alcoholPercentage": 0,
-          "amount": 5,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "fa52db09-e2ff-cf36-ab7c-54d6f771aa65",
-      "name": "77777777",
-      "ingredients": [
-        {
-          "name": "7",
-          "alcoholPercentage": 0,
-          "amount": 7,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
-      "id": "4a2627ce-455c-78d7-e785-598d11a7e2c4",
-      "name": "8",
-      "ingredients": [
-        {
-          "name": "8",
-          "alcoholPercentage": 0,
-          "amount": 8,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 0
-    },
-    {
-      "id": "81076a43-c6b4-2c1c-a9f5-316ae6a4ebd8",
-      "name": "Test2",
-      "ingredients": [
-        {
-          "name": "1",
-          "alcoholPercentage": 0,
-          "amount": 1,
-          "unit": "cl",
-          "type": "alchol"
-        },
-        {
-          "name": "2",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alchol"
-        },
-        {
-          "name": "2",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alchol"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
       "id": "2fb3eb05-2156-44de-9c91-dceb60fc10b4",
       "name": "Vodka redbull",
       "ingredients": [
@@ -129,6 +17,195 @@
           "amount": 2,
           "unit": "cl",
           "type": "mixer"
+        }
+      ],
+      "alcoholContent": 20
+    },
+    {
+      "id": "e3a5d4b5-13f8-a774-598e-b6f623ad4952",
+      "name": "Saft",
+      "ingredients": [
+        {
+          "name": "Vann",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "dl",
+          "type": "mixer"
+        },
+        {
+          "name": "Saft",
+          "alcoholPercentage": 0,
+          "amount": 50,
+          "unit": "cl",
+          "type": "mixer"
+        }
+      ],
+      "alcoholContent": 0
+    },
+    {
+      "id": "1ca30066-e7ef-7fa5-321e-e7da904b0bbf",
+      "name": "Many ingredients",
+      "ingredients": [
+        {
+          "name": "Vokda",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        }
+      ],
+      "alcoholContent": 20
+    },
+    {
+      "id": "8a13948d-77ed-5d9d-109d-a8512b9d894c",
+      "name": "Brus",
+      "ingredients": [
+        {
+          "name": "Water",
+          "alcoholPercentage": 0,
+          "amount": 4,
+          "unit": "cl",
+          "type": "mixer"
+        },
+        {
+          "name": "CO2",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "extras"
+        },
+        {
+          "name": "Sugar",
+          "alcoholPercentage": 0,
+          "amount": 4,
+          "unit": "cl",
+          "type": "extras"
+        }
+      ],
+      "alcoholContent": 0
+    },
+    {
+      "id": "d39ec17f-c102-9caa-e316-f1a8a23e7d71",
+      "name": "Jäger",
+      "ingredients": [
+        {
+          "name": "Jäger",
+          "alcoholPercentage": 40,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        }
+      ],
+      "alcoholContent": 20
+    },
+    {
+      "id": "edfa9555-3f81-54b0-909b-94afbdb7cd2a",
+      "name": "Beer",
+      "ingredients": [
+        {
+          "name": "Beer",
+          "alcoholPercentage": 4,
+          "amount": 4,
+          "unit": "cl",
+          "type": "alcohol"
+        }
+      ],
+      "alcoholContent": 20
+    },
+    {
+      "id": "04689203-1825-a958-88e6-b081d65811fd",
+      "name": "Milk",
+      "ingredients": [
+        {
+          "name": "Milk",
+          "alcoholPercentage": 0,
+          "amount": 4,
+          "unit": "cl",
+          "type": "mixer"
+        }
+      ],
+      "alcoholContent": 20
+    },
+    {
+      "id": "0dba6e22-bcf1-5b95-f696-87d0812c0068",
+      "name": "test",
+      "ingredients": [
+        {
+          "name": "t",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
         }
       ],
       "alcoholContent": 20

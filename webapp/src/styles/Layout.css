@@ -13,11 +13,17 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 4rem;
-  background-color: rgba(135, 207, 235, 0.4);
+  /* background-color: rgba(135, 207, 235, 0.4); */
   transition: 0.5s ease;
 }
 
-nav h1 {
+nav a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+nav a h1 {
   font-size: 4rem;
   font-family: 'Major Mono Display', monospace;
   margin: 0;
@@ -37,28 +43,50 @@ nav li {
 
 nav li a {
   padding: 1rem;
-  text-decoration: none;
   border-radius: 0.2rem;
   transition: 0.2s ease;
   color: black;
   font-size: larger;
+  font-weight: 600;
   /* background-color: rgba(135, 207, 235, 0.8); */
 
   &:active {
     transform: scale(0.95);
   }
   &:hover {
-    color: #222;
+    color: #555;
+  }
+}
+
+nav li a.active {
+  color: skyblue;
+  &:hover {
+    color: rgb(119, 190, 218);
   }
 }
 
 .layout-footer {
+  text-align: center;
+  width: 100%;
+  padding: 1rem 0;
+  /* background-color: #f2f2f2; */
+}
+
+.layout-footer a {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
-  text-align: center;
-  width: 100%;
-  padding: 1rem 0;
-  background-color: #f2f2f2;
+  text-decoration: none;
+  color: black;
+  transition: 0.25s ease;
+
+  &:hover {
+    color: skyblue;
+  }
+}
+
+.layout-footer svg {
+  color: skyblue;
+  transition: 0.25s ease;
 }

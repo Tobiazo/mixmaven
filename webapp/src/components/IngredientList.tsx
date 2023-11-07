@@ -13,7 +13,7 @@ const IngredientList = ({
   setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>
   setEditIndex: React.Dispatch<React.SetStateAction<number | null>>
 }) => {
-  const [animateRef] = useAutoAnimate<HTMLUListElement>()
+  const [animateRef] = useAutoAnimate<HTMLDivElement>()
 
   const handleDelete = (index: number) => {
     const copy = [...ingredients]
@@ -22,42 +22,44 @@ const IngredientList = ({
   }
 
   return (
-    <ul className="ingredients-list" ref={animateRef}>
+    <div className="ingredients-list" ref={animateRef}>
       <h4>Added ingredients</h4>
-      {ingredients.length === 0 ? (
-        <li>
-          <p>So empty...</p>
-        </li>
-      ) : (
-        ingredients.map((ing, index) => (
-          <li
-            key={index}
-            onClick={() => {
-              setEditIndex(index)
-              setIngredient({
-                name: ing.name,
-                amount: ing.amount,
-                alcoholPercentage: ing.alcoholPercentage,
-                unit: ing.unit,
-                type: ing.type,
-              })
-            }}
-          >
-            <p>{ing.amount + ing.unit}</p>
-            <p className="capitalize">{ing.name}</p>
-            <p>{ing.alcoholPercentage || 0}%</p>
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                handleDelete(index)
+      <ul>
+        {ingredients.length === 0 ? (
+          <li>
+            <p>So empty...</p>
+          </li>
+        ) : (
+          ingredients.map((ing, index) => (
+            <li
+              key={index}
+              onClick={() => {
+                setEditIndex(index)
+                setIngredient({
+                  name: ing.name,
+                  amount: ing.amount,
+                  alcoholPercentage: ing.alcoholPercentage,
+                  unit: ing.unit,
+                  type: ing.type,
+                })
               }}
             >
-              <DeleteOutline />
-            </button>
-          </li>
-        ))
-      )}
-    </ul>
+              <p>{ing.amount + ing.unit}</p>
+              <p className="capitalize">{ing.name}</p>
+              <p>{ing.alcoholPercentage || 0}%</p>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleDelete(index)
+                }}
+              >
+                <DeleteOutline />
+              </button>
+            </li>
+          ))
+        )}
+      </ul>
+    </div>
   )
 }
 

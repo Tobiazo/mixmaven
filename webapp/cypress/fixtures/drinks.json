@@ -40,5 +40,47 @@
       }
     ],
     "alcoholContent": 10
+  },
+  {
+    "id": "c5859006-9c3d-3e60-4346-764494f9da52",
+    "name": "Christmas soda",
+    "ingredients": [
+      {
+        "name": "Carbonated water",
+        "alcoholPercentage": 0,
+        "amount": 4,
+        "unit": "dl",
+        "type": "mixer"
+      },
+      {
+        "name": "Sugar",
+        "alcoholPercentage": 0,
+        "amount": 5,
+        "unit": "cl",
+        "type": "extras"
+      },
+      {
+        "name": "Aroma",
+        "alcoholPercentage": 0,
+        "amount": 2,
+        "unit": "cl",
+        "type": "extras"
+      },
+      {
+        "name": "Color (E150d)",
+        "alcoholPercentage": 0,
+        "amount": 1,
+        "unit": "cl",
+        "type": "extras"
+      },
+      {
+        "name": "Natriumbenzonat",
+        "alcoholPercentage": 0,
+        "amount": 0.5,
+        "unit": "cl",
+        "type": "extras"
+      }
+    ],
+    "alcoholContent": 0
   }
 ]

@@ -2,7 +2,7 @@
 
 describe('new drink page', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/new')
+    cy.visit(`http://localhost:${Cypress.env('CLIENT_PORT') || 3000}/new`)
     cy.intercept('POST', '**/drinks', {
       statusCode: 201,
     })
