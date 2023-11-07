@@ -17,6 +17,7 @@ export enum unit {
   dl = 'dl',
   cl = 'cl',
   ml = 'ml',
+  g = 'g',
 }
 
 export enum type {
