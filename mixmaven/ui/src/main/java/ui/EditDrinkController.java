@@ -2,7 +2,6 @@ package ui;
 
 import core.Ingredient;
 import core.Drink;
-import json.DataHandler;
 
 import static core.Constants.VALIDTYPES;
 import static core.Constants.VALIDUNITS;
@@ -35,7 +34,6 @@ public class EditDrinkController {
 	private ChoiceBox<String> unitChoiceBox;
 	private List<Ingredient> selectedIngredients;
 	private MixMavenController mixMavenController;
-    private DataHandler dataHandler;
 
 	public EditDrinkController(MixMavenController mixMavenController) {
 		this.mixMavenController = mixMavenController;
@@ -47,21 +45,22 @@ public class EditDrinkController {
 	 */
 	@FXML
 	public void initialize() {
-        dataHandler = mixMavenController.getDataHandler();
 		unitChoiceBox.getItems().addAll(VALIDUNITS);
 		typeChoiceBox.getItems().addAll(VALIDTYPES);
 		unitChoiceBox.setValue("Unit of measurement");
 		typeChoiceBox.setValue("Ingredient Type");
 
 		selectedIngredients = new ArrayList<>(
-				mixMavenController
-                .getMixMavenModel()
-                .getDrink(mixMavenController.getDrinkId())
-				.getIngredients());
+			mixMavenController
+			.getDataAccess()
+            .getModel()
+			.getDrink(mixMavenController.getDrinkId())
+			.getIngredients());
 
 		drinkNameField
 				.setText(mixMavenController
-				.getMixMavenModel()
+				.getDataAccess()
+                .getModel()
 				.getDrink(mixMavenController.getDrinkId())
 				.getName());
 
@@ -72,6 +71,7 @@ public class EditDrinkController {
 
 		ingredientList.setOnMouseClicked(e -> {
 			int index = ingredientList.getSelectionModel().getSelectedIndex();
+			if (index < 0) return;
 			Ingredient ingredient = selectedIngredients.get(index);
 
 			ingredientNameField.setText(ingredient.getName());
@@ -259,9 +259,9 @@ public class EditDrinkController {
 		} else if (drinkNameField.getText() == null || drinkNameField.getText().trim().isEmpty()) {
 			errorLabel.setText("Write a Drink Name");
 		} else {
-			mixMavenController.getMixMavenModel().replaceDrink(mixMavenController.getDrinkId(),
+			System.out.println("ID" + mixMavenController.getDrinkId());
+			mixMavenController.getDataAccess().editDrink(mixMavenController.getDrinkId(),
 					new Drink(drinkNameField.getText(), selectedIngredients));
-            dataHandler.saveModel();
 			mixMavenController.showBrowseDrinks();
 		}
 	}

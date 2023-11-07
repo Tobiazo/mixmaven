@@ -44,7 +44,6 @@ public class MixMavenModel {
     }
 
     public final void replaceDrink(String oldDrinkId, Drink newDrink) {
-        int index = drinks.indexOf(getDrink(oldDrinkId));
-        drinks.set(index, newDrink);
+        drinks.set(drinks.indexOf(getDrink(oldDrinkId)), newDrink);
     }
 }

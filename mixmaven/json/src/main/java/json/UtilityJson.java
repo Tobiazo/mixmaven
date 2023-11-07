@@ -27,7 +27,7 @@ public class UtilityJson {
 
 	/**
 	 * @param file
-	 * @return A list of all drinks on file
+	 * @return A MixMavenModel object read from persistance.
 	 */
 	public static MixMavenModel loadObjectFromJson(File file) {
 		try (FileReader reader = new FileReader(file, StandardCharsets.UTF_8)) {
