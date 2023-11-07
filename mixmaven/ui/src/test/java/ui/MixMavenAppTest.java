@@ -35,7 +35,7 @@ public class MixMavenAppTest extends ApplicationTest {
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("MixMaven.fxml"));
         root = fxmlLoader.load();
         MixMavenController controller = fxmlLoader.<MixMavenController>getController();
-        controller.getDataHandler().setFilePath("Test.json");
+        controller.getDataAccess().setFilePath("Test.json");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("styles/MixMaven.css").toExternalForm());
@@ -176,8 +176,8 @@ public class MixMavenAppTest extends ApplicationTest {
         Assertions.assertTrue(searchDrinks(createdDrink));
     }
 
-    /* 
-     * Testing creating different drinks
+    /**
+     * Testing creating different drinks.
      */
     @ParameterizedTest
     @MethodSource
@@ -212,7 +212,7 @@ public class MixMavenAppTest extends ApplicationTest {
     }
 
     /**
-     * Testing delete button
+     * Testing delete button.
      */
     @Test
     public void testDeleteDrink() {

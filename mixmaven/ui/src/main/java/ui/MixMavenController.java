@@ -1,32 +1,45 @@
 package ui;
 
-import json.DataHandler;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
-import java.util.List;
-import core.MixMavenModel;
-import core.Drink;
+import java.net.URI;
 
 public class MixMavenController {
 
+  //TODO:
+  //Logging and feedback.
+
   @FXML private StackPane contentPane;
   private String drinkId;
-  private DataHandler dataHandler;
   private final AddDrinkController addDrinkController = new AddDrinkController(this);
   private final BrowseDrinksController browseDrinksController = new BrowseDrinksController(this);
   private final EditDrinkController editDrinkController = new EditDrinkController(this);
+  private DataAccess dataAccess;
+  
 
   /**
    * Loads drinks from file Shows the BrowseDrinks page with the loaded drinks.
    */
   public void initialize() {
-    this.dataHandler = DataHandler.getInstance();
+    if (!syncWithServer()) this.dataAccess = new DirectDataAccess();
     showBrowseDrinks();
+  }
+
+  private boolean syncWithServer() {
+    try {
+        URI baseURI = new URI("http://10.22.14.153:8000/drinks/");
+        this.dataAccess = new RemoteDataAccess(baseURI);
+        System.out.println("Connected to server @" + baseURI);
+        return true;
+    } catch (Exception e) {
+        // TODO: handle exception
+        System.out.println("Couldnt connect to server.");
+        return false;
+    }
   }
 
   /**
@@ -94,23 +107,15 @@ public class MixMavenController {
     return this.drinkId;
   }
 
-  public final DataHandler getDataHandler() {
-    return dataHandler;
-}
-
-public final MixMavenModel getMixMavenModel() {
-  return dataHandler.getModel();
-}
-
-public final List<Drink> getDrinks() {
-    return dataHandler.loadModel().getDrinks();
-}
-
 /**
    * setter for drinkId.
    * @param drinkId
    */
   private void setDrinkId(String drinkId) {
     this.drinkId = drinkId;
+  }
+
+  public final DataAccess getDataAccess() {
+    return dataAccess;
   }
 }

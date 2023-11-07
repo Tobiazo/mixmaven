@@ -32,7 +32,7 @@ public final class BrowseDrinksController {
     }
 
     public void initialize() {
-        drinks = mixMavenController.getMixMavenModel().getDrinks();
+        drinks = mixMavenController.getDataAccess().getDrinks();
         System.out.println("SE HER:" + drinks);
         browseDrinksPane.setPrefSize(SCENE_WIDTH, Constants.CONTENT_HEIGHT);
         scrollPane.setLayoutX((SCENE_WIDTH - scrollPane.getPrefWidth()) / 2);
@@ -62,8 +62,7 @@ public final class BrowseDrinksController {
             editButton.setUserData(drinkId); // The drink to be edited when the button is pressed
 
             deleteBtn.setOnAction(event -> {
-                mixMavenController.getMixMavenModel().removeDrink((String) deleteBtn.getUserData());
-                mixMavenController.getDataHandler().saveModel();
+                mixMavenController.getDataAccess().deleteDrink((String) deleteBtn.getUserData());
                 mixMavenController.showBrowseDrinks();
             });
 

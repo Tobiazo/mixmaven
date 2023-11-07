@@ -4,7 +4,6 @@ import core.Ingredient;
 import core.Drink;
 import static core.Constants.VALIDUNITS;
 import static core.Constants.VALIDTYPES;
-import json.DataHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,6 @@ public final class AddDrinkController {
 	@FXML private ChoiceBox<String> unitChoiceBox;
 	private List<Ingredient> selectedIngredients = new ArrayList<>();
 	private MixMavenController mixMavenController;
-    private DataHandler dataHandler;
 
 	public AddDrinkController(MixMavenController mixMavenController) {
 		this.mixMavenController = mixMavenController;
@@ -37,7 +35,6 @@ public final class AddDrinkController {
 	 */
 	@FXML
 	public void initialize() {
-        dataHandler = mixMavenController.getDataHandler();
 		unitChoiceBox.setValue("Unit of Measurement");
 		unitChoiceBox.getItems().addAll(VALIDUNITS);
 		typeChoiceBox.setValue("Ingredient Type");
@@ -144,9 +141,8 @@ public final class AddDrinkController {
 		} else if (drinkNameField.getText() == null || drinkNameField.getText().trim().isEmpty()) {
 			errorLabel.setText("Write a Drink Name");
 		} else {
-			mixMavenController.getMixMavenModel().
+			mixMavenController.getDataAccess().
 			addDrink(new Drink(drinkNameField.getText(), selectedIngredients));
-            dataHandler.saveModel();
 			mixMavenController.showBrowseDrinks();
 		}
 	}
