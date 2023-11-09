@@ -22,20 +22,39 @@ public class MixMavenController {
     @Autowired
     private MixMavenService mixMavenService;
 
+    /**
+     * Retrieve the MixMaven model.
+     *
+     * @return The MixMavenModel instance.
+     */
     private MixMavenModel getMixMavenModel()  {
         return mixMavenService.getMixMavenModel();
     }
 
+    /**
+     * Automatically save the MixMavenModel.
+     */
     private void autoSaveMixMaven() {
         mixMavenService.autoSaveMixMaven();
     }
 
+    /**
+     * Retrieve the mixMavenModel containing drinks.
+     *
+     * @return A list of Drink objects.
+     */
     @GetMapping("/drinks")
     public List<Drink> drinks() {
-        // return getMixMavenModel().getDrinks();
         return getMixMavenModel().getDrinks();
     }
 
+    /**
+     * Update a drink by its ID.
+     *
+     * @param id The ID of the drink to replace.
+     * @param drinkstring The JSON representation of the new drink.
+     * @return True if the drink was successfully replaced.
+     */
     @PutMapping(path = "/drinks/{id}")
     public boolean replaceDrink(@PathVariable("id") String id, @RequestBody String drinkstring) {
         Drink drink = mixMavenService.deserializeDrink(drinkstring);
@@ -44,6 +63,12 @@ public class MixMavenController {
         return true;
     }
 
+    /**
+     * Delete a drink by its ID.
+     *
+     * @param id The ID of the drink to delete.
+     * @return True if the drink was successfully deleted.
+     */
     @DeleteMapping(path = "/drinks/{id}")
     public boolean deleteDrink(@PathVariable("id") String id) {
         getMixMavenModel().removeDrink(id);
@@ -51,6 +76,12 @@ public class MixMavenController {
         return true;
     }
 
+    /**
+     * Add a new drink to the mixMavenModel.
+     *
+     * @param drinkstring The JSON representation of the new drink.
+     * @return True if the drink was successfully added.
+     */
     @PostMapping(path = "/drinks")
     public boolean addDrink(@RequestBody String drinkstring) {
         Drink drink = mixMavenService.deserializeDrink(drinkstring);
@@ -58,6 +89,6 @@ public class MixMavenController {
         autoSaveMixMaven();
         return true;
     }
-} 
+}
 
 

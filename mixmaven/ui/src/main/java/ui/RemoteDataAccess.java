@@ -61,8 +61,9 @@ public class RemoteDataAccess implements DataAccess {
             .build()
             .send(request, HttpResponse.BodyHandlers.ofString());
             this.mixMavenModel = new MixMavenModel(fromJson(response.body()));
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
         }
         return mixMavenModel;
     }
@@ -79,7 +80,7 @@ public class RemoteDataAccess implements DataAccess {
           .DELETE()
           .build();
         try {
-            final HttpResponse<String> response = HttpClient
+            HttpClient
             .newBuilder()
             .build()
             .send(request, HttpResponse.BodyHandlers.ofString());
@@ -98,7 +99,7 @@ public class RemoteDataAccess implements DataAccess {
           .build();
 
         try {
-            HttpResponse<String> response = HttpClient
+            HttpClient
             .newBuilder()
             .build()
             .send(request, HttpResponse.BodyHandlers.ofString());
