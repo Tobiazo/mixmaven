@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public final class Drink implements Serializable {
 	private String id;
@@ -18,6 +19,7 @@ public final class Drink implements Serializable {
 	 */
 	public Drink(String name) {
 		this.name = name;
+		this.id = UUID.randomUUID().toString();
 	}
 
 	/**
@@ -30,6 +32,7 @@ public final class Drink implements Serializable {
 		this(name);
 		this.ingredients = new ArrayList<>(ingredients);
 		this.alcoholContent = calculateAlcoholContent();
+		this.id = UUID.randomUUID().toString();
 	}
 
 	public String getName() {
@@ -79,10 +82,6 @@ public final class Drink implements Serializable {
 	public void removeIngredient(int index) {
 		ingredients.remove(index);
 		this.alcoholContent = calculateAlcoholContent();
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getId() {

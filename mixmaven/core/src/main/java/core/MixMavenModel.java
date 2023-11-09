@@ -3,7 +3,6 @@ package core;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.UUID;
 
 public class MixMavenModel {
     private List<Drink> drinks;
@@ -24,7 +23,6 @@ public class MixMavenModel {
      * @param drink
      */
     public void addDrink(Drink drink) {
-        drink.setId(UUID.randomUUID().toString());
         drinks.add(drink);
     }
 
