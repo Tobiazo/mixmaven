@@ -124,8 +124,8 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#editIngredientBtn" text="Update Ingredient" />
-                              <Button mnemonicParsing="false" onAction="#addIngredientBtn" text="Add New Ingredient" />
+                              <Button fx:id="formButtons" mnemonicParsing="false" onAction="#editIngredientBtn" text="Update Ingredient" />
+                              <Button fx:id="formButtons" mnemonicParsing="false" onAction="#addIngredientBtn" text="Add New Ingredient" />
                            </children>
                         </HBox>
                      </children>
@@ -135,7 +135,7 @@
                   </VBox>
                   <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#deleteIngredientBtn" text="Delete ingredient">
+                        <Button fx:id="formButtons" mnemonicParsing="false" onAction="#deleteIngredientBtn" text="Delete ingredient">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin></Button>
@@ -147,7 +147,7 @@
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#editDrinkBtn" text="Update Drink">
+            <Button fx:id="formButtons" mnemonicParsing="false" onAction="#editDrinkBtn" text="Update Drink">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -161,6 +161,6 @@
             <Insets top="10.0" />
          </padding>
       </VBox>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtn" text="Back" />
+      <Button fx:id="formButtons" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtn" text="Back" />
    </children>
 </AnchorPane>
