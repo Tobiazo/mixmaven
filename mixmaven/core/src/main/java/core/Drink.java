@@ -1,11 +1,9 @@
 package core;
 
-import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public final class Drink implements Serializable {
+public final class Drink {
 	private String id;
 	private String name;
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
@@ -44,21 +42,32 @@ public final class Drink implements Serializable {
 		return alcoholContent;
 	}
 
-	/**
+/**
 	 * Calculates the alcoholvolume (ABV*volume) divided by the total volume of all ingredients in
 	 * the drink.
 	 *
 	 * @return alcoholcontent of the drink
 	 */
+	@SuppressWarnings("magicnumber")
 	private double calculateAlcoholContent() {
 		double volume = 0;
 		double alcoholVolume = 0;
 		for (Ingredient ingredient : ingredients) {
 			if (ingredient.getType().equals("mixer") || ingredient.getType().equals("alcohol")) {
-				volume += ingredient.getAmount();
+				if (ingredient.getUnit().equals("cl")) {
+					volume += ingredient.getAmount() * 10;
+					alcoholVolume +=
+					ingredient.getAlcoholPercentage() * ingredient.getAmount() / 10;
+				} else if (ingredient.getUnit().equals("dl")) {
+					volume += ingredient.getAmount() * 100;
+					alcoholVolume +=
+					ingredient.getAlcoholPercentage() * ingredient.getAmount();
+				} else {
+					volume += ingredient.getAmount();
+					alcoholVolume +=
+					ingredient.getAlcoholPercentage() * ingredient.getAmount() / 100;
+				}
 			}
-			alcoholVolume += ingredient.getAlcoholPercentage() * ingredient.getAmount() / 100;
-
 		}
 		return alcoholVolume / volume;
 	}

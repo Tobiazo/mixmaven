@@ -42,8 +42,6 @@ public class IngredientTest {
     public void testInvalidType() throws IllegalArgumentException {
         assertThrows(IllegalArgumentException.class,
                 () -> new Ingredient("invalid", 1, "ml", "invalidType"));
-
-
     }
 
     /**
