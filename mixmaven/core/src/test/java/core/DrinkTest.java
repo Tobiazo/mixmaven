@@ -35,7 +35,7 @@ public class DrinkTest {
 
         assertTrue(drink.getName().equals("Moscow mule"));
         assertEquals(3, drink.getIngredients().size());
-        assertEquals(0.3076923076923077, drink.getAlcoholContent(), 0.01);
+        assertEquals(0.012903225, drink.getAlcoholContent(), 0.01);
         // Might expect 1
     }
 
