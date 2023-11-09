@@ -33,6 +33,20 @@ public final class Drink {
 		this.id = UUID.randomUUID().toString();
 	}
 
+	/**
+	 * Creates drink with ingredients and given id.
+	 *
+	 * @param name
+	 * @param ingredients
+	 * @param id
+	 */
+	public Drink(String name, List<Ingredient> ingredients, String id) {
+		this(name);
+		this.ingredients = new ArrayList<>(ingredients);
+		this.alcoholContent = calculateAlcoholContent();
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}

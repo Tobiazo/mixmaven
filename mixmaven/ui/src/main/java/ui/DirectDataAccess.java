@@ -10,16 +10,6 @@ import java.util.List;
  * This class implements the DataAccess interface and acts as a bridge between the user interface
  * and the core data model.
  */
-import core.Drink;
-import core.MixMavenModel;
-import json.DataHandler;
-import java.util.List;
-
-/**
- * Provides direct data access to the application's data model through the MixMavenModel.
- * This class implements the DataAccess interface and acts as a bridge between the user interface
- * and the core data model.
- */
 public class DirectDataAccess implements DataAccess {
 
     private MixMavenModel mixMavenModel;
@@ -81,18 +71,24 @@ public class DirectDataAccess implements DataAccess {
 
     /**
      * Sets the file path for data handling.
+     * 
+     * @param path path for persistence.
      */
     public void setFilePath(String path) {
         dataHandler.setFilePath(path);
     }
 
     /**
-     * Redundant???
+     * Refreshes the model, to ensure latest changes are loaded.
      */
     public void refreshModel() {
         this.mixMavenModel = dataHandler.loadModel();
     }
 
+    /**
+     * 
+     * @return model 
+     */
     public MixMavenModel getModel() {
         return mixMavenModel;
     }
