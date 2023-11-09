@@ -7,11 +7,9 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 
 public class MixMavenController {
-
-  //TODO:
-  //Logging and feedback.
 
   @FXML private StackPane contentPane;
   private String drinkId;
@@ -19,7 +17,6 @@ public class MixMavenController {
   private final BrowseDrinksController browseDrinksController = new BrowseDrinksController(this);
   private final EditDrinkController editDrinkController = new EditDrinkController(this);
   private DataAccess dataAccess;
-  
 
   /**
    * Loads drinks from file Shows the BrowseDrinks page with the loaded drinks.
@@ -31,13 +28,16 @@ public class MixMavenController {
 
   private boolean syncWithServer() {
     try {
-        URI baseURI = new URI("http://10.22.14.153:8000/drinks/");
+        URI baseURI = new URI("https://localhost:8000/drinks/");
         this.dataAccess = new RemoteDataAccess(baseURI);
-        System.out.println("Connected to server @" + baseURI);
-        return true;
-    } catch (Exception e) {
-        // TODO: handle exception
-        System.out.println("Couldnt connect to server.");
+        if (dataAccess.getModel() != null) {
+            System.out.println("Connected to server @" + baseURI);
+            return true;
+        }
+        return false;
+
+    } catch (URISyntaxException e) {
+        System.err.println(e);
         return false;
     }
   }
