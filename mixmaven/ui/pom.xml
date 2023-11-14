@@ -110,20 +110,20 @@
                     <appVersion>1.0.0</appVersion>
                     <vendor>it1901</vendor>
                     <destination>target/dist</destination>
-                    <module>mixmaven.ui/mixmaven.ui.MixMavenApp</module>
+                    <module>mixmaven.ui/ui.MixMavenApp</module>
                     <runtimeImage>target/mixmavenfx</runtimeImage>
                     <javaOptions>
                         <option>-Dfile.encoding=UTF-8</option>
                     </javaOptions>
                     <!-- linux options --> 
                     <linuxShortcut>true</linuxShortcut>
-                    <linuxMenuGroup>TodoListFX</linuxMenuGroup>
+                    <linuxMenuGroup>MixMavenFX</linuxMenuGroup>
 
                     <!-- windows options --> 
                     <winDirChooser>true</winDirChooser>
                     <winShortcut>true</winShortcut>
                     <winMenu>true</winMenu>
-                    <winMenuGroup>TodoListFX</winMenuGroup>
+                    <winMenuGroup>MixMavenFX</winMenuGroup>
                 </configuration>
             </plugin>
 
