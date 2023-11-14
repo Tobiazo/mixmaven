@@ -52,7 +52,6 @@
                     <version>3.0.0-M9</version>
                     <configuration>
                         <skipTests>${skipTests}</skipTests>
-                        <argLine>@{argLine} -your -extra -arguments</argLine>
                     </configuration>
                 </plugin> 
                 <plugin>
