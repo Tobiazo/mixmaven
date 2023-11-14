@@ -37,16 +37,16 @@ public final class BrowseDrinksController {
         scrollPane.setLayoutX((SCENE_WIDTH - scrollPane.getPrefWidth()) / 2);
 
         //Generates a drinkbox for every drinks in MixMaven
-        for (Drink drink : drinks) {
+        for (int i = drinks.size() - 1; i >= 0; i--) {
             VBox drinkBox = new VBox();
             drinkBox.getStyleClass().add("drinkBox");
-            String drinkId = drink.getId();
+            String drinkId = drinks.get(i).getId();
 
-            Text drinkName = new Text(drink.getName());
+            Text drinkName = new Text(drinks.get(i).getName());
             drinkName.setFont(new Font(FONT_SIZE_40));
 
             StringBuilder str = new StringBuilder();
-            drink.getIngredients().stream()
+            drinks.get(i).getIngredients().stream()
                 .forEach(ingredient -> str.append("     • " + ingredient.toString() + "\n"));
 
             Text ingredients = new Text(str.toString());

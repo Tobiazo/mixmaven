@@ -29,8 +29,8 @@ public class UtilityJsonTest {
     @BeforeEach
     public void setUp() {
         DataHandler dataHandler = DataHandler.getInstance();
-        dataHandler.setFilePath("testDataJson.json");
-        String path = System.getProperty("user.home") + "/MixMaven/" + "testDataJson.json";
+        dataHandler.setFilePath("utilityJsonTestData.json");
+        String path = System.getProperty("user.home") + "/MixMaven/" + "utilityJsonTestData.json";
         testFile = new File(path);
 
         List<Drink> drinks = new ArrayList<>();
