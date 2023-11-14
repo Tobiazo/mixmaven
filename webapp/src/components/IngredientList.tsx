@@ -13,7 +13,7 @@ const IngredientList = ({
   setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>
   setEditIndex: React.Dispatch<React.SetStateAction<number | null>>
 }) => {
-  const [animateRef] = useAutoAnimate<HTMLDivElement>()
+  const [animateRef] = useAutoAnimate<HTMLUListElement>()
 
   const handleDelete = (index: number) => {
     const copy = [...ingredients]
@@ -22,9 +22,9 @@ const IngredientList = ({
   }
 
   return (
-    <div className="ingredients-list" ref={animateRef}>
+    <div className="ingredients-list">
       <h4>Added ingredients</h4>
-      <ul>
+      <ul ref={animateRef}>
         {ingredients.length === 0 ? (
           <li>
             <p>So empty...</p>
@@ -48,6 +48,7 @@ const IngredientList = ({
               <p className="capitalize">{ing.name}</p>
               <p>{ing.alcoholPercentage || 0}%</p>
               <button
+                id="delete-ingredient"
                 onClick={(e) => {
                   e.stopPropagation()
                   handleDelete(index)

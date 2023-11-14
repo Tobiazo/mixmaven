@@ -20,7 +20,10 @@ describe('home page', () => {
       cy.get('nav li').last().click()
       cy.url().should('include', '/new')
       cy.get('nav li').first().click()
-      cy.url().should('include', '/')
+      cy.url().should(
+        'eq',
+        `http://localhost:${Cypress.env('CLIENT_PORT') || 3000}/`
+      )
     })
 
     it('should fetch drinks and display them correctly', () => {
@@ -45,7 +48,7 @@ describe('home page', () => {
      * PS: it does not actually delete the drink,
      * it only checks that the correct request is made
      */
-    it.only('should be possible to delete a drink', () => {
+    it('should be possible to delete a drink', () => {
       cy.intercept('DELETE', 'drinks/**', (req) => {
         req.reply({ statusCode: 200 })
       }).as('deleteDrink')

@@ -53,7 +53,7 @@ const Input = ({
     <div className="form-input">
       <input
         id={label.toLowerCase().replace(' ', '-')}
-        type={type === 'alcohol' ? 'number' : type}
+        type="text"
         value={value}
         required
         onChange={handleChange}

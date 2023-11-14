@@ -19,9 +19,12 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home query={getDrinksQuery} />} />
           <Route path="new" element={<NewDrink />} />
-          <Route path="edit/" element={<p>404 Not found</p>} />
-          <Route path="edit/:id" element={<EditDrink />} />
+          <Route
+            path="edit/:id"
+            element={<EditDrink query={getDrinksQuery} />}
+          />
         </Route>
+        <Route path="*" element={<p>404 Not found</p>} />
       </Routes>
     </BrowserRouter>
   )
