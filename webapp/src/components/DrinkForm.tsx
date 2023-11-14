@@ -86,7 +86,7 @@ const DrinkForm = ({
   return (
     <>
       {submit.isError && <p>Error...</p>}
-      <div className="new-drink-form">
+      <div className="drink-form">
         <Input
           label="Drink name"
           value={name}

@@ -2,27 +2,45 @@
 
 describe('new drink page', () => {
   beforeEach(() => {
+    cy.fixture('new_drink.json').as('newDrink')
+    cy.intercept('GET', 'drinks', { fixture: 'drinks.json' }).as('getDrinks')
     cy.visit(`http://localhost:${Cypress.env('CLIENT_PORT') || 3000}/new`)
-    cy.intercept('POST', '**/drinks', {
-      statusCode: 201,
-    })
   })
 
   it('should be possible to add a normal drink', () => {
-    cy.get('#drink-name').type('Gin & tonic')
+    cy.get('#drink-name').type('Gin & Tonic')
     cy.addNormalIngredient()
     cy.addMixerIngredient()
 
-    cy.get('#create-btn').click()
+    // simulate a successful POST request
+    cy.get('@newDrink').then((newDrink) => {
+      cy.intercept('POST', 'drinks', (req) => {
+        req.reply({
+          statusCode: 201,
+          body: newDrink,
+        })
+      }).as('createDrink')
 
-    // check that we are on the home page
-    // chech that drink is added to the list
+      cy.get('#create-btn').click()
+
+      cy.wait('@createDrink').then((interception) => {
+        expect(interception.request.url).to.match(/.*\/drinks/)
+        expect(Cypress._.omit(interception.request.body, ['id'])).to.deep.equal(
+          Cypress._.omit(newDrink, ['id'])
+        )
+      })
+    })
+
+    cy.url().should(
+      'eq',
+      `http://localhost:${Cypress.env('CLIENT_PORT') || 3000}/`
+    )
   })
 
   context('check that buttons are disabled properly', () => {
     beforeEach(() => {
-      cy.get('.btn').each((btn) => {
-        cy.wrap(btn).should('be.disabled')
+      cy.get('.btn').each(($btn) => {
+        cy.wrap($btn).should('be.disabled')
       })
     })
 
@@ -52,11 +70,12 @@ describe('new drink page', () => {
       cy.addNormalIngredient()
       cy.get('#create-btn').should('be.enabled')
 
-      // un-comment and maybe adapt when we have the functionality to remove ingredients
-      // cy.get(".ingredients-list li").first().within(() => {
-      //     cy.get("button").click()
-      // })
-      // cy.get("#create-btn").should('be.disabled')
+      cy.get('.ingredients-list li')
+        .first()
+        .within(() => {
+          cy.get('button').click()
+        })
+      cy.get('#create-btn').should('be.disabled')
     })
   })
 
@@ -80,7 +99,7 @@ describe('new drink page', () => {
         .should('have.class', 'visible')
         .should(
           'have.text',
-          'This field must be a postive number and max one dot'
+          'This field must be a postive number and max one decimal'
         )
 
       cy.get('#alcohol-percentage').type('101')
@@ -90,11 +109,9 @@ describe('new drink page', () => {
         'This field cannot be greater than 100'
       )
 
-      // un-comment when when alcohol percentage is not required
-      // cy.get("#alcohol-percentage").clear()
-      // cy.wait(300)
-      // cy.get("#alcohol-percentage-error")
-      //     .should("not.have.class", "visible")
+      cy.get('#alcohol-percentage').clear()
+      cy.wait(300)
+      cy.get('#alcohol-percentage-error').should('not.have.class', 'visible')
 
       cy.get('#amount').type('a')
       cy.wait(300)
@@ -102,7 +119,7 @@ describe('new drink page', () => {
         .should('have.class', 'visible')
         .should(
           'have.text',
-          'This field must be a postive number and max one dot'
+          'This field must be a postive number and max one decimal'
         )
       cy.get('#amount').type('1').clear()
       cy.wait(300)

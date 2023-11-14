@@ -5,17 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . && prettier '**/*.{ts,tsx,js,css,md,json}' --check",
     "prettier": "prettier '**/*.{ts,tsx,js,css,md,json}' --write",
-    "cy:run": "cypress run",
-    "cy:open": "cypress open",
-    "cy:ff": "cypress open --e2e --browser firefox",
-    "cy:4173": "cypress run --env CLIENT_PORT=4173",
-    "cy:prod": "npm run build && (npm-run-all -p -r preview cy:4173)",
-    "server:start": "cd ../json-server && npm run start",
-    "all": "npm-run-all -p -r server:start dev cy:ff"
+    "cy:run": "cypress run --e2e",
+    "cy:open": "cypress open --e2e"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -53,5 +48,43 @@
     "tabWidth": 2,
     "semi": false,
     "singleQuote": true
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true,
+      "es2020": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react-hooks/recommended"
+    ],
+    "ignorePatterns": [
+      "dist",
+      "cypress",
+      "cypress.config.ts"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "react-refresh"
+    ],
+    "rules": {
+      "react-refresh/only-export-components": [
+        "warn",
+        {
+          "allowConstantExport": true
+        }
+      ]
+    },
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module",
+      "project": [
+        "./tsconfig.json",
+        "./tsconfig.node.json"
+      ],
+      "tsconfigRootDir": "."
+    }
   }
 }

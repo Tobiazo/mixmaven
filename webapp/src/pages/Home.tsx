@@ -1,11 +1,11 @@
-import DrinkCard from '../components/DrinkCard'
-import '../styles/Home.css'
+import { useState } from 'react'
+import { Straight, ExpandMore, ExpandLess } from '@mui/icons-material'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { UseQueryResult } from '@tanstack/react-query'
-import StatusMessage from '../components/StatusMessage'
 import { Drink } from '../types'
-import { Straight, ExpandMore, ExpandLess } from '@mui/icons-material'
-import { useState } from 'react'
+import StatusMessage from '../components/StatusMessage'
+import DrinkCard from '../components/DrinkCard'
+import '../styles/Home.css'
 
 const Home = ({ query }: { query: UseQueryResult<Drink[], Error> }) => {
   const [sortAlpha, setSortAlpha] = useState(true)
