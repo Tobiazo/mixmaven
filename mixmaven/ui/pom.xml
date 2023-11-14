@@ -92,8 +92,41 @@
                 <configuration>
                     <!-- syntax: module-name/full-app-class-name -->
                     <mainClass>mixmaven.ui/ui.MixMavenApp</mainClass>
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <stripDebug>true</stripDebug>
+                    <noManPages>true</noManPages>
+                    <launcher>mixmavenfx</launcher>
+                    <jlinkImageName>mixmavenfx</jlinkImageName>
+                    <jlinkZipName>mixmavenfx</jlinkZipName>
                 </configuration>
             </plugin>
+             <plugin>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <name>MixMavenFX</name>
+                    <appVersion>1.0.0</appVersion>
+                    <vendor>it1901</vendor>
+                    <destination>target/dist</destination>
+                    <module>mixmaven.ui/mixmaven.ui.MixMavenApp</module>
+                    <runtimeImage>target/mixmavenfx</runtimeImage>
+                    <javaOptions>
+                        <option>-Dfile.encoding=UTF-8</option>
+                    </javaOptions>
+                    <!-- linux options --> 
+                    <linuxShortcut>true</linuxShortcut>
+                    <linuxMenuGroup>TodoListFX</linuxMenuGroup>
+
+                    <!-- windows options --> 
+                    <winDirChooser>true</winDirChooser>
+                    <winShortcut>true</winShortcut>
+                    <winMenu>true</winMenu>
+                    <winMenuGroup>TodoListFX</winMenuGroup>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
