@@ -62,6 +62,7 @@ public class MixMavenController {
 
   /**
    * Loads the fxml file EditDrinks.fxml, sets corresponding controller and passes the drinkId on.
+   *
    * @param drinkId
    */
   public void showEditDrink(String drinkId) {
@@ -84,11 +85,12 @@ public class MixMavenController {
     }
   }
 
-    /**
- * Loads in the given loader and sets the selectedDri.
- * @param loader
- * @param drinkId
- */
+  /**
+  * Loads in the given loader and sets the selectedDri.
+  *
+  * @param loader
+  * @param drinkId
+  */
   private void showContentEdit(FXMLLoader loader, String drinkId) {
     try {
       setDrinkId(drinkId);
@@ -100,7 +102,6 @@ public class MixMavenController {
   }
 
   /**
-    *
     * @return selectedDrinkIndex
     */
   public String getDrinkId() {
