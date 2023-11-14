@@ -24,8 +24,8 @@ public class DataHandlerTest {
     @BeforeAll
     public static void setUpClass() throws IOException {
         dataHandler = DataHandler.getInstance();
-        dataHandler.setFilePath("testDataJson2.json");
-        dataHandler.setFilePath("testDataJson1.json");
+        dataHandler.setFilePath("dataHandlerTestData1.json");
+        dataHandler.setFilePath("dataHandlerTestData2.json");
 
         List<Drink> testDrinks = new ArrayList<>();
         testDrinks.add(new Drink("testDrink1"));
@@ -39,8 +39,8 @@ public class DataHandlerTest {
      */
     @Test
     public void testSetFilePath() {
-        dataHandler.setFilePath("testDataJson2.json");
-        assertEquals("testDataJson2.json", dataHandler.getDataFile());
+        dataHandler.setFilePath("dataHandlerTestData1.json");
+        assertEquals("dataHandlerTestData1.json", dataHandler.getDataFile());
     }
 
     /**
@@ -48,7 +48,7 @@ public class DataHandlerTest {
      */
     @Test
     public void testSaveAndLoadModel() {
-        dataHandler.setFilePath("testDataJson2.json");
+        dataHandler.setFilePath("dataHandlerTestData1.json");
         dataHandler.saveModel(mixMavenTestModel);
         MixMavenModel loadedModel = dataHandler.loadModel();
         assertNotNull(loadedModel);

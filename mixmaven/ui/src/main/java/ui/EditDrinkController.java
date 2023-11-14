@@ -151,11 +151,6 @@ public class EditDrinkController {
 			return;
 		}
 
-		//Verifies the choiceboxes, unit and type.
-		if (unit.equals("Unit of measurement") || type.equals("Ingredient Type")) {
-			errorLabel.setText("Choose options from both the choiceboxes!");
-			return;
-		}
 		//Verifies the alchohol Percent parameter.
 		try {
 			if (alchoholPercentField.getText().equals("")) {
