@@ -89,6 +89,19 @@ public class MixMavenController {
         autoSaveMixMaven();
         return true;
     }
+
+    /**
+     * Set the file path for the MixMavenModel.
+     *
+     * @param fileName The file path to set.
+     * @return True if the file path was successfully set.
+     */
+    @PostMapping(path = "/setfile")
+    public boolean setFilePath(@RequestBody String fileName) {
+        mixMavenService.setFilePath(fileName);
+        autoSaveMixMaven();
+        return true;
+    }
 }
 
 

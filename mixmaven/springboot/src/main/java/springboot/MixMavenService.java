@@ -47,4 +47,13 @@ public class MixMavenService {
     return dataHandler.deserializeDrink(drink);
   }
 
+  /**
+     * Sets the file path for data handling.
+     *
+     * @param filename The file path to set.
+     */
+  public void setFilePath(String filename) {
+    dataHandler.setFilePath(filename);
+  }
+
 }
