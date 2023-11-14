@@ -1,6 +1,6 @@
 import { unit } from '../types'
 
-const toMl = (amount: number, u: string) => {
+export default (amount: number, u: string): number => {
   switch (u) {
     case unit.cl:
       return amount * 10
@@ -12,5 +12,3 @@ const toMl = (amount: number, u: string) => {
       return amount
   }
 }
-
-export default toMl

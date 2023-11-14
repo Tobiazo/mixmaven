@@ -1,17 +1,13 @@
 import { useState } from 'react'
 
-const Input = ({
-  type = 'text',
-  label,
-  value,
-  onChange,
-}: {
+type Props = {
   type?: 'text' | 'number' | 'alcohol'
   label: string
   value: string | number
   onChange: (e: string) => void
-}) => {
-  // const [value, setValue] = useState('')
+}
+
+const Input = ({ type = 'text', label, value, onChange }: Props) => {
   const [isError, setError] = useState(false)
   const [errorMsg, setErrorMsg] = useState('Invalid Field')
 
@@ -23,7 +19,9 @@ const Input = ({
       setError(false)
     }
 
-    const regex = /^\d*\.?\d{0,1}$/ // Only numbers and max one dot and max 1 decimal
+    // Only numbers, max one dot and max 1 decimal
+    const regex = /^\d*\.?\d{0,1}$/
+
     if (
       (type === 'number' || type === 'alcohol') &&
       !regex.test(e.target.value)
@@ -45,7 +43,6 @@ const Input = ({
       return
     }
 
-    // setValue(e.target.value)
     onChange(e.target.value)
   }
 

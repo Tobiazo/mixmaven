@@ -1,6 +1,6 @@
-import { Outlet, Link, NavLink } from 'react-router-dom'
-import { FavoriteBorderOutlined } from '@mui/icons-material'
 import '../styles/Layout.css'
+import { FavoriteBorderOutlined } from '@mui/icons-material'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 
 const Layout = () => {
   return (

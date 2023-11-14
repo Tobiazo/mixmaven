@@ -1,29 +1,24 @@
+import { Drink } from '../types'
 import {
-  UseQueryResult,
   useMutation,
   useQueryClient,
+  UseQueryResult,
 } from '@tanstack/react-query'
-import DrinkForm from '../components/DrinkForm'
-import { useNavigate, useParams } from 'react-router-dom'
-import { Drink } from '../types'
+import { useParams } from 'react-router-dom'
 import { editDrink } from '../api/drinks'
 import StatusMessage from '../components/StatusMessage'
+import DrinkForm from '../components/DrinkForm'
 
 const EditDrink = ({ query }: { query: UseQueryResult<Drink[], Error> }) => {
   const { id } = useParams()
   const queryClient = useQueryClient()
-  const navigate = useNavigate()
 
-  const drink = (
-    (queryClient.getQueryData(['drinks']) as Array<Drink>) || []
-  ).find((drink) => drink.id === id, null)
+  const drink = ((queryClient.getQueryData(['drinks']) as Array<Drink>) || []) // Empty array avoids error if query is loading
+    .find((drink) => drink.id === id)
 
   const editMutation = useMutation({
+    mutationKey: ['editDrink'],
     mutationFn: editDrink,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['drinks'], exact: true })
-      navigate('/')
-    },
   })
 
   return (

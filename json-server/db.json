@@ -1,76 +1,6 @@
 {
   "drinks": [
     {
-      "id": "2fb3eb05-2156-44de-9c91-dceb60fc10b4",
-      "name": "Vodka redbull",
-      "ingredients": [
-        {
-          "name": "Vodka",
-          "amount": 2,
-          "alcoholPercentage": 40,
-          "unit": "cl",
-          "type": "alchol"
-        },
-        {
-          "name": "Redbull",
-          "amount": 4,
-          "alcoholPercentage": 0,
-          "unit": "cl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
-      "id": "edfa9555-3f81-54b0-909b-94afbdb7cd2a",
-      "name": "Beer",
-      "ingredients": [
-        {
-          "name": "Beer",
-          "alcoholPercentage": 4,
-          "amount": 4,
-          "unit": "cl",
-          "type": "alcohol"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
-      "id": "63e8f1fd-1270-e3e1-f4b1-d6f6606b1484",
-      "name": "Whisky Sour",
-      "ingredients": [
-        {
-          "name": "Whisky",
-          "alcoholPercentage": 40,
-          "amount": 4,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Lemonjuice",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "mixer"
-        },
-        {
-          "name": "Sugar sirup",
-          "alcoholPercentage": 0,
-          "amount": 1,
-          "unit": "cl",
-          "type": "mixer"
-        },
-        {
-          "name": "Orange peel",
-          "alcoholPercentage": 0,
-          "amount": 1,
-          "unit": "dl",
-          "type": "extras"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
       "id": "d4d04c8f-18c8-94d3-6a09-73dbdb2deba3",
       "name": "Orange juice",
       "ingredients": [
@@ -134,160 +64,6 @@
       "alcoholContent": 0
     },
     {
-      "id": "899435de-67e2-3f83-88d8-9e252087ad73",
-      "name": "Espresso martini",
-      "ingredients": [
-        {
-          "name": "Vodka",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Coffe liquor",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "mixer"
-        },
-        {
-          "name": "Espresso",
-          "alcoholPercentage": 0,
-          "amount": 1,
-          "unit": "cl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
-      "id": "1dd4bcff-b6d7-b44d-fa78-ccbfe28c0809",
-      "name": "Tequila",
-      "ingredients": [
-        {
-          "name": "Tequila",
-          "alcoholPercentage": 37.1,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        }
-      ],
-      "alcoholContent": 37.1
-    },
-    {
-      "id": "b059d8de-7798-3cce-a5c8-7010757dc89d",
-      "name": "asd",
-      "ingredients": [
-        {
-          "name": "asd",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        }
-      ],
-      "alcoholContent": 40
-    },
-    {
-      "id": "f7c9ec09-baa8-7548-f89e-68e7c757894e",
-      "name": "asdasd",
-      "ingredients": [
-        {
-          "name": "asdasd",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        }
-      ],
-      "alcoholContent": 40
-    },
-    {
-      "id": "40f63b34-1bd1-1426-627a-73772446101d",
-      "name": "aaaa",
-      "ingredients": [
-        {
-          "name": "aaa",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "vann",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        }
-      ],
-      "alcoholContent": 20
-    },
-    {
-      "id": "bdc64634-1965-84ed-cfdf-2b54b3e906c4",
-      "name": "HEKJASHDKJAHSDKJHASd",
-      "ingredients": [
-        {
-          "name": "asd",
-          "alcoholPercentage": 37,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "asdasd",
-          "alcoholPercentage": 0,
-          "amount": 20,
-          "unit": "ml",
-          "type": "alcohol"
-        }
-      ],
-      "alcoholContent": 18.5
-    },
-    {
-      "id": "15eeea9a-afa6-593d-d89c-89e60c6b2fa9",
-      "name": "Sær prosent",
-      "ingredients": [
-        {
-          "name": "asd",
-          "alcoholPercentage": 37.45,
-          "amount": 2,
-          "unit": "ml",
-          "type": "alcohol"
-        },
-        {
-          "name": "sdfsdf",
-          "alcoholPercentage": 12.33,
-          "amount": 5,
-          "unit": "cl",
-          "type": "alcohol"
-        }
-      ],
-      "alcoholContent": 13
-    },
-    {
-      "id": "acbf2c4d-5bcb-91a5-0568-cf4b72414619",
-      "name": "Hei",
-      "ingredients": [
-        {
-          "name": "123",
-          "alcoholPercentage": 34.5,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "asd",
-          "alcoholPercentage": 2.7,
-          "amount": 37,
-          "unit": "ml",
-          "type": "alcohol"
-        }
-      ],
-      "alcoholContent": 13.857894736842102
-    },
-    {
       "id": "7298b100-8fc4-8000-039c-1f7def55aad3",
       "name": "Gin & tonic",
       "ingredients": [
@@ -309,235 +85,39 @@
       "alcoholContent": 3.6363636363636362
     },
     {
-      "id": "0cbc45d6-753f-3644-a538-eaaafea983f6",
-      "name": "Gin & tonic",
+      "id": "8e7c8509-1700-41fd-bccb-792d564820a6",
+      "name": "Morgan n' coke 2",
       "ingredients": [
         {
-          "name": "Gin",
+          "name": "Captain Morgan",
           "alcoholPercentage": 40,
           "amount": 2,
           "unit": "cl",
           "type": "alcohol"
         },
         {
-          "name": "Tonic",
+          "name": "Coca Cola",
           "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
+          "amount": 4,
+          "unit": "cl",
           "type": "mixer"
         }
       ],
-      "alcoholContent": 3.6363636363636362
+      "alcoholContent": 13.333333333333334
     },
     {
-      "id": "c68b38b8-017e-9aa3-08b9-cbdf210fe7b3",
-      "name": "Gin & tonic",
+      "id": "ff440063-4f35-4c9c-8a2e-22b82629cce8",
+      "name": "Hei",
       "ingredients": [
         {
-          "name": "Gin",
-          "alcoholPercentage": 40,
+          "name": "asd",
+          "alcoholPercentage": 0,
           "amount": 2,
           "unit": "cl",
           "type": "alcohol"
-        },
-        {
-          "name": "Tonic",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
         }
       ],
-      "alcoholContent": 3.6363636363636362
-    },
-    {
-      "id": "7dac785e-e709-317e-93f4-3bac9a70c2c6",
-      "name": "Gin & tonic",
-      "ingredients": [
-        {
-          "name": "Gin",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Tonic",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 3.6363636363636362
-    },
-    {
-      "id": "41ef152f-7667-f611-0351-f05a512b56c5",
-      "name": "Gin & tonic",
-      "ingredients": [
-        {
-          "name": "Gin",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Tonic",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 3.6363636363636362
-    },
-    {
-      "id": "6749c49b-1443-ac5d-9350-f03ee5e1f05c",
-      "name": "Gin & tonic",
-      "ingredients": [
-        {
-          "name": "Gin",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Tonic",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 3.6363636363636362
-    },
-    {
-      "id": "8912d4a4-454e-31d8-4eb6-0828cabc5b2b",
-      "name": "Gin & tonic",
-      "ingredients": [
-        {
-          "name": "Gin",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Tonic",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 3.6363636363636362
-    },
-    {
-      "id": "5be3046b-159a-b4c2-61ea-d29400c2b8ae",
-      "name": "Gin & tonic",
-      "ingredients": [
-        {
-          "name": "Gin",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Tonic",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 3.6363636363636362
-    },
-    {
-      "id": "e8be7d75-6b48-d808-ae7c-8b14738e829c",
-      "name": "Gin & tonic",
-      "ingredients": [
-        {
-          "name": "Gin",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Tonic",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 3.6363636363636362
-    },
-    {
-      "id": "1d40eb1b-fdad-7661-e76f-bec6345461e8",
-      "name": "Gin & tonic",
-      "ingredients": [
-        {
-          "name": "Gin",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Tonic",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 3.6363636363636362
-    },
-    {
-      "id": "94955556-87c6-b6bd-28d8-937632fa8904",
-      "name": "Gin & tonic",
-      "ingredients": [
-        {
-          "name": "Gin",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Tonic",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 3.6363636363636362
-    },
-    {
-      "id": "58dd9046-ac00-b794-666d-f482a9035ebc",
-      "name": "Gin & tonic",
-      "ingredients": [
-        {
-          "name": "Gin",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Tonic",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "dl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 3.6363636363636362
+      "alcoholContent": 0
     }
   ]
 }

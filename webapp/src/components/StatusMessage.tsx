@@ -1,8 +1,7 @@
-import ReactLoading from 'react-loading'
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
-
 import '../styles/StatusMessage.css'
 import { UseQueryResult } from '@tanstack/react-query'
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
+import ReactLoading from 'react-loading'
 
 const StatusMessage = ({ query }: { query: UseQueryResult }) => (
   <div className="status-container">
