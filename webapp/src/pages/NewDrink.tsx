@@ -1,8 +1,6 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { createDrink } from '../api/drinks'
-import { Drink } from '../types'
 import '../styles/DrinkForm.css'
-import { useNavigate } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
+import { createDrink } from '../api/drinks'
 import DrinkForm from '../components/DrinkForm'
 
 const NewDrink = () => {
@@ -11,20 +9,9 @@ const NewDrink = () => {
     ingredients: [],
   }
 
-  const queryClient = useQueryClient()
-  const navigate = useNavigate()
-
   const createDrinkMutation = useMutation({
     mutationKey: ['createDrink'],
     mutationFn: createDrink,
-    onSuccess: (data: Drink) => {
-      queryClient.setQueryData(['drinks'], (prev: Drink[]) => [...prev, data])
-      queryClient.invalidateQueries({ queryKey: ['drinks'], exact: true })
-      navigate('/')
-    },
-    onError: (error) => {
-      console.log(error)
-    },
   })
 
   return (

@@ -1,9 +1,10 @@
 import { Ingredient } from './../types'
 import toMl from './toMl'
 
-const calculateAlcohol = (ingredientList: Ingredient[]) => {
+export default (ingredientList: Ingredient[]): number => {
   let totalAmountMl = 0
   let totalAlcoholMl = 0
+
   ingredientList.forEach((ingredient) => {
     totalAmountMl += toMl(ingredient.amount, ingredient.unit)
     totalAlcoholMl +=
@@ -13,5 +14,3 @@ const calculateAlcohol = (ingredientList: Ingredient[]) => {
 
   return (totalAlcoholMl / totalAmountMl) * 100
 }
-
-export default calculateAlcohol

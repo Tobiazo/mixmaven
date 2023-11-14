@@ -1,18 +1,20 @@
-import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Ingredient } from '../types'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { DeleteOutline } from '@mui/icons-material'
+
+type Props = {
+  ingredients: Ingredient[]
+  setIngredient: React.Dispatch<React.SetStateAction<Ingredient>>
+  setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>
+  setEditIndex: React.Dispatch<React.SetStateAction<number | null>>
+}
 
 const IngredientList = ({
   ingredients,
   setIngredient,
   setIngredients,
   setEditIndex,
-}: {
-  ingredients: Ingredient[]
-  setIngredient: React.Dispatch<React.SetStateAction<Ingredient>>
-  setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>
-  setEditIndex: React.Dispatch<React.SetStateAction<number | null>>
-}) => {
+}: Props) => {
   const [animateRef] = useAutoAnimate<HTMLUListElement>()
 
   const handleDelete = (index: number) => {

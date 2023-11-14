@@ -1,22 +1,20 @@
-import { useEffect, useState } from 'react'
+import { Drink, Ingredient, type, unit } from '../types'
 import { UseMutationResult, useQueryClient } from '@tanstack/react-query'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { useLocation } from 'react-router-dom'
-import uuid from 'react-uuid'
+import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import calculateAlcohol from '../utils/calculateAlcohol'
-import { Drink, Ingredient, type, unit } from '../types'
+import useDisableButton from '../utils/useDisableButton'
 import IngredientList from './IngredientList'
 import Input from './Input'
 
-const DrinkForm = ({
-  submit,
-  INIT_VALUES,
-  id,
-}: {
-  submit: UseMutationResult<Drink, Error, Drink, unknown>
+type Props = {
+  submit: UseMutationResult<void, Error, Drink, unknown>
   INIT_VALUES: Omit<Drink, 'id' | 'alcoholContent'>
   id?: string
-}) => {
+}
+
+const DrinkForm = ({ submit, INIT_VALUES, id }: Props) => {
   const [name, setName] = useState(INIT_VALUES.name)
   const [ingredientList, setIngredientList] = useState<Ingredient[]>(
     INIT_VALUES.ingredients
@@ -39,8 +37,6 @@ const DrinkForm = ({
     name === '' || ingredientList.length === 0
   )
   const [animationRef] = useAutoAnimate<HTMLDivElement>()
-  const queryClient = useQueryClient()
-  const location = useLocation()
 
   const handleAddIngredient = () => {
     setIngredientList((prev) => [...prev, ingredient])
@@ -53,9 +49,12 @@ const DrinkForm = ({
   }
 
   const handleEditIngredient = () => {
-    const copy = [...ingredientList]
+    // If editIndex is null, the user is not editing an ingredient
     if (editIndex === null) return
+
+    const copy = [...ingredientList]
     copy[editIndex] = ingredient
+
     setIngredientList(copy)
     setEditIndex(null)
     setIngredient({
@@ -66,19 +65,33 @@ const DrinkForm = ({
     })
   }
 
+  const queryClient = useQueryClient()
+  const location = useLocation()
+  const navigate = useNavigate()
+
   const handleSubmit = () => {
     const newDrink = {
-      id: id || uuid(), // creates unique ID if not provided
+      id: id || crypto.randomUUID(), // Creates unique ID if not provided
       name: name,
       ingredients: ingredientList,
       alcoholContent: calculateAlcohol(ingredientList),
     }
+
     submit.mutate(newDrink, {
       onSuccess: () => {
-        if (location.pathname.includes('/edit/'))
-          queryClient.setQueryData(['drinks'], (prev: Drink[]) =>
-            prev.map((drink) => (drink.id === id ? newDrink : drink))
-          )
+        // Updates/adds the drink to the cached data. Improves UX if the server is slow
+        queryClient.setQueryData(
+          ['drinks'],
+          location.pathname.includes('/new')
+            ? (prev: Drink[]) => [...prev, newDrink]
+            : (prev: Drink[]) =>
+                prev.map((drink) => (drink.id === id ? newDrink : drink))
+        )
+
+        // Ensures data is synced with server
+        queryClient.invalidateQueries({ queryKey: ['drinks'], exact: true })
+
+        navigate('/')
       },
     })
   }
@@ -218,14 +231,6 @@ const DrinkForm = ({
       </div>
     </>
   )
-}
-
-const useDisableButton = (condition: boolean) => {
-  const [disabled, setDisabled] = useState(true)
-  useEffect(() => {
-    setDisabled(condition)
-  }, [condition])
-  return disabled
 }
 
 export default DrinkForm

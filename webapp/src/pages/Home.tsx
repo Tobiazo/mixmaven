@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Straight, ExpandMore, ExpandLess } from '@mui/icons-material'
+import { ExpandLess, ExpandMore, Straight } from '@mui/icons-material'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { UseQueryResult } from '@tanstack/react-query'
 import { Drink } from '../types'
@@ -15,7 +15,7 @@ const Home = ({ query }: { query: UseQueryResult<Drink[], Error> }) => {
   const [disableBtn, setDisableBtn] = useState(false)
   const [animationRef] = useAutoAnimate<HTMLDivElement>()
 
-  const controlFilter = (drink: Drink) =>
+  const controlFilter = (drink: Drink): boolean =>
     (filterAlcohol || drink.alcoholContent < 0.7) &&
     (filterNonAlcohol || drink.alcoholContent >= 0.7)
 
@@ -49,7 +49,8 @@ const Home = ({ query }: { query: UseQueryResult<Drink[], Error> }) => {
               disabled={disableBtn}
               onClick={() => {
                 setExpandAll(!expandAll)
-                // Let the animation finish before allowing another click
+
+                // Let the animation finish before allowing another click to avoid buggy behaviour
                 setDisableBtn(true)
                 setTimeout(setDisableBtn, 500, false)
               }}
@@ -78,7 +79,7 @@ const Home = ({ query }: { query: UseQueryResult<Drink[], Error> }) => {
       </div>
 
       <div className="drink-box" ref={animationRef}>
-        {query.isPending || query.isLoading || query.isError ? (
+        {query.status === 'pending' || query.status === 'error' ? (
           <StatusMessage query={query} />
         ) : query.data.filter(controlFilter).length === 0 ? (
           <p className="nothing">Nothing here..</p>

@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react'
+import '../styles/DrinkCard.css'
+import { Drink, type } from '../types'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
-  LocalBar,
   DeleteOutline,
   Edit,
-  ExpandMore,
   ExpandLess,
+  ExpandMore,
+  LocalBar,
 } from '@mui/icons-material'
-import { Drink, type } from '../types'
-import '../styles/DrinkCard.css'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { deleteDrink } from '../api/drinks'
-import { Link } from 'react-router-dom'
 
 type Props = {
   content: Drink
@@ -21,13 +21,14 @@ type Props = {
 
 const DrinkCard = ({ content, id, expandAll }: Props) => {
   const [expand, setExpand] = useState<boolean>(false)
-
   const [animateRef] = useAutoAnimate<HTMLDivElement>()
   const queryClient = useQueryClient()
 
   const deleteMutation = useMutation({
+    mutationKey: ['deleteDrink'],
     mutationFn: deleteDrink,
     onSuccess: () => {
+      // Removes the drink from the cached data. Improves UX if the server is slow
       queryClient.setQueryData(['drinks'], (prev: Drink[]) => {
         const copy = [...prev]
         const filtered = copy.filter((drink) => {
@@ -35,6 +36,8 @@ const DrinkCard = ({ content, id, expandAll }: Props) => {
         })
         return filtered
       })
+
+      // Ensures that the cached data is synced with the server
       queryClient.invalidateQueries({ queryKey: ['drinks'], exact: true })
     },
   })
@@ -63,7 +66,10 @@ const DrinkCard = ({ content, id, expandAll }: Props) => {
         <div className="card-content">
           <div className="card-alcohol-content">
             <h4>Alcohol: </h4>
-            <p>{Math.round(content.alcoholContent * 10) / 10}%</p>
+            <p>
+              {Math.round(content.alcoholContent * 10) / 10}%{' '}
+              {/* Rounds to 1 or 0 decimals */}
+            </p>
           </div>
           <h4>Ingredients:</h4>
           <ul>
