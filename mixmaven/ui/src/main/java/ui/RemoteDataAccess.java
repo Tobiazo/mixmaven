@@ -138,11 +138,22 @@ public class RemoteDataAccess implements DataAccess {
 
     /**
      * Sets the file path for data storage.
-     *
-     * @param string The file path (not used in this implementation).
+     * @param filename The file path (not used in this implementation).
      */
-    public void setFilePath(String string) {
-        return;
+    public void setFilePath(String filename) {
+        HttpRequest request = HttpRequest.newBuilder(setFileUri())
+          .header(CONTENT_TYPE_HEADER, APPLICATION_JSON)
+          .POST(BodyPublishers.ofString(filename))
+          .build();
+
+        try {
+            HttpClient
+            .newBuilder()
+            .build()
+            .send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private String uriParam(String s) {
@@ -161,4 +172,8 @@ public class RemoteDataAccess implements DataAccess {
     private URI drinkUri(String id) {
         return endpointBaseUri.resolve(uriParam(id));
       }
+
+    private URI setFileUri() {
+        return endpointBaseUri.resolve("setfile");
+    }
 }

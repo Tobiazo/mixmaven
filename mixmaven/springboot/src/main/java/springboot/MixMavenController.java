@@ -56,54 +56,46 @@ public class MixMavenController {
      *
      * @param id The ID of the drink to replace.
      * @param drinkString The JSON representation of the new drink.
-     * @return True if the drink was successfully replaced.
      */
     @PutMapping(path = "/drinks/{id}")
-    public boolean replaceDrink(@PathVariable("id") String id, @RequestBody String drinkString) {
+    public void replaceDrink(@PathVariable("id") String id, @RequestBody String drinkString) {
         Drink drink = mixMavenService.deserializeDrink(drinkString);
         getMixMavenModel().replaceDrink(id, drink);
         autoSaveMixMaven();
-        return true;
     }
 
     /**
      * Delete a drink by its ID.
      *
      * @param id The ID of the drink to delete.
-     * @return True if the drink was successfully deleted.
      */
     @DeleteMapping(path = "/drinks/{id}")
-    public boolean deleteDrink(@PathVariable("id") String id) {
+    public void deleteDrink(@PathVariable("id") String id) {
         getMixMavenModel().removeDrink(id);
         autoSaveMixMaven();
-        return true;
     }
 
     /**
      * Add a new drink to the mixMavenModel.
      *
      * @param drinkString The JSON representation of the new drink.
-     * @return True if the drink was successfully added.
      */
     @PostMapping(path = "/drinks")
-    public boolean addDrink(@RequestBody String drinkString) {
+    public void addDrink(@RequestBody String drinkString) {
         Drink drink = mixMavenService.deserializeDrink(drinkString);
         getMixMavenModel().addDrink(drink);
         autoSaveMixMaven();
-        return true;
     }
 
     /**
      * Set the file path for the MixMavenModel.
      *
      * @param fileName The file path to set.
-     * @return True if the file path was successfully set.
      */
-    @PostMapping(path = "/setfile")
-    public boolean setFilePath(@RequestBody String fileName) {
+    @PostMapping(path = "/drinks/setfile")
+    public void setFilePath(@RequestBody String fileName) {
         mixMavenService.setFilePath(fileName);
         autoSaveMixMaven();
-        return true;
     }
 }
 

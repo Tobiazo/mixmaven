@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,19 +81,11 @@ public class MixMavenApplicationTest {
 
         Drink testDrink = new Drink("Moscow mule", ingredients);
 
-        MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.post("/drinks")
+        mockMvc.perform(MockMvcRequestBuilders.post("/drinks")
                 .contentType(MediaType.APPLICATION_JSON).content(gson.toJson(testDrink))
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
-        try {
-            boolean response =
-                    gson.fromJson(result.getResponse().getContentAsString(), Boolean.class);
-            assertTrue(response);
-        } catch (Exception e) {
-            fail(e.getMessage());
-        }
     }
 
     /**
@@ -104,19 +95,11 @@ public class MixMavenApplicationTest {
      */
     @Test
     public void testSetFilePath() throws Exception {
-        MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.post("/setfile")
+        mockMvc.perform(MockMvcRequestBuilders.post("/drinks/setfile")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("springbootserver-data.json").accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
-        try {
-            boolean response =
-                    gson.fromJson(result.getResponse().getContentAsString(), Boolean.class);
-            assertTrue(response);
-        } catch (Exception e) {
-            fail(e.getMessage());
-        }
     }
 
     /**
@@ -139,17 +122,9 @@ public class MixMavenApplicationTest {
                 .content(gson.toJson(testDrink)).accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
-        MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.delete("/drinks/{id}", testDrink.getId())
+        mockMvc.perform(MockMvcRequestBuilders.delete("/drinks/{id}", testDrink.getId())
                 .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
-        try {
-            boolean response =
-                    gson.fromJson(result.getResponse().getContentAsString(), Boolean.class);
-            assertTrue(response);
-        } catch (Exception e) {
-            fail(e.getMessage());
-        }
     }
 }
