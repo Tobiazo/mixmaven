@@ -2,6 +2,9 @@ package core;
 
 import java.util.List;
 
+/**
+ * Class that contains commonly used numbers and defines valid values.
+ */
 @SuppressWarnings("magicnumber")
 public final class Constants {
     public static final List<String> VALIDUNITS = List.of("ml", "cl", "dl", "gram");
