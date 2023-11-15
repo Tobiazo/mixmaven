@@ -254,7 +254,6 @@ public class EditDrinkController {
 		} else if (drinkNameField.getText() == null || drinkNameField.getText().trim().isEmpty()) {
 			errorLabel.setText("Write a Drink Name");
 		} else {
-			System.out.println("ID" + mixMavenController.getDrinkId());
 			mixMavenController.getDataAccess().editDrink(mixMavenController.getDrinkId(),
 					new Drink(drinkNameField.getText(), selectedIngredients));
 			mixMavenController.showBrowseDrinks();

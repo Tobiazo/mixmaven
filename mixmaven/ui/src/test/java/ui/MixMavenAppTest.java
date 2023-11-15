@@ -131,7 +131,7 @@ public class MixMavenAppTest extends ApplicationTest {
         navToEditDrink();
 
         clickOn("#ingredientList .list-cell");
-        
+
         clear("#ingredientNameField");
         clear("#amountField");
 
@@ -247,7 +247,6 @@ public class MixMavenAppTest extends ApplicationTest {
         List<String> ingredient = Arrays.asList(testIngredients.get("Lime").split(" "));
         createTmpDrink("Vodka Redbull", "20 dl Vodka 40 alcohol ");
         navToEditDrink();
-        
 
         // Try to edit ingredient while no ingredient selected.
         clickOn("Update Ingredient");
@@ -325,9 +324,8 @@ public class MixMavenAppTest extends ApplicationTest {
 
     /**
      * Testing creating different drinks.
-     *
      * @param name
-     * @param ingredientString
+     * @param ingredientString string in the format "Amount Unit Name % Type"
      */
     @ParameterizedTest
     @MethodSource
@@ -337,26 +335,36 @@ public class MixMavenAppTest extends ApplicationTest {
         List<String> ingredients =
                 new ArrayList<String>(Arrays.asList(ingredientString.split(" ")));
         for (int i = 0; i < ingredients.size(); i += 5) {
+            //Ingredient name.
             write("#ingredientNameField", ingredients.get(i + 2));
+
+            //Ingredient amount.
             write("#amountField", ingredients.get(i));
+
+            //Select unit type.
             clickOn("#unitChoiceBox");
             clickOn(ingredients.get(i + 1));
+
+            //Select ingredient type.
             clickOn("#typeChoiceBox");
             clickOn(ingredients.get(i + 4));
+
+            //Alcohol content
             write("#alchoholPercentField", ingredients.get(i + 3));
+
             clickOn("Add Ingredient");
         }
 
         write("#drinkNameField", name);
         clickOn("Add New Drink");
 
+        //Assert that a drink with the corresponding ingredients was added.
         String[] createdDrink = {name, ingredientString};
         Assertions.assertTrue(searchDrinks(createdDrink));
     }
 
     /**
      * Generates arguments for creating different drinks.
-     *
      * @return a stream of arguments for creating different drinks
      */
     private static Stream<Arguments> testCreateDrink() {
@@ -431,30 +439,36 @@ public class MixMavenAppTest extends ApplicationTest {
         clickOn("Your Drinks");
         clickOn("Add Drink");
     }
+
     /**
-     * Deletes the latest drink, is only used in tandem with createTmpDrink()
+     * Deletes the latest drink, is only used in tandem with createTmpDrink().
      */
     private void deleteTmpDrink() {
         clickOn("Delete Drink");
     }
+
     /**
      * Creates a drink to be used in testing where we do not want to keep the drink.
-     * 
      * @param drinkName
      * @param ingredientString
      */
     private void createTmpDrink(String drinkName, String ingredientString) {
         navToAddDrink();
-        List<String> ingredient = new 
+        List<String> ingredient = new
         ArrayList<String>(Arrays.asList(ingredientString.split(" ")));
-    
+
         write("#ingredientNameField", ingredient.get(2));
+
         write("#amountField", ingredient.get(0));
+
         write("#alchoholPercentField", ingredient.get(3));
+
         clickOn("#unitChoiceBox");
         clickOn(ingredient.get(1));
+
         clickOn("#typeChoiceBox");
         clickOn(ingredient.get(4));
+
         clickOn("Add Ingredient");
         write("#drinkNameField", drinkName);
         clickOn("Add New Drink");
@@ -466,15 +480,7 @@ public class MixMavenAppTest extends ApplicationTest {
      * @return true if comparestring is a subbstring of target.
      */
     private boolean isSubstring(String compareString, String targetString) {
-        for (int i = 0; i < compareString.length(); i++) {
-            try {
-                if (!(compareString.charAt(i) == targetString.charAt(i)))
-                    return false;
-            } catch (StringIndexOutOfBoundsException e) {
-                return false;
-            }
-        }
-        return true;
+        return targetString.startsWith(compareString);
     }
 
     /**
@@ -493,19 +499,8 @@ public class MixMavenAppTest extends ApplicationTest {
 
             for (Node drinkBox : drinkContainer.getChildren()) {
                 if (drinkBox instanceof VBox) {
-                    Text nameLabel = (Text) ((VBox) drinkBox).getChildren().get(0);
-
-                    String name = nameLabel.getText().replace("Name: ", "");
-                    // String formatting
-                    String ingredient = ((Text) ((VBox) drinkBox).getChildren().get(1)).getText()
-                            .replace("Type: ", "").replace("• ", "").replace(".0", "")
-                            .replace("%", "").replaceAll("\\s+", " ");
-
-                    ingredient = ingredient.trim();
-                    ingredient += " ";
-                    String[] results = {name, ingredient};
-                    String searchIngredients = args[1].replace("alcohol", "").replace("mixer", "")
-                            .replace("extras", "").replaceAll("  ", " ");
+                    String[] results = formatDrinkBox(drinkBox);
+                    String searchIngredients = formatSearchIngredients(args);
 
                     if (results[0].equals(args[0]) && isSubstring(results[1], searchIngredients)) {
                         return true;
@@ -517,4 +512,38 @@ public class MixMavenAppTest extends ApplicationTest {
         }
         return false;
     }
+
+    /**
+     * Extracts and formats information from a drink box.
+     *
+     * @param drinkBox the VBox representing a drink in the UI
+     * @return an array containing the formatted name and ingredients of the drink
+     */
+    private String[] formatDrinkBox(Node drinkBox) {
+        Text nameLabel = (Text) ((VBox) drinkBox).getChildren().get(0);
+
+        String name = nameLabel.getText().replace("Name: ", "");
+        // String formatting
+        String ingredient = ((Text) ((VBox) drinkBox).getChildren().get(1)).getText()
+                .replace("Type: ", "").replace("• ", "").replace(".0", "")
+                .replace("%", "").replaceAll("\\s+", " ");
+
+        ingredient = ingredient.trim();
+        ingredient += " ";
+        return new String[]{name, ingredient};
+
+    }
+
+    /**
+     * Formats search ingredients by removing specific keywords and extra spaces.
+     *
+     * @param args the arguments for searching drinks (name and ingredient)
+     * @return the formatted search ingredients
+     */
+    private String formatSearchIngredients(String[] args) {
+        return args[1]
+        .replace("alcohol", "").replace("mixer", "")
+        .replace("extras", "").replaceAll("  ", " ");
+    }
+
 }

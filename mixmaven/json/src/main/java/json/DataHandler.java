@@ -5,7 +5,6 @@ import core.MixMavenModel;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 
@@ -15,19 +14,14 @@ import com.google.gson.Gson;
 public final class DataHandler {
 
     private File dataFile;
-    private List<Drink> drinks;
-    private MixMavenModel mixMavenModel;
     private static DataHandler singleInstance;
 
     private DataHandler() {
         this.setFilePath("Data.json");
-        drinks = new ArrayList<>();
-        mixMavenModel = new MixMavenModel(drinks);
     }
 
     /**
      * Returns the singleton instance of the DataHandler.
-     *
      * @return The DataHandler instance.
      */
     public static synchronized DataHandler getInstance() {
@@ -38,7 +32,6 @@ public final class DataHandler {
 
     /**
      * Gets the name of the current data file.
-     *
      * @return The name of the data file.
      */
     public String getDataFile() {
@@ -47,21 +40,16 @@ public final class DataHandler {
 
     /**
      * Sets the file path for data handling.
-     *
      * @param fileName The name of the data file to use.
      */
     public void setFilePath(String fileName) {
         String userHome = System.getProperty("user.home");
         File folder = new File(userHome, "MixMaven");
 
-        if (!folder.exists()) {
-            if (folder.mkdir()) {
-                System.out.println("Folder created successfully.");
-            } else {
-                System.err.println("Failed to create the folder.");
-                return;
-            }
-        }
+        setupDataFolder(folder);
+
+        setupDataFolder(folder);
+
         dataFile = new File(folder, fileName);
 
         try {
@@ -76,8 +64,23 @@ public final class DataHandler {
     }
 
     /**
+     * @param folder The folder to set up.
+     * @throws RuntimeException If the folder doesn't exist and cannot be created.
+     */
+    private void setupDataFolder(File folder) {
+        //Check if directory exists.
+        if (folder.exists()) return;
+        //Attempt to create new directory.
+        if (folder.mkdir()) {
+            System.out.println("Folder created successfully.");
+        } else {
+            System.err.println("Failed to create the folder.");
+            throw new RuntimeException("Failed to create the folder.");
+        }
+    }
+
+    /**
      * Saves the provided MixMavenModel to the data file.
-     *
      * @param mixMavenModel The model to be saved.
      */
     public void saveModel(MixMavenModel mixMavenModel) {
@@ -86,17 +89,19 @@ public final class DataHandler {
 
     /**
      * Loads the MixMavenModel from the data file.
-     *
      * @return The loaded MixMavenModel.
      */
     public MixMavenModel loadModel() {
-        mixMavenModel = UtilityJson.loadObjectFromJson(dataFile);
-        return mixMavenModel;
+        MixMavenModel loadedModel = UtilityJson.loadObjectFromJson(dataFile);
+        if (loadedModel == null) {
+            System.err.println("Failed to load model.");
+            return new MixMavenModel(new ArrayList<>());
+        }
+        return loadedModel;
     }
 
     /**
      * Deserializes a JSON string into a Drink object.
-     *
      * @param drink The JSON string representing a Drink.
      * @return A Drink object deserialized from the JSON string.
      */

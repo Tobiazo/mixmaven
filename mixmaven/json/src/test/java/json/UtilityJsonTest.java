@@ -30,9 +30,17 @@ public class UtilityJsonTest {
     public void setUp() {
         DataHandler dataHandler = DataHandler.getInstance();
         dataHandler.setFilePath("utilityJsonTestData.json");
-        String path = System.getProperty("user.home") + "/MixMaven/" + "utilityJsonTestData.json";
+        String path = System.getProperty("user.home") + "/MixMaven/" + dataHandler.getDataFile();
         testFile = new File(path);
 
+        mixMavenTestModel = new MixMavenModel(createTestDrinks());
+    }
+
+    /**
+     * Helper method for creating a list of test drinks.
+     * @return A list of test drinks.
+     */
+    private List<Drink> createTestDrinks() {
         List<Drink> drinks = new ArrayList<>();
 
         List<Ingredient> ingredients1 = new ArrayList<>();
@@ -47,7 +55,7 @@ public class UtilityJsonTest {
 
         drinks.add(drink1);
         drinks.add(drink2);
-        mixMavenTestModel = new MixMavenModel(drinks);
+        return drinks;
     }
 
     /**

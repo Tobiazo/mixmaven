@@ -71,7 +71,6 @@ public class DirectDataAccess implements DataAccess {
 
     /**
      * Sets the file path for data handling.
-     * 
      * @param path path for persistence.
      */
     public void setFilePath(String path) {
@@ -86,8 +85,7 @@ public class DirectDataAccess implements DataAccess {
     }
 
     /**
-     * 
-     * @return model 
+     * @return model
      */
     public MixMavenModel getModel() {
         return mixMavenModel;

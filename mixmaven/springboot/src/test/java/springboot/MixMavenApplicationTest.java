@@ -133,7 +133,6 @@ public class MixMavenApplicationTest {
         ingredients.add(new Ingredient("Ginger beer", 1.5, "dl", "mixer"));
 
         Drink testDrink = new Drink("Moscow mule", ingredients);
-        System.out.println("Test " + testDrink.getId());
 
         mockMvc.perform(
                 MockMvcRequestBuilders.post("/drinks").contentType(MediaType.APPLICATION_JSON)
