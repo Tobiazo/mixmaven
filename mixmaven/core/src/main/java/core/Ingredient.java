@@ -2,9 +2,11 @@ package core;
 
 import static core.Constants.VALIDTYPES;
 
-import java.io.Serializable;
-
-public final class Ingredient implements Serializable {
+/**
+ * Class that represents an ingredient in a drink. Provides methods to retrive information about an
+ * ingredient; name, alcohol percentage, amount, unit and type.
+ */
+public final class Ingredient {
 
     private String name;
     private int alcoholPercentage;
@@ -13,8 +15,7 @@ public final class Ingredient implements Serializable {
     private String type;
 
     /**
-     * Constructor for ingredients of type mixer and extras.
-     *
+     * Constructs an ingredient of type "mixer" or "extras".
      * @param name
      * @param amount
      * @param unit
@@ -22,16 +23,15 @@ public final class Ingredient implements Serializable {
      */
     public Ingredient(String name, double amount, String unit, String type) {
         if (!VALIDTYPES.contains(type))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid type");
         this.name = name;
-        this.amount = amount;
+        setAmount(amount);
         this.unit = unit;
         this.type = type;
     }
 
     /**
-     * Constructor for ingredients of type "alcohol".
-     *
+     * Constructs an ingredients of type "alcohol".
      * @param name
      * @param alcoholPercentage
      * @param amount
@@ -40,7 +40,8 @@ public final class Ingredient implements Serializable {
      */
     public Ingredient(String name, int alcoholPercentage, double amount, String unit, String type) {
         this(name, amount, unit, type);
-        if (alcoholPercentage > 100 || alcoholPercentage < 0) throw new IllegalArgumentException();
+        if (alcoholPercentage > 100 || alcoholPercentage < 0)
+            throw new IllegalArgumentException();
         this.alcoholPercentage = alcoholPercentage;
     }
 
@@ -57,6 +58,9 @@ public final class Ingredient implements Serializable {
     }
 
     public void setAmount(double amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount cannot be a negative number");
+        }
         this.amount = amount;
     }
 
@@ -80,6 +84,10 @@ public final class Ingredient implements Serializable {
         return type;
     }
 
+    /**
+     * Sets the type of an ingredient and checks that the type is valid.
+     * @param type
+     */
     public void setType(String type) {
         if (!VALIDTYPES.contains(type))
             throw new IllegalArgumentException("Not valid type");

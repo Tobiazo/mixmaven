@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Unit tests for the Drink class.
+ */
 @SuppressWarnings("magicnumber")
 public class DrinkTest {
 
@@ -86,7 +89,7 @@ public class DrinkTest {
         pinappleHell.addIngredient(vodka);
         pinappleHell.addIngredient(juice);
 
-        assertEquals(0.2, pinappleHell.getAlcoholContent());
+        assertEquals(0.2, pinappleHell.getAlcoholContent(), 0.01);
 
     }
 }

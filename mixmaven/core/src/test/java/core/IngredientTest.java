@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Unit tests for the Ingredient class.
+ */
 @SuppressWarnings("magicnumber")
 public class IngredientTest {
 
@@ -58,6 +61,9 @@ public class IngredientTest {
                 () -> new Ingredient("invalid", 120, 1, "ml", "invalidType"));
     }
 
+    /**
+     * Tests the all setters in the ingredient class.
+     */
     @Test
     public void testSetters() {
         Ingredient ingredient = new Ingredient("vodka", 40, 4, "dl", "alcohol");

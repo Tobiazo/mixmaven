@@ -19,7 +19,7 @@ public class MixMavenModelTest {
     private MixMavenModel mixMavenModel;
 
     /**
-     * Method to be ran before each test.
+     * Initiation that occurs before all tests.
      */
     @BeforeEach
     public void setUp() {
