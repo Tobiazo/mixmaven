@@ -4,12 +4,10 @@ import core.Drink;
 import core.MixMavenModel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +20,8 @@ public class DataHandlerTest {
     private static DataHandler dataHandler;
 
     @BeforeAll
-    public static void setUpClass() throws IOException {
+    public static void setUpClass() {
         dataHandler = DataHandler.getInstance();
-        dataHandler.setFilePath("dataHandlerTestData1.json");
-        dataHandler.setFilePath("dataHandlerTestData2.json");
 
         List<Drink> testDrinks = new ArrayList<>();
         testDrinks.add(new Drink("testDrink1"));
@@ -51,7 +47,7 @@ public class DataHandlerTest {
         dataHandler.setFilePath("dataHandlerTestData1.json");
         dataHandler.saveModel(mixMavenTestModel);
         MixMavenModel loadedModel = dataHandler.loadModel();
-        assertNotNull(loadedModel);
+
         assertEquals(mixMavenTestModel.getDrinks().size(), loadedModel.getDrinks().size());
         for (int i = 0; i < mixMavenTestModel.getDrinks().size(); i++) {
             Drink loadedDrink = loadedModel.getDrinks().get(i);

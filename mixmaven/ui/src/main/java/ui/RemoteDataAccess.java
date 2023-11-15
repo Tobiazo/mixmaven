@@ -81,7 +81,6 @@ public class RemoteDataAccess implements DataAccess {
      * @param id The ID of the drink to be deleted.
      */
     public final void deleteDrink(String id) {
-        System.out.println(drinkUri(id));
         HttpRequest request = HttpRequest.newBuilder(drinkUri(id))
           .header(ACCEPT_HEADER, APPLICATION_JSON)
           .DELETE()
