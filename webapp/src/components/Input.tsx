@@ -1,45 +1,54 @@
 import { useState } from 'react'
+import { FieldType } from '../types'
 
 type Props = {
-  type?: 'text' | 'number' | 'alcohol'
+  type?: FieldType
   label: string
   value: string | number
   onChange: (e: string) => void
 }
 
-const Input = ({ type = 'text', label, value, onChange }: Props) => {
+const Input = ({ type = FieldType.text, label, value, onChange }: Props) => {
   const [isError, setError] = useState(false)
   const [errorMsg, setErrorMsg] = useState('Invalid Field')
+  const [currentTimeout, setCurrentTimeOut] = useState<NodeJS.Timeout>()
+  const ERROR_TIMEOUT = 1000
+
+  const validateNumber = (val: string): boolean => {
+    const regex = /^\d*\.?\d{0,1}$/ // Only numbers, max one dot and max 1 decimal
+    return (
+      !(type === FieldType.number || type === FieldType.alcohol) ||
+      regex.test(val)
+    )
+  }
+
+  const validateAlcohol = (val: string): boolean => {
+    return !(type === FieldType.alcohol && parseInt(val) > 100)
+  }
+
+  const setTimeoutError = (msg: string) => {
+    setError(true)
+    setErrorMsg(msg)
+    clearTimeout(currentTimeout)
+    setCurrentTimeOut(setTimeout(() => setError(false), ERROR_TIMEOUT))
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === '' && type !== 'alcohol') {
+    if (e.target.value === '' && type !== FieldType.alcohol) {
       setError(true)
       setErrorMsg('This field is required')
     } else {
       setError(false)
+      clearTimeout(currentTimeout)
     }
 
-    // Only numbers, max one dot and max 1 decimal
-    const regex = /^\d*\.?\d{0,1}$/
-
-    if (
-      (type === 'number' || type === 'alcohol') &&
-      !regex.test(e.target.value)
-    ) {
-      setError(true)
-      setErrorMsg('This field must be a postive number and max one decimal')
-      setTimeout(() => {
-        setError(false)
-      }, 1000)
+    if (!validateNumber(e.target.value)) {
+      setTimeoutError('This field must be a postive number and max one decimal')
       return
     }
 
-    if (type === 'alcohol' && parseInt(e.target.value) > 100) {
-      setError(true)
-      setErrorMsg('This field cannot be greater than 100')
-      setTimeout(() => {
-        setError(false)
-      }, 1000)
+    if (!validateAlcohol(e.target.value)) {
+      setTimeoutError('This field cannot be greater than 100')
       return
     }
 

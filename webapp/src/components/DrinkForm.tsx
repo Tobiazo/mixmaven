@@ -1,4 +1,4 @@
-import { Drink, Ingredient, type, unit } from '../types'
+import { Drink, FieldType, Ingredient, type, unit } from '../types'
 import { UseMutationResult, useQueryClient } from '@tanstack/react-query'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useState } from 'react'
@@ -70,8 +70,9 @@ const DrinkForm = ({ submit, INIT_VALUES, id }: Props) => {
   const navigate = useNavigate()
 
   const handleSubmit = () => {
+    // ID is only provided when user is editing, otherwise a unique ID is generated
     const newDrink = {
-      id: id || crypto.randomUUID(), // Creates unique ID if not provided
+      id: id || crypto.randomUUID(),
       name: name,
       ingredients: ingredientList,
       alcoholContent: calculateAlcohol(ingredientList),
@@ -98,7 +99,12 @@ const DrinkForm = ({ submit, INIT_VALUES, id }: Props) => {
 
   return (
     <>
-      {submit.isError && <p>Error...</p>}
+      {submit.isError && (
+        <p>
+          Error {location.pathname.includes('/new') ? 'adding' : 'editing'} the
+          drink
+        </p>
+      )}
       <div className="drink-form">
         <Input
           label="Drink name"
@@ -149,7 +155,7 @@ const DrinkForm = ({ submit, INIT_VALUES, id }: Props) => {
             </div>
             {ingredient.type === type.alcohol ? (
               <Input
-                type="alcohol"
+                type={FieldType.alcohol}
                 label="Alcohol percentage"
                 value={ingredient.alcoholPercentage || ''}
                 onChange={(value) => {
@@ -165,7 +171,7 @@ const DrinkForm = ({ submit, INIT_VALUES, id }: Props) => {
 
             <div className="amount-box">
               <Input
-                type="number"
+                type={FieldType.number}
                 label="Amount"
                 value={ingredient.amount || ''}
                 onChange={(value) => {

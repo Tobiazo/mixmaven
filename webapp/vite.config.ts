@@ -8,5 +8,9 @@ export default ({ mode }) => {
     server: {
       port: parseInt(process.env.VITE_CLIENT_PORT) || 3000,
     },
+    preview: {
+      port: parseInt(process.env.VITE_CLIENT_PORT) || 3000,
+      open: true
+    }
   })
 }
