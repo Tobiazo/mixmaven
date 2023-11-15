@@ -350,7 +350,7 @@ public class MixMavenAppTest extends ApplicationTest {
             clickOn(ingredients.get(i + 4));
 
             //Alcohol content
-            write("#alchoholPercentField", ingredients.get(i + 3));
+            write("#alcoholPercentField", ingredients.get(i + 3));
 
             clickOn("Add Ingredient");
         }
@@ -461,7 +461,7 @@ public class MixMavenAppTest extends ApplicationTest {
 
         write("#amountField", ingredient.get(0));
 
-        write("#alchoholPercentField", ingredient.get(3));
+        write("#alcoholPercentField", ingredient.get(3));
 
         clickOn("#unitChoiceBox");
         clickOn(ingredient.get(1));
