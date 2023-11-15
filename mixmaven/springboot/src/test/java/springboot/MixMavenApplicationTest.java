@@ -28,7 +28,7 @@ import core.Ingredient;
         classes = {MixMavenController.class, MixMavenService.class, MixMavenApplication.class})
 @WebMvcTest
 @SuppressWarnings("magicnumber")
-public class MivMavenApplicationTest {
+public class MixMavenApplicationTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -153,5 +153,4 @@ public class MivMavenApplicationTest {
             fail(e.getMessage());
         }
     }
-
 }
