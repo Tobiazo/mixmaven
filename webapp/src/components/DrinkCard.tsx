@@ -29,13 +29,9 @@ const DrinkCard = ({ content, id, expandAll }: Props) => {
     mutationFn: deleteDrink,
     onSuccess: () => {
       // Removes the drink from the cached data. Improves UX if the server is slow
-      queryClient.setQueryData(['drinks'], (prev: Drink[]) => {
-        const copy = [...prev]
-        const filtered = copy.filter((drink) => {
-          return drink.id !== id
-        })
-        return filtered
-      })
+      queryClient.setQueryData(['drinks'], (prev: Drink[]) =>
+        [...prev].filter((drink) => drink.id !== id)
+      )
 
       // Ensures that the cached data is synced with the server
       queryClient.invalidateQueries({ queryKey: ['drinks'], exact: true })

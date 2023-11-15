@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 cypress/screenshots/
+cypress/downloads/
 node_modules
 dist
 dist-ssr

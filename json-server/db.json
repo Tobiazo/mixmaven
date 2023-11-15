@@ -83,41 +83,6 @@
         }
       ],
       "alcoholContent": 3.6363636363636362
-    },
-    {
-      "id": "8e7c8509-1700-41fd-bccb-792d564820a6",
-      "name": "Morgan n' coke 2",
-      "ingredients": [
-        {
-          "name": "Captain Morgan",
-          "alcoholPercentage": 40,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        },
-        {
-          "name": "Coca Cola",
-          "alcoholPercentage": 0,
-          "amount": 4,
-          "unit": "cl",
-          "type": "mixer"
-        }
-      ],
-      "alcoholContent": 13.333333333333334
-    },
-    {
-      "id": "ff440063-4f35-4c9c-8a2e-22b82629cce8",
-      "name": "Hei",
-      "ingredients": [
-        {
-          "name": "asd",
-          "alcoholPercentage": 0,
-          "amount": 2,
-          "unit": "cl",
-          "type": "alcohol"
-        }
-      ],
-      "alcoholContent": 0
     }
   ]
 }

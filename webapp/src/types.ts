@@ -25,3 +25,9 @@ export enum type {
   mixer = 'mixer',
   extras = 'extras',
 }
+
+export enum FieldType {
+  text = 'text',
+  number = 'number',
+  alcohol = 'alcohol',
+}
