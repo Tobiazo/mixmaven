@@ -14,6 +14,9 @@ import core.MixMavenModel;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Controller for handling RESTful API requests related to the MixMaven application.
+ */
 @CrossOrigin
 @RestController
 @RequestMapping()
@@ -27,7 +30,7 @@ public class MixMavenController {
      *
      * @return The MixMavenModel instance.
      */
-    private MixMavenModel getMixMavenModel()  {
+    private MixMavenModel getMixMavenModel() {
         return mixMavenService.getMixMavenModel();
     }
 
@@ -39,7 +42,7 @@ public class MixMavenController {
     }
 
     /**
-     * Retrieve the mixMavenModel containing drinks.
+     * Retrieves a list of drinks from the MixMavenModel.
      *
      * @return A list of Drink objects.
      */
@@ -52,12 +55,12 @@ public class MixMavenController {
      * Update a drink by its ID.
      *
      * @param id The ID of the drink to replace.
-     * @param drinkstring The JSON representation of the new drink.
+     * @param drinkString The JSON representation of the new drink.
      * @return True if the drink was successfully replaced.
      */
     @PutMapping(path = "/drinks/{id}")
-    public boolean replaceDrink(@PathVariable("id") String id, @RequestBody String drinkstring) {
-        Drink drink = mixMavenService.deserializeDrink(drinkstring);
+    public boolean replaceDrink(@PathVariable("id") String id, @RequestBody String drinkString) {
+        Drink drink = mixMavenService.deserializeDrink(drinkString);
         getMixMavenModel().replaceDrink(id, drink);
         autoSaveMixMaven();
         return true;
@@ -79,12 +82,12 @@ public class MixMavenController {
     /**
      * Add a new drink to the mixMavenModel.
      *
-     * @param drinkstring The JSON representation of the new drink.
+     * @param drinkString The JSON representation of the new drink.
      * @return True if the drink was successfully added.
      */
     @PostMapping(path = "/drinks")
-    public boolean addDrink(@RequestBody String drinkstring) {
-        Drink drink = mixMavenService.deserializeDrink(drinkstring);
+    public boolean addDrink(@RequestBody String drinkString) {
+        Drink drink = mixMavenService.deserializeDrink(drinkString);
         getMixMavenModel().addDrink(drink);
         autoSaveMixMaven();
         return true;
