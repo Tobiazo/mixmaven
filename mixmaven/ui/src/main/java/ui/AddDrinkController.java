@@ -18,7 +18,7 @@ public final class AddDrinkController {
 	@FXML private Label errorLabel;
 	@FXML private TextField drinkNameField;
 	@FXML private TextField ingredientNameField;
-	@FXML private TextField alchoholPercentField;
+	@FXML private TextField alcoholPercentField;
 	@FXML private TextField amountField;
 	@FXML private ListView<Ingredient> ingredientList;
 	@FXML private ChoiceBox<String> typeChoiceBox;
@@ -41,11 +41,11 @@ public final class AddDrinkController {
 		typeChoiceBox.getItems().addAll(VALIDTYPES);
 
 		typeChoiceBox.setOnAction(event -> {
-			if (typeChoiceBox.getValue() != "alcohol") {
-				alchoholPercentField.setEditable(false);
-				alchoholPercentField.clear();
+			if (!"alcohol".equalsIgnoreCase(typeChoiceBox.getValue())) {
+				alcoholPercentField.setEditable(false);
+				alcoholPercentField.clear();
 			} else {
-				alchoholPercentField.setEditable(true);
+				alcoholPercentField.setEditable(true);
 			}
 		});
 	}
@@ -70,7 +70,7 @@ public final class AddDrinkController {
 	@FXML
 	public void addIngredientBtn() {
 		String ingredientName = ingredientNameField.getText();
-		int alchoholPercent;
+		int alcoholPercent;
 		double amount;
 		String unit = unitChoiceBox.getValue();
 		String type = typeChoiceBox.getValue();
@@ -94,15 +94,15 @@ public final class AddDrinkController {
 			errorLabel.setText("Choose options from both the choiceboxes!");
 			return;
 		}
-		//Verifies the alchohol Percent parameter.
+		//Verifies the alcohol Percent parameter.
 		try {
-			if (alchoholPercentField.getText().equals("")) {
-				alchoholPercent = 0;
+			if (alcoholPercentField.getText().equals("")) {
+				alcoholPercent = 0;
 			} else {
-				alchoholPercent = Integer.parseInt(alchoholPercentField.getText());
+				alcoholPercent = Integer.parseInt(alcoholPercentField.getText());
 			}
 		} catch (NumberFormatException e) {
-			errorLabel.setText("AlchoholPercentage must be a number!");
+			errorLabel.setText("AlcoholPercentage must be a number!");
 			return;
 		}
 
@@ -114,7 +114,7 @@ public final class AddDrinkController {
 
 		//Creates a new ingredient and adds it to the view.
 		Ingredient newIngredient =
-					new Ingredient(ingredientName, alchoholPercent, amount, unit, type);
+					new Ingredient(ingredientName, alcoholPercent, amount, unit, type);
 			selectedIngredients.add(newIngredient);
 			ingredientList.getItems().add(newIngredient);
 			ingredientList.refresh();
@@ -136,11 +136,13 @@ public final class AddDrinkController {
 	 */
 	@FXML
 	public void addDrinkBtn() {
+        //Verify that name and ingredient is not empty.
 		if (selectedIngredients.isEmpty()) {
 			errorLabel.setText("Cannot make a Drink with no ingredients");
-		} else if (drinkNameField.getText() == null || drinkNameField.getText().trim().isEmpty()) {
+		} else if (drinkNameField.getText().trim().isEmpty()) {
 			errorLabel.setText("Write a Drink Name");
 		} else {
+            //Add drink and redirect to browse view.
 			mixMavenController.getDataAccess().
 			addDrink(new Drink(drinkNameField.getText(), selectedIngredients));
 			mixMavenController.showBrowseDrinks();
@@ -153,10 +155,10 @@ public final class AddDrinkController {
 	private void clearFields() {
 		ingredientNameField.clear();
 		amountField.clear();
-		alchoholPercentField.clear();
+		alcoholPercentField.clear();
 		unitChoiceBox.setValue(null);
 		typeChoiceBox.setValue(null);
-		alchoholPercentField.setEditable(true);
+		alcoholPercentField.setEditable(true);
 		errorLabel.setText("");
 	}
 }

@@ -224,9 +224,9 @@ public class MixMavenAppTest extends ApplicationTest {
         // Write Alcohol as non-number.
         clickOn("#typeChoiceBox");
         clickOn("alcohol");
-        write("#alchoholPercentField", "a");
+        write("#alcoholPercentField", "a");
         clickOn("Add New Ingredient");
-        checkErrorLabel("AlchoholPercentage must be a number!");
+        checkErrorLabel("AlcoholPercentage must be a number!");
 
         // Test if liquid is measured in gram.
         clickOn("#unitChoiceBox");

@@ -27,7 +27,6 @@ public class DirectDataAccess implements DataAccess {
 
     /**
      * Retrieves a list of all drinks from the data model.
-     *
      * @return A list of Drink objects representing all the drinks in the data model.
      */
     public List<Drink> getDrinks() {
@@ -37,7 +36,6 @@ public class DirectDataAccess implements DataAccess {
 
     /**
      * Deletes a drink from the data model based on its unique identifier and saves the changes to the data file.
-     *
      * @param drinkId The unique identifier of the drink to be deleted.
      */
     public void deleteDrink(String drinkId) {
@@ -48,7 +46,6 @@ public class DirectDataAccess implements DataAccess {
 
     /**
      * Adds a new drink to the data model and saves the changes to the data file.
-     *
      * @param drink The Drink object to be added to the data model.
      */
     public void addDrink(Drink drink) {
@@ -59,7 +56,6 @@ public class DirectDataAccess implements DataAccess {
 
     /**
      * Edits an existing drink in the data model with updated information and saves the changes to the data file.
-     *
      * @param oldDrinkId The unique identifier of the drink to be edited.
      * @param newDrink The updated Drink object to replace the old drink.
      */

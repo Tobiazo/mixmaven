@@ -35,7 +35,6 @@ public class RemoteDataAccess implements DataAccess {
 
     /**
      * Constructs a RemoteDataAccess object with the specified endpoint base URI.
-     *
      * @param endpointBaseUri The base URI of the remote MixMaven API.
      */
     public RemoteDataAccess(URI endpointBaseUri) {
@@ -45,7 +44,6 @@ public class RemoteDataAccess implements DataAccess {
 
     /**
      * Retrieves the MixMavenModel from the remote API.
-     *
      * @return The MixMavenModel retrieved from the remote API, or null if an error occurs.
      */
     public final MixMavenModel getModel() {
@@ -77,7 +75,6 @@ public class RemoteDataAccess implements DataAccess {
 
     /**
      * Sends a DELETE request to the remote API to delete a drink with the specified ID.
-     *
      * @param id The ID of the drink to be deleted.
      */
     public final void deleteDrink(String id) {
@@ -97,7 +94,6 @@ public class RemoteDataAccess implements DataAccess {
 
     /**
      * Sends a POST request to the remote API to add a new drink.
-     *
      * @param drink The Drink object to be added to the remote API.
      */
     public final void addDrink(Drink drink) {
@@ -120,8 +116,7 @@ public class RemoteDataAccess implements DataAccess {
 
     /**
      * Sends a PUT request to the remote API to edit an existing drink with the specified ID.
-     *
-     * @param id      The ID of the drink to be edited.
+     * @param id The ID of the drink to be edited.
      * @param newDrink The updated Drink object to replace the old drink.
      */
     public final void editDrink(String id, Drink newDrink) {
