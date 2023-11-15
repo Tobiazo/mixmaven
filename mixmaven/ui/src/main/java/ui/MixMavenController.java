@@ -9,6 +9,12 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * The MixMavenController class manages the user interface and controls the flow of the MixMaven application.
+ * It serves as the central controller for handling different views, such as adding drinks, browsing drinks,
+ * and editing drinks. This class interacts with the data access layer to load and synchronize drink data,
+ * enabling the user to perform various operations within the application.
+ */
 public class MixMavenController {
 
   @FXML private StackPane contentPane;
@@ -26,9 +32,13 @@ public class MixMavenController {
     showBrowseDrinks();
   }
 
+  /**
+   * Attempts to connect to the remote data access.
+   * @return true if connected to remote data access.
+   */
   private boolean syncWithServer() {
     try {
-        URI baseURI = new URI("https://localhost:8000/drinks/");
+        URI baseURI = new URI("http://localhost:8000/drinks/");
         this.dataAccess = new RemoteDataAccess(baseURI);
         if (dataAccess.getModel() != null) {
             System.out.println("Connected to server @" + baseURI);
@@ -62,7 +72,6 @@ public class MixMavenController {
 
   /**
    * Loads the fxml file EditDrinks.fxml, sets corresponding controller and passes the drinkId on.
-   *
    * @param drinkId
    */
   public void showEditDrink(String drinkId) {
@@ -73,7 +82,6 @@ public class MixMavenController {
 
   /**
    * Loads in the given loader and switches the scene to the corresponding fxml file.
-   *
    * @param loader
    */
   private void showContent(FXMLLoader loader) {
@@ -87,7 +95,6 @@ public class MixMavenController {
 
   /**
   * Loads in the given loader and sets the selectedDri.
-  *
   * @param loader
   * @param drinkId
   */

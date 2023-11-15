@@ -3,7 +3,6 @@ package ui;
 import core.Constants;
 import core.Drink;
 
-import static core.Constants.SCENE_WIDTH;
 import static core.Constants.FONT_SIZE_40;
 
 import javafx.fxml.FXML;
@@ -17,6 +16,10 @@ import javafx.scene.control.ScrollPane;
 
 import java.util.List;
 
+/**
+ * Controller class for the "Browse Drinks" view in MixMaven.
+ * This class is responsible for displaying all drinks.
+ */
 public final class BrowseDrinksController {
 
     @FXML private AnchorPane browseDrinksPane;
@@ -26,17 +29,27 @@ public final class BrowseDrinksController {
     private List<Drink> drinks;
     private MixMavenController mixMavenController;
 
+    /**
+     * Constructs a new BrowseDrinksController.
+     *
+     * @param mixMavenController The main controller for MixMaven.
+     */
     public BrowseDrinksController(MixMavenController mixMavenController) {
         this.mixMavenController = mixMavenController;
 
     }
 
+    /**
+     * Initializes the BrowseDrinksController.
+     * Retrieves the list of drinks from the data access layer and populates
+     * the UI with drink information.
+     */
     public void initialize() {
         drinks = mixMavenController.getDataAccess().getDrinks();
-        browseDrinksPane.setPrefSize(SCENE_WIDTH, Constants.CONTENT_HEIGHT);
-        scrollPane.setLayoutX((SCENE_WIDTH - scrollPane.getPrefWidth()) / 2);
+        browseDrinksPane.setPrefSize(Constants.SCENE_WIDTH, Constants.CONTENT_HEIGHT);
+        scrollPane.setLayoutX((Constants.SCENE_WIDTH - scrollPane.getPrefWidth()) / 2);
 
-        //Generates a drinkbox for every drinks in MixMaven
+        //Generates a drinkbox for every drink in MixMaven
         for (int i = drinks.size() - 1; i >= 0; i--) {
             VBox drinkBox = new VBox();
             drinkBox.getStyleClass().add("drinkBox");
