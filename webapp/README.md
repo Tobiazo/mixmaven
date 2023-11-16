@@ -29,7 +29,7 @@ All in one command: `npm i && npm run build && npm run preview`
 
 1. Create a `.env` file inside the webapp containing the following
 
-    - `VITE_CHE_LINK=<your-link>` (without the greater/lesser than signs) For instructions on how to find this link see [challenges.md](/docs/release-3/challenges.md)
+   - `VITE_CHE_LINK=<your-link>` (without the greater/lesser than signs) For instructions on how to find this link see [challenges.md](/docs/release-3/challenges.md)
 
 2. Follow the instructions for either development or production
 
@@ -43,11 +43,11 @@ Note: If you want to run the app on different ports or run server on a different
 
 ## Testing
 
-We use cypress for end-2-end frontend-testing. 
+We use cypress for end-2-end frontend-testing.
 
 Run all tests in the terminal with: `npm run cy:run`
 
-Open cypress: 
+Open cypress:
 
 1. Run `npm run cy:open`
 2. Choose your prefered browser
