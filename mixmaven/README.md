@@ -11,6 +11,7 @@ You will find the documentation for each release in the [docs](/docs/) folder or
 
 - [Release 1](/docs/release-1/)
 - [Release 2](/docs/release-2/)
+- [Release 3](/docs/release-3/)
 
 Userstories can be found here:
 
@@ -18,11 +19,14 @@ Userstories can be found here:
 
  There is also documentation inside each module describing that module.
 
-- [UI](/mixmaven/ui/README.md)
 - [Core](/mixmaven/core/README.md)
 - [Json](/mixmaven/json/README.md)
+- [UI](/mixmaven/ui/README.md)
+- [SpringBoot](/mixmaven/springboot/README.md)
 
 ## Build and running the project
+
+### Build
 
 The project is run on **maven version 3.9.4** and **java version 17.0.8**.
 
@@ -37,13 +41,39 @@ To build you need to run:
 ```cmd
 mvn clean install -DskipTests
 ```
+### Run
+When running the App you have two options:
 
-In order to run the App, move into the **ui folder** and run <mark style="background-color: #7e7e7e; padding:3px; border-radius:2px"> mvn javafx:run</mark> , Like so:
+#### Running the app without a server
+
+The app itself recognises that the server is not running and will initialize local storage instead.
+
+In order to run the App without a server,  move into the **ui folder** and run <mark style="background-color: #7e7e7e; padding:3px; border-radius:2px"> mvn javafx:run</mark> , Like so:
 
 ```cmd
 cd ui
 mvn javafx:run
 ```
+
+#### Running the app with a server
+
+In order to run the App with a server, we need to first start the server.
+
+Move into the springboot folder and run mvn spring-boot:run, like so:
+
+```cmd
+cd springboot
+mvn spring-boot:run
+```
+
+Then go back and move into ui and run mvn javafx:run, like so:
+
+```cmd
+cd ../ui
+mvn javafx:run
+```
+
+
 
 ## Testing
 
@@ -68,7 +98,7 @@ Then you can go in the corresponding folder (core/ui) and inside target/site ope
 
 The app contains three primary pages.
 
-**1**
+### 1
  The first one is page where you can add drinks to your library of drinks. This page is accesible from **Add Drink** button on the upper taskbar. It looks as following:
 
 ![image](/docs/release-2/release-2-adddrink.png)
@@ -94,14 +124,14 @@ The app contains three primary pages.
 
 Whenever an ingredient is added, the view to the left fills out with the ingredients and the user can delete ingredients from this view if desired.
 
-**2**
+### 2
  The second is a page where the user can view their Drinks. This is the default view when the app is ran and can otherwise be reached through the **Your Drinks** Button and looks as following:
 
 ![image](/docs/release-2/release-2-browsedrinks.png)
 
 The page presents all the drinks added by the user in the order the user added the drinks. There are two options for the drinks. The user can delete the drink with the **Delete Drink** button or the user can edit a selected drink with the **Edit Drink** button, which sends the user to the final page.
 
-**3**
+### 3
 The final page is a page where the user can edit a selected drink and is reached through the **Edit Drink** button on a drink in the second page. It looks as following:
 
 ![image](/docs/release-2/release-2-editdrink.png)
@@ -111,3 +141,12 @@ It shares many similarities with the **Add Drink** page, but differs in a few wa
 ## Eclipse Che
 
 The app has been configurated to work with [eclipse che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2331/gr2331?new)
+
+## The App is packageable
+
+In order to package the App run the following commands in the mixmaven directory
+
+```cmd
+mvn javafx:jlink -f ./ui/pom.xml
+mvn jpackage:jpackage -f ./ui/pom.xml
+```
