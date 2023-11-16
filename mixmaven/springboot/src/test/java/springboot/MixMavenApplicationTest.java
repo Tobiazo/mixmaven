@@ -36,7 +36,6 @@ public class MixMavenApplicationTest {
 
     /**
      * Setup method to initialize Gson before each test.
-     *
      * @throws Exception if an error occurs during setup.
      */
     @BeforeEach
@@ -46,7 +45,6 @@ public class MixMavenApplicationTest {
 
     /**
      * Test to verify the successful retrieval of drinks from the API.
-     *
      * @throws Exception if an error occurs during the test.
      */
     @Test
@@ -67,7 +65,6 @@ public class MixMavenApplicationTest {
 
     /**
      * Test to verify the successful creation of a new drink through the API.
-     *
      * @throws Exception if an error occurs during the test.
      */
     @Test
@@ -85,12 +82,10 @@ public class MixMavenApplicationTest {
                 .contentType(MediaType.APPLICATION_JSON).content(gson.toJson(testDrink))
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-
     }
 
     /**
      * Test to verify the successful change of datafile through the API.
-     *
      * @throws Exception if an error occurs during the test.
      */
     @Test
@@ -99,12 +94,10 @@ public class MixMavenApplicationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("springbootserver-data.json").accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-
     }
 
     /**
      * Test to verify the successful deletion of a drink through the API.
-     *
      * @throws Exception if an error occurs during the test.
      */
     @Test
@@ -125,6 +118,5 @@ public class MixMavenApplicationTest {
         mockMvc.perform(MockMvcRequestBuilders.delete("/drinks/{id}", testDrink.getId())
                 .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-
     }
 }

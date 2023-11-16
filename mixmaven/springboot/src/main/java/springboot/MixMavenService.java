@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MixMavenService {
-
     private MixMavenModel mixMavenModel;
     private DataHandler dataHandler;
 
@@ -26,7 +25,6 @@ public class MixMavenService {
 
     /**
      * Gets the current MixMavenModel.
-     *
      * @return The MixMavenModel instance.
      */
     public MixMavenModel getMixMavenModel() {
@@ -42,7 +40,6 @@ public class MixMavenService {
 
     /**
      * Deserializes a drink from its string representation.
-     *
      * @param drink The string representation of the drink.
      * @return The Drink object deserialized from the input string.
      */
@@ -52,7 +49,6 @@ public class MixMavenService {
 
     /**
      * Sets the file path for data handling.
-     *
      * @param filename The file path to set.
      */
     public void setFilePath(String filename) {

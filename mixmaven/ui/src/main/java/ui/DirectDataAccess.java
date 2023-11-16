@@ -11,7 +11,6 @@ import java.util.List;
  * and the core data model.
  */
 public class DirectDataAccess implements DataAccess {
-
     private MixMavenModel mixMavenModel;
     private DataHandler dataHandler;
 
@@ -81,7 +80,7 @@ public class DirectDataAccess implements DataAccess {
     }
 
     /**
-     * @return model
+     * @return model.
      */
     public MixMavenModel getModel() {
         return mixMavenModel;

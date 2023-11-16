@@ -35,7 +35,6 @@ public class RemoteDataAccessTest {
 
     /**
      * Starts the WireMock server and sets up the RemoteDataAccess for testing.
-     *
      * @throws URISyntaxException If there is an issue with the URI syntax.
      */
     @BeforeEach

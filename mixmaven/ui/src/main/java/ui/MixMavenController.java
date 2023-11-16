@@ -16,7 +16,6 @@ import java.net.URISyntaxException;
  * enabling the user to perform various operations within the application.
  */
 public class MixMavenController {
-
   @FXML private StackPane contentPane;
   private String drinkId;
   private final AddDrinkController addDrinkController = new AddDrinkController(this);
@@ -94,7 +93,7 @@ public class MixMavenController {
   }
 
   /**
-  * Loads in the given loader and sets the selectedDri.
+  * Loads in the given loader and sets the selectedDrinkId.
   * @param loader
   * @param drinkId
   */
@@ -109,7 +108,7 @@ public class MixMavenController {
   }
 
   /**
-    * @return selectedDrinkIndex
+    * @return selectedDrinkIndex.
     */
   public String getDrinkId() {
     return this.drinkId;
@@ -123,6 +122,9 @@ public class MixMavenController {
     this.drinkId = drinkId;
   }
 
+  /**
+   * @return dataAccess which handles persistence.
+   */
   public final DataAccess getDataAccess() {
     return dataAccess;
   }

@@ -15,6 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+/**
+ * Controller class for the "Edit Drink" UI view.
+ */
 public class EditDrinkController {
 	@FXML private Label errorLabel;
 	@FXML private TextField drinkNameField;
@@ -151,7 +154,7 @@ public class EditDrinkController {
 		String unit = unitChoiceBox.getValue();
 		String type = typeChoiceBox.getValue();
 
-		// Checks if an ingredient has been selected in the listview
+		// Checks if an ingredient has been selected in the listview.
 		if (ingredientList.getSelectionModel().getSelectedItems().isEmpty()) {
 			errorLabel.setText("Select an ingredient to edit!");
 			return;

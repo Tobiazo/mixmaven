@@ -10,7 +10,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Utility class for handeling JSON seralization and deseralization.
+ */
 public class UtilityJson {
+
 	/**
      * Writes the obj to file in a pretty format.
      * @param obj  The object to be saved to the file.
