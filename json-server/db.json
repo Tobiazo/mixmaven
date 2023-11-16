@@ -51,12 +51,15 @@
     },
     {
       "id": "cd52dab4-ca6d-c2cd-071a-36594a2094e5",
-      "name": "Redbull",
+      "name": "Melk",
+      "name": "Melk",
       "ingredients": [
         {
-          "name": "Redbull",
-          "alcoholPercentage": 0,
+          "name": "Melk",
           "amount": 3,
+          "name": "Melk",
+          "amount": 3,
+          "alcoholPercentage": 0,
           "unit": "dl",
           "type": "mixer"
         }
@@ -83,6 +86,27 @@
         }
       ],
       "alcoholContent": 3.6363636363636362
+    },
+    {
+      "id": "8e7c8509-1700-41fd-bccb-792d564820a6",
+      "name": "Morgan n' coke",
+      "ingredients": [
+        {
+          "name": "Captain Morgan",
+          "alcoholPercentage": 40,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Coca Cola",
+          "alcoholPercentage": 0,
+          "amount": 4,
+          "unit": "cl",
+          "type": "mixer"
+        }
+      ],
+      "alcoholContent": 13.333333333333334
     }
   ]
 }
