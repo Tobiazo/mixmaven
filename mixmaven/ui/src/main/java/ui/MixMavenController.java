@@ -123,7 +123,7 @@ public class MixMavenController {
   }
 
   /**
-   * @return dataAccess which takes care of data handling.
+   * @return dataAccess which handles persistence.
    */
   public final DataAccess getDataAccess() {
     return dataAccess;

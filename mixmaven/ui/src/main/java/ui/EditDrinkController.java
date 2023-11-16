@@ -16,7 +16,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 /**
- * Controller class for the "Edit Drink" UI component.
+ * Controller class for the "Edit Drink" UI view.
  */
 public class EditDrinkController {
 	@FXML private Label errorLabel;
