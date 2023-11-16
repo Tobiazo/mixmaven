@@ -4,13 +4,11 @@
 
 This document is meant to be a overview of how our work habits have been for release 3. We will go through how we have worked and reflect over what we are pleased with and what we wish we had executed better.
 
-## Work Habits we are not pleased with
-
-Below we go through the work habits we were not pleased with.
+## Work Habits with room for improvement
 
 ### Utilising Issues as Branches
 
-Something we wished we had done better is utilising issues as branches. Halfway through the development of release 3 we found out that gitlab lets us create branches based on issues. This is something we have somewhat utilised during development, but not something we have utilised to the degree we would have liked to.
+During release 3 we began creating branches based on single issues. This makes collaboration and code review easier. This should have been practiced from the start and utilized with every issue. 
 
 ### Branches/Issues becoming bigger than intended
 

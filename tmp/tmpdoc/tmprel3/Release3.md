@@ -6,6 +6,7 @@
 - [Userstories](#userstories)
 - [Implementation of Web Application](#implementation-of-web-application)
 - [Implementation of API and Server](#implementation-of-api-and-server)
+- [Updating and refactoring UI, Json and Core modules](#updating-and-refactoring-ui,-Json-and-core-modules)
 - [Tests](#tests)
 - [Diagrams](#diagrams)
 - [Work Habits](#work-habits)
@@ -13,16 +14,12 @@
 
 ## Introduction to Release 3
 
-Release 3 implements a new frontend using React and an API using the REST standard. The focus for this release has been:
--Development of the React webapp
--Refactoring the ui module to work with the api remotely 
--Developing the Springboot server
--Improving test coverage
--Work habits and code review
+Release 3 implements a new frontend using React and an API using the REST standard. The focus for this release has been development of the new React client, the springboot server and updating the JavaFX application. Along with the above Release 3 features new tests and higher test coverage along with improved Javadoc and code readability.
 
-Our decision to implement our frontend in React was in order to achieve a more modern look and get acquainted with new technologies. No new functionality has been added to the JavaFX application but it has been updated to work both locally and remotely through the api. 
+The decision to implement our frontend in React was a result of wanting to achive a more modern visual design and getting acquainted with new technologies commonly used in the industry. The JavaFX application remains functionally and visually similar to release 2, but the code has been updated to work with then new API. More about this [here](#updating-and-refactoring-ui,-Json-and-core-modules).
 
-We have created a new module springboot for the server/API [springboot](/mixmaven/springboot/README.md)
+To implement our API we used a springboot server containing all endpoints. This is located in the new springboot module. [springboot](/mixmaven/springboot/README.md)
+
 
 ## Userstories
 
@@ -33,35 +30,42 @@ The Userstories used for this release can be found [here.](/docs/release-3/users
 As mentioned in the introduction we have focused on creating a web application for MixMaven. Documentation for the web application can be found
 [here.](/webapp/README.md)
 
-The decision to move our focus over to developing a web application over further developing the java application was something the group discussed for some time. We came to the conclusion that a web application would allow us to get experience with working with a different development environment. simultaneously the group agreed that environments like React are very modern and largely industry standard, whereas javafx is far less utilised. We also believe that React will give us the tools to development a better client for the end user.
+The decision to move our focus over to developing a web application over further developing the java application was something the group discussed for some time. We had to consider whether developing a new client was beneficial despite the resulting increased workload. In the end we concluded that a web application would allow us to get experience with new technologies and a different development framework. The group considers frameworks like React modern and industry standard, and we believe React allows us to develop a better client for the end user.
 
-The web application has the excact same functionality as the java application. The only small difference is the option to sort the view of all drinks.
+The new client has the same functionality as the JavaFX client, except an option to sort the view of drinks in the webapp. The user interface is visually changed in the web application but the layout is essentially the same. Visual changes are things like changes to colours and fonts, or small layout changes.
 
-The user interface is visually changed in the web application but the layout is essentially the same. Visual changes are things like changes to colours and fonts, or small layout changes.
-
-Images of the java application and web application can be found in the follwing links:
+Images of the java application and web application can be found in the following links:
 
 - [Java Application](/mixmaven/README.md#the-app)
 - [web Application](/webapp/README.md) <!--- TODO -->
 
 ## Implementation of API and Server
 
-In the release we have also created a API and a server. Utilising REST. Both the java application and the web application utilises these. The java app is able to run without locally whereas the web application requires teh server to run. Documentation for the API can be found [here.](/docs/release-3/API.md) and information for running the applications can be found in the following links
+Release 3 implements a new API adhering to the REST design principles. The server is implemented through Springboot and contains several endpoints which is documented [here.](/docs/release-3/API.md). The API is utilized by both the JavaFX and the React client. Instructions for running the server can be found below:
 
 - [Java Application](/mixmaven/README.md#build-and-running-the-project)
-- [web Application](/webapp/README.md) <!--- TODO -->
+- [Web Application](/webapp/README.md) <!--- TODO -->
+
+## Updating and refactoring UI, Json and Core modules
+
+Since the previous release we have made some substantial changes in the UI, Json and core modules. The goal has been to support the JavaFX working both locally and remotely in a similar manner to the webapp. Furthermore we wanted to make the code more modular such that the different layers in our application were clearly defined.
+
+To illustrate this, release 2 worked by having each UI controller interacting directly with the DataHandler in the Json module. Release 3 solves this by having the MixMavenController interacting with a DataAccess interface implemented by DirectDataAccess and RemoteDataAccess. RemoteDataAccess interacts with the API while DirectDataAccess interacts with the DataHandler. The result is that the Json and UI module now only interact through the DataAccess interface where previously each controller were dependent on the Json module.
+
+In the Core module we added a MixMavenModel Class which contains all of our application data and the necessary methods to add, get, replace and remove drinks.
+
+To improve maintainability, readability and improve code quality, a lot of code has been overhauled in the three modules. Long methods have been shortened by using helper methods in order to follow the single responsibility principle and make the code more readable. For example the previously long initialize method in EditDrinkController is now merely 5 lines of method calls.
+
 
 ## Tests
 
 ### Why do we have tests
 
-In order to verify the quality of our codebase we have wtritten substantial tests for all of the modules. The tests are there to make sure bugs and errors do not find their way into the codebase. Our general procedure regarding testing has been to continuously write tests when the app was expanded with further functionality.
+As the project has grown in complexity and scope, unit tests has been crucial in development. The tests have been instrumental while [updating and refactoring](#updating-and-refactoring-ui,-Json-and-core-modules) to ascertain that everything is still working as intended. To maintain high code quality in our codebase we have set high standards for testing all modules.
 
 ### Test coverage
 
-We have improved upon the testing from release 2
-
-We have strived to maintain as great as possible test coverage, utilising the dependecy **JaCoCo** in order to assist us in analyzing our test coverage. This does not mean we have strived to have 100% test coverage. This is for the simple reason that we do not believe it is necessary to test every method. Basic methods like setters and getters are generally of such a simple nature that it would be unecessary to do comprehensive testing of them.
+Since release 2 test coverage has been substantially improved, as testing has been a priority. With the help of **JaCOCO** we have been able to analyze our test coverage and we now have an average test coverage of about 80% in all modules. We consider this satisfactory as the remaining code would be trivial to tests (methods like "setters" or "getters") or consist of edge cases like code resulting from an IOException. 
 
 #### Core
 In the core module jacoco reports a test coverage of 84 %.
