@@ -14,23 +14,24 @@ During release 3 we began creating branches based on single issues. This makes c
 
 When we faced issues where wanted to implement certain features, the branches ended up becoming far bigger and more intricate than initally anticipated. In these cases there is no clear overview. We had a few of these situations and should we have done it again we absolutely would have broken things down into smaller issues.
 
-## Work Habits we are pleased with
+### Use Gitlabs review feature
 
-Below we go through the work habits we were pleased with:
+We did not utilize gitlabs review feature for merge requests as much as expected. This is because we had work sessions twice a week where it proved easier to review the code and consult the person responsible for the merge request in person. However using the review feature more extensively when we did not meet could have allowed quicker turnaround in the code review process and further streamlined development.
+
+## Work Habits we are pleased with
 
 ### Weekly Work Sessions
 
-We continued using weekly meetings the same as in release 2. Where we would have semi-weekly work sessions. We are very pleased with this solutions. We found the sessions to be productive and efficient.
+We continued using weekly meetings the same as in release 2. Where we would have work sessions twice a week. We found that having frequent physical work sessions allowed for better collaboration. This made it easy to share ideas and discuss important choices in the development process.
 
 ### Structure of Work Sessions
 
-The work sessions had very clear structures.
-These work sessions began with a meeting where we would go through what we had done since the last sessions, what we wanted to achieve for the work session and we eventually discussed any issues/design choices. The structure vaguely resembling scrum meetings. After this meeting we would split the work needed to be done, first by creating issues in gitlab and then using git branches where we would try to solve the gitlab issues. We found this structure to be efficient getting the work started fast, and it allowed us to clear up issues beforehand.
+We structured our sessions after the scrum framework. First a standup meeting discussing what we did since last meeting, what is to be done moving forward and potential challenges or roadblocks. We would then create issues in gitlab and assign them amongst ourselves. This structured approach made each session productive and allowed each developer to get a better picture of the entire project.
 
 ### Pair Programming
 
-We were also very pleased with our use of pair programming during release 3. With the implementation of both API/Server and Web application it was very simple for the group to split the work halfways between two pairs. Therefore we ended up with one pair cooperating on API/Server while the other pair cooperating on web application. We naturally did review code across the pairs. Being two people solving the same problems made the actual problem solving very efficient. The structure also made sure that there where two people who had great control over the two new implementations.
+We were also very pleased with our use of pair programming during release 3. With the implementation of both API/Server and Web application it felt natural to assign one pair on each task. Pair programming sped up problem solving and made difficult decisions less daunting. To facilitate comprehensive understanding of the project we did code reviews across pairs. We believe this also resulted in better code quality and efficiency.
 
 ### Merge Requests
 
-We are happy with the way we continued using merge requests from release 2. We aspired to make the merge requests and commit messages clear and precise. We are also happy with the fact we utilised squash commits. We found reviewing previous commits to be easy and clear.
+We are happy with the way we continued using merge requests from release 2. We aspired to make the merge requests and commit messages clear and precise. We are also satisfied with the fact we utilised squash commits. We found reviewing previous commits to be easy and clear.
