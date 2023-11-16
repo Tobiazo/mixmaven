@@ -64,7 +64,7 @@ public final class Drink {
 	 * Calculates the alcoholvolume (ABV*volume) divided by the total volume of all ingredients in
 	 * the drink. When calculating the alcoholcontent it does not consider ingredients of unit =
 	 * gram because it will not affect the alcoholcontent in the drink.
-	 * @return alcoholcontent of the drink
+	 * @return alcoholcontent of the drink.
 	 */
 	private double calculateAlcoholContent() {
 		double volume = 0;
@@ -98,7 +98,7 @@ public final class Drink {
 
 	/**
 	 * Removes the ingredient, on the given index, from the drink.
-	 * @param index of the ingredient to remove
+	 * @param index of the ingredient to remove.
 	 */
 	public void removeIngredient(int index) {
 		ingredients.remove(index);

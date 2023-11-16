@@ -12,7 +12,6 @@ import com.google.gson.Gson;
  * Manages data handling, including file I/O, serialization, and deserialization.
  */
 public final class DataHandler {
-
     private File dataFile;
     private static DataHandler singleInstance;
 
@@ -68,9 +67,9 @@ public final class DataHandler {
      * @throws RuntimeException If the folder doesn't exist and cannot be created.
      */
     private void setupDataFolder(File folder) {
-        //Check if directory exists.
+        // Check if directory exists.
         if (folder.exists()) return;
-        //Attempt to create new directory.
+        // Attempt to create new directory.
         if (folder.mkdir()) {
             System.out.println("Folder created successfully.");
         } else {
@@ -107,8 +106,6 @@ public final class DataHandler {
      */
     public Drink deserializeDrink(String drink) {
         Gson gson = new Gson();
-
-        // Parse the JSON string and create an instance of Drink
         return gson.fromJson(drink, Drink.class);
     }
 }

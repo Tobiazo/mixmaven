@@ -14,6 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+/**
+ * Controller class for the "Add Drink" UI component.
+ */
 public final class AddDrinkController {
 	@FXML private Label errorLabel;
 	@FXML private TextField drinkNameField;
@@ -140,7 +143,7 @@ public final class AddDrinkController {
 		} else if (drinkNameField.getText().trim().isEmpty()) {
 			errorLabel.setText("Write a Drink Name");
 		} else {
-            //Add drink and redirect to browse view.
+            // Add drink and redirect to browse view.
 			mixMavenController.getDataAccess().
 			addDrink(new Drink(drinkNameField.getText(), selectedIngredients));
 			mixMavenController.showBrowseDrinks();
@@ -160,5 +163,3 @@ public final class AddDrinkController {
 		errorLabel.setText("");
 	}
 }
-
-

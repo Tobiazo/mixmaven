@@ -22,15 +22,10 @@ import com.google.gson.reflect.TypeToken;
  */
 public class RemoteDataAccess implements DataAccess {
     private final URI endpointBaseUri;
-
     private static final String APPLICATION_JSON = "application/json";
-
     private static final String ACCEPT_HEADER = "Accept";
-
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-
     private MixMavenModel mixMavenModel;
-
     private Gson gson;
 
     /**

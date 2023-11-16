@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SuppressWarnings("magicnumber")
 public class MixMavenAppTest extends ApplicationTest {
 
-    // Fields
+    // Fields.
     private static HashMap<String, String> testIngredients;
     private Parent root;
 
@@ -171,7 +171,7 @@ public class MixMavenAppTest extends ApplicationTest {
         int lastIndex = items.size() - 1;
         String lastItem = items.get(lastIndex).toString();
 
-        // clickOn on the last item in the ListView
+        // clickOn on the last item in the ListView.
         clickOn(listView);
         moveTo(lastItem);
         clickOn(lastItem);
@@ -282,7 +282,7 @@ public class MixMavenAppTest extends ApplicationTest {
         clickOn("#unitChoiceBox");
         clickOn("dl");
 
-        // Missing drink name
+        // Missing drink name.
         clickOn("Update Drink");
         checkErrorLabel("Write a Drink Name");
         clickOn("Back");
@@ -325,7 +325,7 @@ public class MixMavenAppTest extends ApplicationTest {
     /**
      * Testing creating different drinks.
      * @param name
-     * @param ingredientString string in the format "Amount Unit Name % Type"
+     * @param ingredientString string in the format "Amount Unit Name % Type".
      */
     @ParameterizedTest
     @MethodSource
@@ -335,21 +335,21 @@ public class MixMavenAppTest extends ApplicationTest {
         List<String> ingredients =
                 new ArrayList<String>(Arrays.asList(ingredientString.split(" ")));
         for (int i = 0; i < ingredients.size(); i += 5) {
-            //Ingredient name.
+            // Ingredient name.
             write("#ingredientNameField", ingredients.get(i + 2));
 
-            //Ingredient amount.
+            // Ingredient amount.
             write("#amountField", ingredients.get(i));
 
-            //Select unit type.
+            // Select unit type.
             clickOn("#unitChoiceBox");
             clickOn(ingredients.get(i + 1));
 
-            //Select ingredient type.
+            // Select ingredient type.
             clickOn("#typeChoiceBox");
             clickOn(ingredients.get(i + 4));
 
-            //Alcohol content
+            // Alcohol content.
             write("#alcoholPercentField", ingredients.get(i + 3));
 
             clickOn("Add Ingredient");
@@ -358,14 +358,14 @@ public class MixMavenAppTest extends ApplicationTest {
         write("#drinkNameField", name);
         clickOn("Add New Drink");
 
-        //Assert that a drink with the corresponding ingredients was added.
+        // Assert that a drink with the corresponding ingredients was added.
         String[] createdDrink = {name, ingredientString};
         Assertions.assertTrue(searchDrinks(createdDrink));
     }
 
     /**
      * Generates arguments for creating different drinks.
-     * @return a stream of arguments for creating different drinks
+     * @return a stream of arguments for creating different drinks.
      */
     private static Stream<Arguments> testCreateDrink() {
         return Stream.of(Arguments.of("Moscow Mule", testIngredients.get("Vodka")),
@@ -378,7 +378,7 @@ public class MixMavenAppTest extends ApplicationTest {
         // Create drink to delete.
         createTmpDrink("Just Vodka", "20 dl Vodka 40 alcohol ");
 
-        // Delete the created drink
+        // Delete the created drink.
         clickOn("Delete Drink");
         String[] drinkToDelete = {"Just Vodka", ""};
         Assertions.assertFalse(searchDrinks(drinkToDelete));
@@ -398,8 +398,7 @@ public class MixMavenAppTest extends ApplicationTest {
 
     /**
      * Gets the root node of the UI.
-     *
-     * @return the root node of the UI
+     * @return the root node of the UI.
      */
     private Parent getRootNode() {
         return root;
@@ -407,9 +406,8 @@ public class MixMavenAppTest extends ApplicationTest {
 
     /**
      * Simulates writing text into a specified label.
-     *
-     * @param label the label to interact with
-     * @param text the text to write into the label
+     * @param label the label to interact with.
+     * @param text the text to write into the label.
      */
     private void write(String label, String text) {
         clickOn(label).write(text);
@@ -417,7 +415,6 @@ public class MixMavenAppTest extends ApplicationTest {
 
     /**
      * Clears the text from a specified label.
-     *
      * @param label The label to clear.
      */
     private void clear(String label) {
@@ -475,8 +472,8 @@ public class MixMavenAppTest extends ApplicationTest {
     }
 
     /**
-     * @param compareString to check if it is a substring
-     * @param targetString to check if compareString is included in
+     * @param compareString to check if it is a substring.
+     * @param targetString to check if compareString is included in.
      * @return true if comparestring is a subbstring of target.
      */
     private boolean isSubstring(String compareString, String targetString) {
@@ -485,16 +482,15 @@ public class MixMavenAppTest extends ApplicationTest {
 
     /**
      * Searches for drinks based on provided arguments in the UI.
-     *
-     * @param args the arguments for searching drinks (name and ingredient)
-     * @return true if the searched drink is found, false otherwise
+     * @param args the arguments for searching drinks (name and ingredient).
+     * @return true if the searched drink is found, false otherwise.
      */
     private boolean searchDrinks(String[] args) {
-        // Use FxRobot to interact with the JavaFX application
+        // Use FxRobot to interact with the JavaFX application.
         FxRobot robot = new FxRobot();
 
         try {
-            // Locate the VBox
+            // Locate the VBox.
             VBox drinkContainer = robot.lookup("#drinkContainer").query();
 
             for (Node drinkBox : drinkContainer.getChildren()) {
@@ -515,15 +511,14 @@ public class MixMavenAppTest extends ApplicationTest {
 
     /**
      * Extracts and formats information from a drink box.
-     *
-     * @param drinkBox the VBox representing a drink in the UI
-     * @return an array containing the formatted name and ingredients of the drink
+     * @param drinkBox the VBox representing a drink in the UI.
+     * @return an array containing the formatted name and ingredients of the drink.
      */
     private String[] formatDrinkBox(Node drinkBox) {
         Text nameLabel = (Text) ((VBox) drinkBox).getChildren().get(0);
 
         String name = nameLabel.getText().replace("Name: ", "");
-        // String formatting
+        // String formatting.
         String ingredient = ((Text) ((VBox) drinkBox).getChildren().get(1)).getText()
                 .replace("Type: ", "").replace("• ", "").replace(".0", "")
                 .replace("%", "").replaceAll("\\s+", " ");
@@ -536,9 +531,8 @@ public class MixMavenAppTest extends ApplicationTest {
 
     /**
      * Formats search ingredients by removing specific keywords and extra spaces.
-     *
-     * @param args the arguments for searching drinks (name and ingredient)
-     * @return the formatted search ingredients
+     * @param args the arguments for searching drinks (name and ingredient).
+     * @return the formatted search ingredients.
      */
     private String formatSearchIngredients(String[] args) {
         return args[1]

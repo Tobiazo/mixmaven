@@ -21,7 +21,6 @@ import java.util.List;
  * This class is responsible for displaying all drinks.
  */
 public final class BrowseDrinksController {
-
     @FXML private AnchorPane browseDrinksPane;
     @FXML private ScrollPane scrollPane;
     @FXML private VBox drinkContainer;
@@ -31,7 +30,6 @@ public final class BrowseDrinksController {
 
     /**
      * Constructs a new BrowseDrinksController.
-     *
      * @param mixMavenController The main controller for MixMaven.
      */
     public BrowseDrinksController(MixMavenController mixMavenController) {
@@ -49,7 +47,7 @@ public final class BrowseDrinksController {
         browseDrinksPane.setPrefSize(Constants.SCENE_WIDTH, Constants.CONTENT_HEIGHT);
         scrollPane.setLayoutX((Constants.SCENE_WIDTH - scrollPane.getPrefWidth()) / 2);
 
-        //Generates a drinkbox for every drink in MixMaven
+        // Generates a drinkbox for every drink in MixMaven.
         for (int i = drinks.size() - 1; i >= 0; i--) {
             VBox drinkBox = new VBox();
             drinkBox.getStyleClass().add("drinkBox");
@@ -66,11 +64,11 @@ public final class BrowseDrinksController {
 
             Button deleteBtn = new Button("Delete Drink");
             deleteBtn.getStyleClass().add("drinkBtn");
-            deleteBtn.setUserData(drinkId); // The drink to be deleted if the button is pressed
+            deleteBtn.setUserData(drinkId); // The drink to be deleted if the button is pressed.
 
             Button editButton = new Button("Edit Drink");
             editButton.getStyleClass().add("drinkBtn");
-            editButton.setUserData(drinkId); // The drink to be edited when the button is pressed
+            editButton.setUserData(drinkId); // The drink to be edited when the button is pressed.
 
             deleteBtn.setOnAction(event -> {
                 mixMavenController.getDataAccess().deleteDrink((String) deleteBtn.getUserData());

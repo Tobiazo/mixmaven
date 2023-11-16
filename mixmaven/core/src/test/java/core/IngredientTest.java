@@ -68,30 +68,29 @@ public class IngredientTest {
     public void testSetters() {
         Ingredient ingredient = new Ingredient("vodka", 40, 4, "dl", "alcohol");
 
-        //Test setType
+        // Test setType.
         assertThrows(IllegalArgumentException.class, () -> ingredient.setType("invalid"));
         ingredient.setType("mixer");
         assertEquals("mixer", ingredient.getType());
 
-        //Test setUnit
+        // Test setUnit.
         ingredient.setUnit("ml");
         assertEquals("ml", ingredient.getUnit());
 
-        //Test setName
+        // Test setName.
         ingredient.setName("Lemon Juice");
         assertEquals("Lemon Juice", ingredient.getName());
 
-        //Test setAmount
+        // Test setAmount.
         ingredient.setAmount(15.0);
         assertEquals(15.0, ingredient.getAmount(), 0.001);
 
-        //Test setAlchoholPercentage
+        // Test setAlchoholPercentage.
         ingredient.setAlcoholPercentage(50);
         assertEquals(50, ingredient.getAlcoholPercentage());
 
-        //Test toString
+        // Test toString.
         String expected = "15.0 ml Lemon Juice 50%";
         assertEquals(expected, ingredient.toString());
-
     }
 }

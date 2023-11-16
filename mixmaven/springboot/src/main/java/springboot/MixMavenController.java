@@ -27,7 +27,6 @@ public class MixMavenController {
 
     /**
      * Retrieve the MixMaven model.
-     *
      * @return The MixMavenModel instance.
      */
     private MixMavenModel getMixMavenModel() {
@@ -43,7 +42,6 @@ public class MixMavenController {
 
     /**
      * Retrieves a list of drinks from the MixMavenModel.
-     *
      * @return A list of Drink objects.
      */
     @GetMapping("/drinks")
@@ -53,7 +51,6 @@ public class MixMavenController {
 
     /**
      * Update a drink by its ID.
-     *
      * @param id The ID of the drink to replace.
      * @param drinkString The JSON representation of the new drink.
      */
@@ -66,7 +63,6 @@ public class MixMavenController {
 
     /**
      * Delete a drink by its ID.
-     *
      * @param id The ID of the drink to delete.
      */
     @DeleteMapping(path = "/drinks/{id}")
@@ -77,7 +73,6 @@ public class MixMavenController {
 
     /**
      * Add a new drink to the mixMavenModel.
-     *
      * @param drinkString The JSON representation of the new drink.
      */
     @PostMapping(path = "/drinks")
@@ -89,7 +84,6 @@ public class MixMavenController {
 
     /**
      * Set the file path for the MixMavenModel.
-     *
      * @param fileName The file path to set.
      */
     @PostMapping(path = "/drinks/setfile")
@@ -98,5 +92,3 @@ public class MixMavenController {
         autoSaveMixMaven();
     }
 }
-
-

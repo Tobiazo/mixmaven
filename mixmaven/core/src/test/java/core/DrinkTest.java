@@ -39,7 +39,7 @@ public class DrinkTest {
         assertTrue(drink.getName().equals("Moscow mule"));
         assertEquals(3, drink.getIngredients().size());
         assertEquals(0.012903225, drink.getAlcoholContent(), 0.01);
-        // Might expect 1
+        // Might expect 1.
     }
 
     /**
@@ -93,4 +93,3 @@ public class DrinkTest {
 
     }
 }
-

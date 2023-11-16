@@ -4,6 +4,9 @@ import java.util.List;
 import core.Drink;
 import core.MixMavenModel;
 
+/**
+ * Interface for accessing and managing data related to the MixMaven application.
+ */
 public interface DataAccess {
 
     List<Drink> getDrinks();

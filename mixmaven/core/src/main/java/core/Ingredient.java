@@ -7,7 +7,6 @@ import static core.Constants.VALID_TYPES;
  * ingredient; name, alcohol percentage, amount, unit and type.
  */
 public final class Ingredient {
-
     private String name;
     private int alcoholPercentage;
     private double amount;
@@ -99,4 +98,3 @@ public final class Ingredient {
         return amount + " " + unit + " " + name + " " + alcoholPercentage + "%";
     }
 }
-
