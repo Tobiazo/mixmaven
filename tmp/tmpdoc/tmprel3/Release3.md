@@ -65,7 +65,7 @@ As the project has grown in complexity and scope, unit tests has been crucial in
 
 ### Test coverage
 
-Since release 2 test coverage has been substantially improved, as testing has been a priority. With the help of **JaCOCO** we have been able to analyze our test coverage and we now have an average test coverage of about 80% in all modules. We consider this satisfactory as the remaining code would be trivial to tests (methods like setters or getters) or consist of edgecases like code resulting from an IOException. 
+Since release 2 test coverage has been substantially improved, as testing has been a priority. With the help of **JaCOCO** we have been able to analyze our test coverage and we now have an average test coverage of about 80% in all modules. We consider this satisfactory as the remaining code would be trivial to tests (methods like "setters" or "getters") or consist of edge cases like code resulting from an IOException. 
 
 #### Core
 In the core module jacoco reports a test coverage of 84 %.
