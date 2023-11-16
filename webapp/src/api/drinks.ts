@@ -4,7 +4,7 @@ import { Drink } from '../types'
  * Allows enviroment variables to change the url
  * Default: http://localhost:8000
  */
-const baseURL = `http://${import.meta.env.VITE_SERVER_IP || 'localhost'}:${
+const baseURL = import.meta.env.VITE_CHE_LINK || `http://${import.meta.env.VITE_SERVER_IP || 'localhost'}:${
   import.meta.env.VITE_SERVER_PORT || 8000
 }`
 

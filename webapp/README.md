@@ -1,6 +1,6 @@
 # MixMaven Webapp
 
-This is an alternative client in react to javafx. It contains the pages: home, new drink and edit drink. 
+This is an alternative client in react to javafx. It contains the pages: home, new drink and edit drink.
 
 ## Running the app
 
@@ -24,6 +24,14 @@ This is an alternative client in react to javafx. It contains the pages: home, n
 3. Run the build `npm run preview`
 
 All in one command: `npm i && npm run build && npm run preview`
+
+### Run the webapp in eclipse che
+
+1. Create a `.env` file inside the webapp containing the following
+
+    - `VITE_CHE_LINK=<your-link>` (without the greater/lesser than signs) For instructions on how to find this link see [challenges.md](/docs/release-3/challenges.md)
+
+2. Follow the instructions for either development or production
 
 ---
 
