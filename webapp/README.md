@@ -52,3 +52,5 @@ Open cypress:
 1. Run `npm run cy:open`
 2. Choose your prefered browser
 3. Choose what tests to run (home, new_drink, edit_drink)
+
+PS: In Eclipse Che opening cypress does not work, run them in the terminal instead.

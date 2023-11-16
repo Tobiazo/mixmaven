@@ -141,10 +141,6 @@ The final page is a page where the user can edit a selected drink and is reached
 
 It shares many similarities with the **Add Drink** page, but differs in a few ways. When the user clicks on one of the ingredients in the listview to the left, the parameter fields will fill out with the corresponding data. The user is then free to do changes and by pressing the **Update Ingredient** button will apply the corresponding changes to the ingredient. Otherwise the functionality is the same as **Add Drink** and pressing the **Update Drink** button will change the Drink.
 
-## Eclipse Che
-
-The app has been configurated to work with [eclipse che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2331/gr2331?new)
-
 ## The App is packageable
 
 In order to package the App run the following commands in the mixmaven directory

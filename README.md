@@ -6,6 +6,10 @@ Here you can gather all your drink recipes in one easy to use application. Simpl
 
 You will find all documentation in the [docs folder](/docs/).
 
+## Eclipse Che
+
+The app has been configurated to work with [eclipse che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2331/gr2331?new)
+
 ## Code base
 
 1. The project inside the [mixmaven](./mixmaven/) folder contains the following modules:
