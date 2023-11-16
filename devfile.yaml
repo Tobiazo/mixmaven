@@ -31,6 +31,10 @@ components:
           name: 5500-tcp
           protocol: http
           targetPort: 5500
+          - exposure: public
+          name: 8000-tcp
+          protocol: http
+          targetPort: 8000
 commands:
   - id: changedir
     exec:

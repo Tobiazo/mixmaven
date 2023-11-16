@@ -6,23 +6,24 @@
 - [Userstories](#userstories)
 - [Implementation of Web Application](#implementation-of-web-application)
 - [Implementation of API and Server](#implementation-of-api-and-server)
-- [Updating and refactoring UI, Json and Core modules](#updating-and-refactoring-ui,-Json-and-core-modules)
+- [Updating and refactoring UI, Json and Core modules](#updating-and-refactoring-ui-json-and-core-modules)
 - [Tests](#tests)
 - [Diagrams](#diagrams)
 - [Work Habits](#work-habits)
 - [Checkstyle and Spotbugs](#checkstyle-and-spotbugs)
+- [Regarding Eclipse Che and React](#regarding-eclipse-che-and-react)
 
 ## Introduction to Release 3
 
 Release 3 implements a new frontend using React and an API using the REST standard. The focus for this release has been development of the new React client, the springboot server and updating the JavaFX application. Along with the above Release 3 features new tests and higher test coverage along with improved Javadoc and code readability.
 
-The decision to implement our frontend in React was a result of wanting to achive a more modern visual design and getting acquainted with new technologies commonly used in the industry. The JavaFX application remains functionally and visually similar to release 2, but the code has been updated to work with then new API. More about this [here](#updating-and-refactoring-ui,-Json-and-core-modules).
+The decision to implement our frontend in React was a result of wanting to achive a more modern visual design and getting acquainted with new technologies commonly used in the industry. The JavaFX application remains functionally and visually similar to release 2, but the code has been updated to work with then new API. More about this [here](#updating-and-refactoring-ui-json-and-core-modules).
 
 To implement our API we used a springboot server containing all endpoints. This is located in the new springboot module. [springboot](/mixmaven/springboot/README.md)
 
 ## Userstories
 
-The Userstories used for this release can be found [here.](/docs/release-3/userstories.md)
+The Userstories used for this release can be found [here.](/docs/release-3/user-stories.md)
 
 ## Implementation of Web Application
 
@@ -72,8 +73,8 @@ For more information on our API se [API.md](./API.md)
 
 Instructions for running the server together with;
 
-- JavaFX client: [build-and-running-the-project](/mixmaven/README.md#build-and-running-the-project)
-- Webapp: [webapp README](/webapp/README.md)
+- [Java Application](/mixmaven/README.md#build-and-running-the-project)
+- [Web Application](/webapp/README.md#running-the-app)
 
 ## Updating and refactoring UI, Json and Core modules
 
@@ -89,7 +90,7 @@ To improve maintainability, readability and improve code quality, a lot of code 
 
 ### Why do we have tests
 
-As the project has grown in complexity and scope, unit tests has been crucial in development. The tests have been instrumental while updating and refactoring to ascertain that everything is still working as intended. To maintain high code quality in our codebase we have set high standards for testing all modules.
+As the project has grown in complexity and scope, unit tests has been crucial in development. The tests have been instrumental while [updating and refactoring](#updating-and-refactoring-ui-json-and-core-modules) to ascertain that everything is still working as intended. To maintain high code quality in our codebase we have set high standards for testing all modules.
 
 ### Test coverage
 
@@ -144,3 +145,7 @@ See [Work Habits Release 3](./work-habits-release-3.md)
 ## Checkstyle and Spotbugs
 
 See [Release 2](/docs/release-2/release-2.md#checkstyle)
+
+## Regarding Eclipse Che and React
+
+We had issues with running react in eclipse che. Read more about this [here](/docs/release-3/challenges.md)
