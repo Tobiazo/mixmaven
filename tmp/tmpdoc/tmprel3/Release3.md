@@ -30,14 +30,50 @@ The Userstories used for this release can be found [here.](/docs/release-3/users
 As mentioned in the introduction we have focused on creating a web application for MixMaven. Documentation for the web application can be found
 [here.](/webapp/README.md)
 
-The decision to move our focus over to developing a web application over further developing the java application was something the group discussed for some time. We had to consider whether developing a new client was beneficial despite the resulting increased workload. In the end we concluded that a web application would allow us to get experience with new technologies and a different development framework. The group considers frameworks like React modern and industry standard, and we believe React allows us to develop a better client for the end user.
+The decision to move our focus over to developing a web application over further developing the java application was something the group discussed for some time. We came to the conclusion that a web application would allow us to get experience with working with a different development environment. Simultaneously the group agreed that technologies like React are very modern and largely industry standard, whereas javafx is far less utilised. We also believe that React will give us the tools to development a better client for the end user.
 
-The new client has the same functionality as the JavaFX client, except an option to sort the view of drinks in the webapp. The user interface is visually changed in the web application but the layout is essentially the same. Visual changes are things like changes to colours and fonts, or small layout changes.
+The web application has the exact same core functionality as the java application, but provides a much improved (UX) user experience.
 
-Images of the java application and web application can be found in the following links:
+We implemented better functionality for navigating the list of drinks on the home page:
 
-- [Java Application](/mixmaven/README.md#the-app)
-- [web Application](/webapp/README.md) <!--- TODO -->
+- Each drink-card is by default collapsed to avoid unnecessarily cluttering the homepage
+-The user can expand each individual card by simply clicking or just pressing "expand all". This reveals all relevant information like ingredients and alcohol content.
+- The option to filter alcoholic / non-alcoholic drinks
+- The list will by default sort in ascending order (A-Z), with the option to toggle with descending order.
+
+Better feedback to the user in the new/edit drink page:
+
+- Immediate feedback to the user through error messages on invalid inputs.
+- The buttons for add ingredient and create drink is disabled until the required fields are filled and at least one ingredient is added.
+- If the type of the ingredient is not of type alcohol, the option to add a alcohol percent is removed.
+
+We also implemented a more humane and modern design:
+
+- A softer and more delightful color scheme. Also color coded alcoholic/non-alcoholic drinks
+- Less clutter in new drink, with dynamic input labels/placeholders
+- Animations make the app feel more adaptive and responsive
+
+The implementation of react-query:
+
+- React query allows the server interaction to be more precise:
+
+  - All the drinks are fetched when the app is first loaded.
+  - Whenever we add/edit/delete a drink we update the drink cache in react query. This leads to the update showing instantly for the user without having to wait for a new fetch to the server. (this is more noticeable on a slow server)
+  - We can invalidate the cache whenever we want to make sure it is synced with the server. This happens in the background and helps in the case of multiple users updating the same database.
+
+- The combination of react query and the Statusmessage component will display a loading indicator or error message whenever the query to the server is not (yet) successful, keeping the user informed on what happens behind the scenes.
+
+The user interface is visually changed in the web application but the layout is essentially the same. Visual changes are things like changes to colours and fonts, or small layout changes.
+
+Images of the web application can be found in the webapp [README.md](/webapp/README.md) or in [release-3 docs](/docs/release-3/images) <!-- TODO make sure link is correct-->
+
+<!-- TODO: move to testing -->
+
+For testing of the webapp we used Cypress for end to end testing. We chose cypress for it simplicity and also extensive support. It comes out of the box with an interactive view you can open in a browser (Run `npm run cy:open` inside the webapp folder). And the functions it comes with are easy to understand and extremely intuitive even though none of us had used it before.
+
+Cypress allowed us to write tests simulating user behaviour for all the functionality implemented in the webapp. Inside [webapp/cypress](/webapp/cypress) you will find home_spec, add_drink_spec and edit_drink_spec. Files which test all the functionality on the associated pages by navigating around, inputing typical inputs and clicking all the buttons. This ensures that whenever we change the code we can run these tests to make sure that none of the functionalities unexpectedly breaks.
+
+It is important to note that even though Cypress tests performes the tests on the actual webapp, it does not connect to our server. Our team made this decision since the development of the webapp and server happened in parallel to each other. This meant that the server might not be complete or function properly (yet) which would otherwise leave the client tests breaking and redundant until the completion of the server. We worked around this by intercepting all api calls the client made and faked a correct server response. We also made sure to check the requests made to make sure they are as expected. Now we had a isolated testing environment that we know for sure will work when the server is complete and sends the correct responses, without relying in the server.
 
 ## Implementation of API and Server
 
@@ -68,11 +104,13 @@ As the project has grown in complexity and scope, unit tests has been crucial in
 Since release 2 test coverage has been substantially improved, as testing has been a priority. With the help of **JaCOCO** we have been able to analyze our test coverage and we now have an average test coverage of about 80% in all modules. We consider this satisfactory as the remaining code would be trivial to tests (methods like "setters" or "getters") or consist of edge cases like code resulting from an IOException. 
 
 #### Core
+
 In the core module jacoco reports a test coverage of 84 %.
 
 The core module is generally very simple in nature and is therefore very straightforward to test. We are very happy with the coverage in the core module. The largest part of the missing 16 % is from a constructor that exists to streamline a test.
 
 #### Json
+
 In the json module jacoco reports a test coverage of 78 % or 65 % depending on whether the user.home directory has been initialized or not.
 
 The json module is somewhat difficult in nature to increase the test coverage on since a big part of the module is error handling with errors we are not able to reproduce in the tests.
