@@ -1,6 +1,6 @@
 package core;
 
-import static core.Constants.VALIDTYPES;
+import static core.Constants.VALID_TYPES;
 
 /**
  * Class that represents an ingredient in a drink. Provides methods to retrive information about an
@@ -22,7 +22,7 @@ public final class Ingredient {
      * @param type
      */
     public Ingredient(String name, double amount, String unit, String type) {
-        if (!VALIDTYPES.contains(type))
+        if (!VALID_TYPES.contains(type))
             throw new IllegalArgumentException("Invalid type");
         this.name = name;
         setAmount(amount);
@@ -89,7 +89,7 @@ public final class Ingredient {
      * @param type
      */
     public void setType(String type) {
-        if (!VALIDTYPES.contains(type))
+        if (!VALID_TYPES.contains(type))
             throw new IllegalArgumentException("Not valid type");
         this.type = type;
     }

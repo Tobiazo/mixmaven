@@ -3,8 +3,8 @@ package ui;
 import core.Ingredient;
 import core.Drink;
 
-import static core.Constants.VALIDTYPES;
-import static core.Constants.VALIDUNITS;
+import static core.Constants.VALID_TYPES;
+import static core.Constants.VALID_UNITS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,22 +16,14 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class EditDrinkController {
-	@FXML
-	private Label errorLabel;
-	@FXML
-	private TextField drinkNameField;
-	@FXML
-	private TextField ingredientNameField;
-	@FXML
-	private TextField alcoholPercentField;
-	@FXML
-	private TextField amountField;
-	@FXML
-	private ListView<Ingredient> ingredientList;
-	@FXML
-	private ChoiceBox<String> typeChoiceBox;
-	@FXML
-	private ChoiceBox<String> unitChoiceBox;
+	@FXML private Label errorLabel;
+	@FXML private TextField drinkNameField;
+	@FXML private TextField ingredientNameField;
+	@FXML private TextField alcoholPercentField;
+	@FXML private TextField amountField;
+	@FXML private ListView<Ingredient> ingredientList;
+	@FXML private ChoiceBox<String> typeChoiceBox;
+	@FXML private ChoiceBox<String> unitChoiceBox;
 	private List<Ingredient> selectedIngredients;
 	private MixMavenController mixMavenController;
 
@@ -55,8 +47,8 @@ public class EditDrinkController {
      * Sets up options for the choice boxes.
      */
     private void setChoiceBoxOptions() {
-        unitChoiceBox.getItems().addAll(VALIDUNITS);
-        typeChoiceBox.getItems().addAll(VALIDTYPES);
+        unitChoiceBox.getItems().addAll(VALID_UNITS);
+        typeChoiceBox.getItems().addAll(VALID_TYPES);
         unitChoiceBox.setValue("Unit of measurement");
         typeChoiceBox.setValue("Ingredient Type");
     }
@@ -159,19 +151,19 @@ public class EditDrinkController {
 		String unit = unitChoiceBox.getValue();
 		String type = typeChoiceBox.getValue();
 
-		//Checks if an ingredient has been selected in the listview
+		// Checks if an ingredient has been selected in the listview
 		if (ingredientList.getSelectionModel().getSelectedItems().isEmpty()) {
 			errorLabel.setText("Select an ingredient to edit!");
 			return;
 		}
 
-		//Verifies the ingredient name Parameter.
+		// Verifies the ingredient name Parameter.
 		if (ingredientName.length() == 0) {
 			errorLabel.setText("Name the ingredient");
 			return;
 		}
 
-		//Verifies the amount Parameter.
+		// Verifies the amount Parameter.
 		try {
 			amount = Double.parseDouble(amountField.getText());
 		} catch (NumberFormatException e) {
@@ -179,7 +171,7 @@ public class EditDrinkController {
 			return;
 		}
 
-		//Verifies the alcohol Percent parameter.
+		// Verifies the alchohol Percent parameter.
 		try {
 			if (alcoholPercentField.getText().equals("")) {
 				alcoholPercent = 0;
@@ -191,13 +183,14 @@ public class EditDrinkController {
 			return;
 		}
 
-		//Verifies that a liquid is measured in volume.
+		// Verifies that a liquid is measured in volume.
 		if (!type.equals("extras") && unit.equals("gram")) {
 			errorLabel.setText("Insert liquids as volume!");
 			return;
 		}
 
-		//Creates a new ingredient and replaces the selected ingredient, from the view, with the new ingredient.
+		// Creates a new ingredient and replaces the selected ingredient, from the view, with the
+		// new ingredient.
 		Ingredient newIngredient =
 			new Ingredient(ingredientName, alcoholPercent, amount, unit, type);
 		int index = ingredientList.getSelectionModel().getSelectedIndex();
@@ -218,13 +211,13 @@ public class EditDrinkController {
 		String unit = unitChoiceBox.getValue();
 		String type = typeChoiceBox.getValue();
 
-		//Verifies the ingredient name Parameter.
+		// Verifies the ingredient name Parameter.
 		if (ingredientName.length() == 0) {
 			errorLabel.setText("Name the ingredient");
 			return;
 		}
 
-		//Verifies the amount Parameter.
+		// Verifies the amount Parameter.
 		try {
 			amount = Double.parseDouble(amountField.getText());
 		} catch (NumberFormatException e) {
@@ -232,12 +225,13 @@ public class EditDrinkController {
 			return;
 		}
 
-		//Verifies the choiceboxes, unit and type.
+		// Verifies the choiceboxes, unit and type.
 		if (unit.equals("Unit of measurement") || type.equals("Ingredient Type")) {
 			errorLabel.setText("Choose options from both the choiceboxes!");
 			return;
 		}
-		//Verifies the alcohol Percent parameter.
+
+		// Verifies the alchohol Percent parameter.
 		try {
 			if (alcoholPercentField.getText().equals("")) {
 				alcoholPercent = 0;
@@ -249,13 +243,13 @@ public class EditDrinkController {
 			return;
 		}
 
-		//Verifies that a liquid is measured in volume.
+		// Verifies that a liquid is measured in volume.
 		if (!type.equals("extras") && unit.equals("gram")) {
 			errorLabel.setText("Insert liquids as volume!");
 			return;
 		}
 
-		//Creates a new ingredient and adds it to the view.
+		// Creates a new ingredient and adds it to the view.
 		Ingredient newIngredient =
 					new Ingredient(ingredientName, alcoholPercent, amount, unit, type);
 			selectedIngredients.add(newIngredient);

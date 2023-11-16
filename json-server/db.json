@@ -67,6 +67,48 @@
       "alcoholContent": 0
     },
     {
+      "id": "899435de-67e2-3f83-88d8-9e252087ad73",
+      "name": "Espresso martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "alcoholPercentage": 40,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        },
+        {
+          "name": "Coffe liquor",
+          "alcoholPercentage": 0,
+          "amount": 2,
+          "unit": "cl",
+          "type": "mixer"
+        },
+        {
+          "name": "Espresso",
+          "alcoholPercentage": 0,
+          "amount": 1,
+          "unit": "cl",
+          "type": "mixer"
+        }
+      ],
+      "alcoholContent": 20
+    },
+    {
+      "id": "1dd4bcff-b6d7-b44d-fa78-ccbfe28c0809",
+      "name": "Tequila",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "alcoholPercentage": 37.1,
+          "amount": 2,
+          "unit": "cl",
+          "type": "alcohol"
+        }
+      ],
+      "alcoholContent": 37.1
+    },
+    {
       "id": "7298b100-8fc4-8000-039c-1f7def55aad3",
       "name": "Gin & tonic",
       "ingredients": [

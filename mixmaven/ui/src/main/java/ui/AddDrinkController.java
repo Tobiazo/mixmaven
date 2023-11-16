@@ -2,8 +2,8 @@ package ui;
 
 import core.Ingredient;
 import core.Drink;
-import static core.Constants.VALIDUNITS;
-import static core.Constants.VALIDTYPES;
+import static core.Constants.VALID_UNITS;
+import static core.Constants.VALID_TYPES;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +36,9 @@ public final class AddDrinkController {
 	@FXML
 	public void initialize() {
 		unitChoiceBox.setValue("Unit of Measurement");
-		unitChoiceBox.getItems().addAll(VALIDUNITS);
+		unitChoiceBox.getItems().addAll(VALID_UNITS);
 		typeChoiceBox.setValue("Ingredient Type");
-		typeChoiceBox.getItems().addAll(VALIDTYPES);
+		typeChoiceBox.getItems().addAll(VALID_TYPES);
 
 		typeChoiceBox.setOnAction(event -> {
 			if (!"alcohol".equalsIgnoreCase(typeChoiceBox.getValue())) {
@@ -75,13 +75,13 @@ public final class AddDrinkController {
 		String unit = unitChoiceBox.getValue();
 		String type = typeChoiceBox.getValue();
 
-		//Verifies the ingredient name Parameter.
+		// Verifies the ingredient name Parameter.
 		if (ingredientName.length() == 0) {
 			errorLabel.setText("Name the ingredient");
 			return;
 		}
 
-		//Verifies the amount Parameter.
+		// Verifies the amount Parameter.
 		try {
 			amount = Double.parseDouble(amountField.getText());
 		} catch (NumberFormatException e) {
@@ -89,12 +89,12 @@ public final class AddDrinkController {
 			return;
 		}
 
-		//Verifies the choiceboxes, unit and type.
+		// Verifies the choiceboxes, unit and type.
 		if (unit.equals("Unit of measurement") || type.equals("Ingredient Type")) {
 			errorLabel.setText("Choose options from both the choiceboxes!");
 			return;
 		}
-		//Verifies the alcohol Percent parameter.
+		// Verifies the alchohol Percent parameter.
 		try {
 			if (alcoholPercentField.getText().equals("")) {
 				alcoholPercent = 0;
@@ -106,19 +106,18 @@ public final class AddDrinkController {
 			return;
 		}
 
-		//Verifies that a liquid is measured in volume.
+		// Verifies that a liquid is measured in volume.
 		if (!type.equals("extras") && unit.equals("gram")) {
 			errorLabel.setText("Insert liquids as volume!");
 			return;
 		}
 
-		//Creates a new ingredient and adds it to the view.
-		Ingredient newIngredient =
-					new Ingredient(ingredientName, alcoholPercent, amount, unit, type);
-			selectedIngredients.add(newIngredient);
-			ingredientList.getItems().add(newIngredient);
-			ingredientList.refresh();
-			clearFields();
+		// Creates a new ingredient and adds it to the view.
+		Ingredient newIngredient = new Ingredient(ingredientName, alcoholPercent, amount, unit, type);
+		selectedIngredients.add(newIngredient);
+		ingredientList.getItems().add(newIngredient);
+		ingredientList.refresh();
+		clearFields();
 	}
 
 	/**
@@ -130,13 +129,12 @@ public final class AddDrinkController {
 	}
 
 	/**
-	 * Creates a new drink object with name from the drinknameLabel
-	 * and ingredients from the selectedIngredients List
-	 * Then returns user to main screen.
+	 * Creates a new drink object with name from the drinknameLabel and ingredients from the
+	 * selectedIngredients List, then returns user to main screen.
 	 */
 	@FXML
 	public void addDrinkBtn() {
-        //Verify that name and ingredient is not empty.
+        // Verify that name and ingredient is not empty.
 		if (selectedIngredients.isEmpty()) {
 			errorLabel.setText("Cannot make a Drink with no ingredients");
 		} else if (drinkNameField.getText().trim().isEmpty()) {
