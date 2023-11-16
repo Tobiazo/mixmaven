@@ -4,9 +4,11 @@ import { Drink } from '../types'
  * Allows enviroment variables to change the url
  * Default: http://localhost:8000
  */
-const baseURL = import.meta.env.VITE_CHE_LINK || `http://${import.meta.env.VITE_SERVER_IP || 'localhost'}:${
-  import.meta.env.VITE_SERVER_PORT || 8000
-}`
+const baseURL =
+  import.meta.env.VITE_CHE_LINK ||
+  `http://${import.meta.env.VITE_SERVER_IP || 'localhost'}:${
+    import.meta.env.VITE_SERVER_PORT || 8000
+  }`
 
 export const getDrinks = async (): Promise<Drink[]> => {
   return fetch(`${baseURL}/drinks`, { method: 'GET' })

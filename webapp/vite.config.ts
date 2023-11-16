@@ -10,7 +10,7 @@ export default ({ mode }) => {
     },
     preview: {
       port: parseInt(process.env.VITE_CLIENT_PORT) || 3000,
-      open: true
-    }
+      open: true,
+    },
   })
 }
