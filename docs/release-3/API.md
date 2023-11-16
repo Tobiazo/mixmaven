@@ -15,6 +15,8 @@ Retrieves a list of all drinks stored in MixMaven.
 
 List of all drinks.
 
+#### Example list of drinks with 1 drink object
+
 ```json
 [
     {
@@ -40,7 +42,7 @@ List of all drinks.
 
 Updates the drink with the given id.
 
-#### Request `Body`
+#### Example request `Body`:
 
 ```json
 {
@@ -60,18 +62,17 @@ Updates the drink with the given id.
     "alcoholContent": 0.40
 }
 ```
-
 
 ### Delete Drink - `DELETE` `/drinks/{id}`
 
 Deletes the drink with the corresponding ID.
 
-
 ### Add Drink - `POST` `/drinks`
 
 Adds a new drink to the MixMavenModel.
 
-#### Request `Body`
+#### Example request `Body`:
+
 ```json
 {
     "id": "1047dc0f-eca8-4a79-b1ec-5d0fe37810d8",
@@ -91,12 +92,11 @@ Adds a new drink to the MixMavenModel.
 }
 ```
 
-
 ### Set File Path - `POST` `/drinks/filepath`
 
 Sets the datafile used for persistence.
 
-#### Request `Body`
+#### Example request `Body`:
 
 ```json
 {
