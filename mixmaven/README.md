@@ -41,7 +41,9 @@ To build you need to run:
 ```cmd
 mvn clean install -DskipTests
 ```
+
 ### Run
+
 When running the App you have two options:
 
 #### Running the app without a server
@@ -73,8 +75,6 @@ cd ../ui
 mvn javafx:run
 ```
 
-
-
 ## Testing
 
 In order to run the included tests, use the following command in the mixmaven folder:
@@ -99,6 +99,7 @@ Then you can go in the corresponding folder (core/ui) and inside target/site ope
 The app contains three primary pages.
 
 ### 1
+
  The first one is page where you can add drinks to your library of drinks. This page is accesible from **Add Drink** button on the upper taskbar. It looks as following:
 
 ![image](/docs/release-2/release-2-adddrink.png)
@@ -125,6 +126,7 @@ The app contains three primary pages.
 Whenever an ingredient is added, the view to the left fills out with the ingredients and the user can delete ingredients from this view if desired.
 
 ### 2
+
  The second is a page where the user can view their Drinks. This is the default view when the app is ran and can otherwise be reached through the **Your Drinks** Button and looks as following:
 
 ![image](/docs/release-2/release-2-browsedrinks.png)
@@ -132,6 +134,7 @@ Whenever an ingredient is added, the view to the left fills out with the ingredi
 The page presents all the drinks added by the user in the order the user added the drinks. There are two options for the drinks. The user can delete the drink with the **Delete Drink** button or the user can edit a selected drink with the **Edit Drink** button, which sends the user to the final page.
 
 ### 3
+
 The final page is a page where the user can edit a selected drink and is reached through the **Edit Drink** button on a drink in the second page. It looks as following:
 
 ![image](/docs/release-2/release-2-editdrink.png)

@@ -20,7 +20,6 @@ The decision to implement our frontend in React was a result of wanting to achiv
 
 To implement our API we used a springboot server containing all endpoints. This is located in the new springboot module. [springboot](/mixmaven/springboot/README.md)
 
-
 ## Userstories
 
 The Userstories used for this release can be found [here.](/docs/release-3/userstories.md)
@@ -37,7 +36,7 @@ The web application has the exact same core functionality as the java applicatio
 We implemented better functionality for navigating the list of drinks on the home page:
 
 - Each drink-card is by default collapsed to avoid unnecessarily cluttering the homepage
--The user can expand each individual card by simply clicking or just pressing "expand all". This reveals all relevant information like ingredients and alcohol content.
+- The user can expand each individual card by simply clicking or just pressing "expand all". This reveals all relevant information like ingredients and alcohol content.
 - The option to filter alcoholic / non-alcoholic drinks
 - The list will by default sort in ascending order (A-Z), with the option to toggle with descending order.
 
@@ -63,24 +62,18 @@ The implementation of react-query:
 
 - The combination of react query and the Statusmessage component will display a loading indicator or error message whenever the query to the server is not (yet) successful, keeping the user informed on what happens behind the scenes.
 
-The user interface is visually changed in the web application but the layout is essentially the same. Visual changes are things like changes to colours and fonts, or small layout changes.
-
-Images of the web application can be found in the webapp [README.md](/webapp/README.md) or in [release-3 docs](/docs/release-3/images) <!-- TODO make sure link is correct-->
-
-<!-- TODO: move to testing -->
-
-For testing of the webapp we used Cypress for end to end testing. We chose cypress for it simplicity and also extensive support. It comes out of the box with an interactive view you can open in a browser (Run `npm run cy:open` inside the webapp folder). And the functions it comes with are easy to understand and extremely intuitive even though none of us had used it before.
-
-Cypress allowed us to write tests simulating user behaviour for all the functionality implemented in the webapp. Inside [webapp/cypress](/webapp/cypress) you will find home_spec, add_drink_spec and edit_drink_spec. Files which test all the functionality on the associated pages by navigating around, inputing typical inputs and clicking all the buttons. This ensures that whenever we change the code we can run these tests to make sure that none of the functionalities unexpectedly breaks.
-
-It is important to note that even though Cypress tests performes the tests on the actual webapp, it does not connect to our server. Our team made this decision since the development of the webapp and server happened in parallel to each other. This meant that the server might not be complete or function properly (yet) which would otherwise leave the client tests breaking and redundant until the completion of the server. We worked around this by intercepting all api calls the client made and faked a correct server response. We also made sure to check the requests made to make sure they are as expected. Now we had a isolated testing environment that we know for sure will work when the server is complete and sends the correct responses, without relying in the server.
+Images of the web application can be found in the webapp [README.md](/webapp/README.md) or in the [images](/docs/release-3/images) folder of release-3.
 
 ## Implementation of API and Server
 
-Release 3 implements a new API adhering to the REST design principles. The server is implemented through Springboot and contains several endpoints which is documented [here.](/docs/release-3/API.md). The API is utilized by both the JavaFX and the React client. Instructions for running the server can be found below:
+Release 3 implements a new API adhering to the REST design principles. The server is implemented through Springboot and contains several endpoints which is documented [here.](/docs/release-3/API.md). The API is utilized by both the JavaFX and the React client.
 
-- [Java Application](/mixmaven/README.md#build-and-running-the-project)
-- [Web Application](/webapp/README.md) <!--- TODO -->
+For more information on our API se [API.md](./API.md)
+
+Instructions for running the server together with;
+
+- JavaFX client: [build-and-running-the-project](/mixmaven/README.md#build-and-running-the-project)
+- Webapp: [webapp README](/webapp/README.md)
 
 ## Updating and refactoring UI, Json and Core modules
 
@@ -92,16 +85,15 @@ In the Core module we added a MixMavenModel Class which contains all of our appl
 
 To improve maintainability, readability and improve code quality, a lot of code has been overhauled in the three modules. Long methods have been shortened by using helper methods in order to follow the single responsibility principle and make the code more readable. For example the previously long initialize method in EditDrinkController is now merely 5 lines of method calls.
 
-
 ## Tests
 
 ### Why do we have tests
 
-As the project has grown in complexity and scope, unit tests has been crucial in development. The tests have been instrumental while [updating and refactoring](#updating-and-refactoring-ui,-Json-and-core-modules) to ascertain that everything is still working as intended. To maintain high code quality in our codebase we have set high standards for testing all modules.
+As the project has grown in complexity and scope, unit tests has been crucial in development. The tests have been instrumental while updating and refactoring to ascertain that everything is still working as intended. To maintain high code quality in our codebase we have set high standards for testing all modules.
 
 ### Test coverage
 
-Since release 2 test coverage has been substantially improved, as testing has been a priority. With the help of **JaCOCO** we have been able to analyze our test coverage and we now have an average test coverage of about 80% in all modules. We consider this satisfactory as the remaining code would be trivial to tests (methods like "setters" or "getters") or consist of edge cases like code resulting from an IOException. 
+Since release 2 test coverage has been substantially improved, as testing has been a priority. With the help of **JaCOCO** we have been able to analyze our test coverage and we now have an average test coverage of about 80% in all modules. We consider this satisfactory as the remaining code would be trivial to tests (methods like "setters" or "getters") or consist of edge cases like code resulting from an IOException.
 
 #### Core
 
@@ -131,14 +123,23 @@ The ui module is a module we are very happy with the coverage off. We believe al
 
 We do recognise that we could have achieved higher test coverage. But we are certain that our current code coverage extends over most, if not all, user cases. It is naturally possible to improve upon the test coverage in the future.
 
+### Webapp
+
+For testing of the webapp we used Cypress for end to end testing. We chose cypress for it simplicity and also extensive support. It comes out of the box with an interactive view you can open in a browser (Run `npm run cy:open` inside the webapp folder). And the functions it comes with are easy to understand and extremely intuitive even though none of us had used it before.
+
+Cypress allowed us to write tests simulating user behaviour for all the functionality implemented in the webapp. Inside [webapp/cypress](/webapp/cypress) you will find home_spec, add_drink_spec and edit_drink_spec. Files which test all the functionality on the associated pages by navigating around, inputing typical inputs and clicking all the buttons. This ensures that whenever we change the code we can run these tests to make sure that none of the functionalities unexpectedly breaks.
+
+It is important to note that even though Cypress tests performs the tests on the actual webapp, it does not connect to our server. Our team made this decision since the development of the webapp and server happened in parallel to each other. This meant that the server might not be complete or function properly (yet) which would otherwise leave the client tests breaking and redundant until the completion of the server. We worked around this by intercepting all api calls the client made and faked a correct server response. We also made sure to check the requests made to make sure they are as expected. Now we had a isolated testing environment that we know for sure will work when the server is complete and sends the correct responses, without relying in the server.
+
+The test coverage for the webapp is something we chose to exclude. Cypress does not come with the capabilities to to this out of the box. Even though there are posibilities to do this, it will require us to istrument our code and put in more work to achieve this. We simply did not prioritize that since it is not a requirement and we are already confident the tests cover most (if not all) of the code in the webapp.
+
 ## Diagrams
 
-<!--- TODO -->
+See [release-3/diagrams](./diagrams/)
 
 ## Work Habits
 
-See [Work Habits Release 3](/docs/release-3/WorkHabitsRelease3
-)
+See [Work Habits Release 3](./work-habits-release-3.md)
 
 ## Checkstyle and Spotbugs
 
